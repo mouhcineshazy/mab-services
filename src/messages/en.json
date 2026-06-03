@@ -1,0 +1,210 @@
+{
+  "Metadata": {
+    "home":       { "title": "MAB Services — Insurance Broker & Financial Advisor QC/ON", "description": "Mohammed Amine BENZAKOUR, licensed financial security advisor (AMF) and life insurance broker (FSRA). Tailored solutions in life insurance, RRSP, TFSA in Québec and Ontario." },
+    "about":      { "title": "About", "description": "Discover the personalized and transparent approach of MAB Services for your insurance and savings needs in Québec and Ontario." },
+    "insurance":  { "title": "Insurance & Protection", "description": "Term and permanent life insurance, disability, critical illness. Protect your family and your assets." },
+    "savings":    { "title": "Savings & Investment", "description": "RRSP, TFSA, FHSA, RESP, RDSP. Optimize your taxes and reach your financial goals." },
+    "privacy":    { "title": "Privacy Policy", "description": "Our commitment to protecting your personal information." },
+    "contact":    { "title": "Contact", "description": "Contact MAB Services for your free consultation. 613-261-4428 | sales@mabservices-ca.com" }
+  },
+  "Nav": {
+    "home":     "Home",
+    "about":    "About",
+    "insurance":"Insurance",
+    "more":     "More",
+    "savings":  "Savings & Investment",
+    "masterclass": "Free Masterclass",
+    "privacy":  "Privacy Policy",
+    "contact":  "Contact",
+    "cta":      "Free Consultation",
+    "menuOpen": "Open menu",
+    "menuClose":"Close menu"
+  },
+  "Hero": {
+    "badge":       "Licensed AMF Québec · FSRA Ontario",
+    "name":        "MAB SERVICES",
+    "person":      "Mohammed Amine BENZAKOUR",
+    "title1":      "Financial Security Advisor — Québec",
+    "title2":      "Life Insurance Broker — Ontario",
+    "tagline":     "\"Your trust builds our future\"",
+    "taglineEn":   "Votre confiance construit notre avenir",
+    "description": "Tailored solutions in <em>life insurance, savings and investment</em> to protect your loved ones and secure your financial future in Québec and Ontario.",
+    "ctaPrimary":  "Free Consultation",
+    "ctaSecondary":"Explore our services",
+    "scroll":      "Scroll"
+  },
+  "Trust": {
+    "amf":        "Licensed <strong>AMF</strong> Québec",
+    "fsra":       "Licensed <strong>FSRA</strong> Ontario",
+    "independent":"<strong>Independent Broker</strong> & Impartial",
+    "free":       "<strong>100% Free</strong> Consultation"
+  },
+  "Services": {
+    "label":    "Our Solutions",
+    "title":    "A <em>complete</em> coverage<br/>for every stage of your life",
+    "subtitle": "Personalized solutions to protect your family, optimize your taxes and prepare for retirement.",
+    "savings": {
+      "title": "Savings & Investments",
+      "reer":  { "name": "RRSP", "desc": "Registered Retirement Savings Plan" },
+      "celi":  { "name": "TFSA", "desc": "Tax-Free Savings Account" },
+      "celiapp":{ "name": "FHSA", "desc": "First Home Savings Account" },
+      "reee":  { "name": "RESP", "desc": "Registered Education Savings Plan" },
+      "reei":  { "name": "RDSP", "desc": "Registered Disability Savings Plan" },
+      "nonreg":{ "name": "Non-Registered", "desc": "Non-registered investments" }
+    },
+    "insurance": {
+      "title":    "Insurance & Protection",
+      "term":     { "name": "Term Life Insurance",       "desc": "Protection for a defined period" },
+      "perm":     { "name": "Permanent Life Insurance",  "desc": "Guaranteed lifetime coverage" },
+      "disability":{ "name": "Disability Insurance",    "desc": "Essential income replacement" },
+      "critical": { "name": "Critical Illness",          "desc": "Tax-free lump-sum payment" },
+      "health":   { "name": "Health Insurance",          "desc": "Medication, dental, vision" },
+      "travel":   { "name": "Travel Insurance",          "desc": "International protection" }
+    }
+  },
+  "Why": {
+    "label":    "Why MAB Services",
+    "title":    "A <em>simple, transparent</em> approach<br/>tailored entirely to you",
+    "subtitle": "MAB Services guides you honestly to find the solutions best suited to your situation — not those that earn the highest commissions.",
+    "card1": { "title": "Dual Professional License",   "desc": "Licensed by the AMF in Québec and FSRA in Ontario — unique coverage across Canada's two largest markets." },
+    "card2": { "title": "Personalized Approach",       "desc": "Each client receives an analysis of their specific needs. No generic solution — tailored strategies for your situation." },
+    "card3": { "title": "Full Transparency",            "desc": "All options are presented clearly, with their advantages and limitations. You decide with full information." }
+  },
+  "Stats": {
+    "provinces": { "num": "2",    "label": "Provinces covered\n(QC & ON)" },
+    "free":      { "num": "100%", "label": "Free\nconsultation" },
+    "amf":       { "num": "AMF",  "label": "Autorité des marchés\nfinanciers" },
+    "fsra":      { "num": "FSRA", "label": "Financial Services\nRegulatory Authority" }
+  },
+  "Masterclass": {
+    "badge":    "Next session available",
+    "title":    "Free Masterclass <em>MAB Services</em>",
+    "subtitle": "Understand your rights and options in savings and insurance. A free educational session open to everyone.",
+    "topic1":   "RRSP, TFSA, FHSA, RESP, RDSP — how to choose the right plan",
+    "topic2":   "Life, disability, critical illness insurance — what your contract really covers",
+    "topic3":   "Tax strategies for families and business owners",
+    "topic4":   "Live Q&A with the advisor",
+    "warning":  "Spots are limited — free registration",
+    "formTitle":"Free Masterclass Registration",
+    "nom":       "Last Name",
+    "prenom":    "First Name",
+    "email":     "Email",
+    "telephone": "Phone",
+    "option":    "Chosen option",
+    "opt1title": "Option 1 — Savings & Investment",
+    "opt1desc":  "RRSP, TFSA, FHSA, RESP, RDSP and savings strategies",
+    "opt2title": "Option 2 — Life, disability & illness insurance",
+    "opt2desc":  "Coverage, comparisons and personalized advice",
+    "opt3title": "Option 3 — Full presentation ✦ Recommended",
+    "opt3desc":  "Both modules combined — the most complete session",
+    "submit":    "Register for Masterclass",
+    "disclaimer":"100% free registration · No purchase obligation",
+    "success":   "Registration confirmed! We will contact you shortly.",
+    "error":     "An error occurred. Please try again."
+  },
+  "Consultation": {
+    "label":    "Direct Contact",
+    "title":    "Your <em>free</em> consultation starts here",
+    "subtitle": "Briefly describe your situation and Mohammed Amine will contact you within 24 hours for a no-obligation first conversation.",
+    "phone":    { "label": "Phone",   "value": "613-261-4428" },
+    "email":    { "label": "Email",   "value": "sales@mabservices-ca.com" },
+    "zones":    { "label": "Coverage areas", "value": "Québec & Ontario" },
+    "follow":   "Follow us",
+    "formTitle":"Free Consultation Request",
+    "nom":        "Last Name",
+    "prenom":     "First Name",
+    "emailField": "Email",
+    "telephone":  "Phone",
+    "description":"Describe your financial goals",
+    "descPlaceholder": "e.g. I want to save for retirement and protect my family with life insurance…",
+    "availability":"Preferred availability",
+    "availPlaceholder": "e.g. Monday after 6pm, or Saturday morning",
+    "submit":    "Send my request",
+    "disclaimer":"Reply guaranteed within 24h · Free, no-obligation consultation",
+    "success":   "Your request has been sent! We will contact you within 24h.",
+    "error":     "An error occurred. Please contact us directly."
+  },
+  "About": {
+    "title": "About MAB SERVICES",
+    "p1": "<strong>MAB SERVICES</strong>, represented by <strong>Mohammed Amine BENZAKOUR</strong>, life insurance broker and financial security advisor, provides services in Québec and Ontario.",
+    "p2": "He guides clients in finding solutions tailored to their personal and family needs, particularly in life insurance and in savings and investment. Savings strategies are implemented through registered plans or life insurance solutions.",
+    "p3": "An approach aimed at protecting loved ones, preparing for the future, and meeting various financial security objectives is favored. It rests on a simple, transparent and personalized process, allowing each client to choose the solutions best suited to their situation."
+  },
+  "Insurance": {
+    "title":    "INSURANCE AND PROTECTION SOLUTIONS",
+    "intro":    "We offer a comprehensive range of coverages to secure your assets and protect your loved ones from the unexpected.",
+    "term":     { "title": "Term Life Insurance",       "desc": "Flexible protection to cover your financial needs over a defined period. Ideal for protecting a mortgage, debts or dependants during critical years." },
+    "perm":     { "title": "Permanent Life Insurance",  "desc": "Guaranteed lifetime coverage, often including a savings component or cash value. An effective estate planning tool." },
+    "disability":{ "title": "Disability Insurance",    "desc": "Essential income replacement if you become unable to work due to an accident or illness. Protect your lifestyle and your family's." },
+    "critical": { "title": "Critical Illness Insurance","desc": "A tax-free lump-sum payment to support you financially upon diagnosis of a covered critical illness (cancer, heart attack, stroke, etc.)." },
+    "faqTitle": "Frequently asked questions about insurance",
+    "faq": [
+      { "q": "What is the difference between term and permanent life insurance?", "a": "Term insurance offers protection for a fixed period (10, 20 or 30 years) and is generally less expensive. Permanent insurance covers your entire life and may include a cash value. The choice depends on your goals and budget." },
+      { "q": "Do I need disability insurance if I have workplace coverage?", "a": "Employer coverage is often partial and may end if you change jobs. A personal policy guarantees continuous protection, regardless of your employment situation." },
+      { "q": "Is critical illness insurance really useful?", "a": "Yes. In Canada, 1 in 2 people will develop cancer. The lump-sum payment allows you to cover treatments not covered by provincial health plans, living expenses during recovery, and to pay off debts." }
+    ]
+  },
+  "Savings": {
+    "title":    "SAVINGS AND INVESTMENT PLANS",
+    "intro":    "Discover the different investment vehicles to optimize your taxes and reach your financial goals.",
+    "celi":     { "title": "TFSA — Tax-Free Savings Account", "desc": "A plan that lets you set money aside sheltered from tax. Investment gains (interest, dividends, capital gains) earned in a TFSA are not taxable, even when withdrawn. 2025 limit: $7,000/year.", "highlight": "2025 cumulative limit: $95,000" },
+    "celiapp":  { "title": "FHSA — First Home Savings Account", "desc": "A plan designed to help individuals save for the purchase of their first home. It combines the benefits of an RRSP (tax-deductible contributions) and a TFSA (tax-free withdrawals for a home purchase).", "highlight": "Maximum contribution: $8,000/year ($40,000 lifetime)" },
+    "reer":     { "title": "RRSP — Registered Retirement Savings Plan", "desc": "A plan designed primarily for retirement savings. Contributions are deductible from your taxable income, which reduces your annual tax payable. Tax is deferred until funds are withdrawn.", "highlight": "2025 contribution limit: 18% of earned income (max $31,560)" },
+    "reee":     { "title": "RESP — Registered Education Savings Plan", "desc": "A special investment account used by parents to save for a child's post-secondary education. This plan gives access to generous government grants added to your savings.", "highlight": "Canada Education Savings Grant (CESG): up to $7,200" },
+    "reei":     { "title": "RDSP — Registered Disability Savings Plan", "desc": "A savings plan that helps Canadians living with a disability and their families save to ensure their long-term financial security. It also allows access to government grants and bonds.", "highlight": "Government grants and bonds available" },
+    "faqTitle": "Frequently asked questions about savings",
+    "faq": [
+      { "q": "What is the difference between an RRSP and a TFSA?", "a": "The RRSP offers a tax deduction on contributions but withdrawals are taxable — ideal for reducing tax now if you are in a high bracket. The TFSA gives no deduction, but withdrawals are completely tax-free — ideal for flexible long-term savings." },
+      { "q": "Can I contribute to both an RRSP and a TFSA?", "a": "Yes, absolutely. It is even recommended in many situations. Your MAB advisor can help you determine the optimal split based on your tax bracket, goals and investment horizon." },
+      { "q": "At what age should I start saving?", "a": "The sooner the better. Thanks to compound interest, even small contributions at age 25 are worth far more than a large contribution at 45. A free consultation can establish a plan adapted to your current situation." }
+    ]
+  },
+  "Privacy": {
+    "title": "Privacy Policy",
+    "intro": "<strong>MAB SERVICES</strong> is committed to protecting your personal information collected in Québec and Ontario.",
+    "section1": {
+      "title": "Collection of information",
+      "content": "Data transmitted via the contact form is used exclusively by <strong>Mohammed Amine BENZAKOUR</strong> to analyze your financial needs and propose insurance or investment contracts. We collect your name, email, phone number and information you voluntarily provide."
+    },
+    "section2": {
+      "title": "Your Rights",
+      "content": "In accordance with <strong>Law 25</strong> (Québec) and <strong>PIPEDA</strong> (Canada), you have the right to access, rectify and delete your data. No information is shared with third parties without your explicit consent. To exercise your rights, contact us at <strong>sales@mabservices-ca.com</strong>."
+    },
+    "section3": {
+      "title": "Security",
+      "content": "We implement appropriate security measures to protect your data from unauthorized access. This site uses HTTPS. Contact forms are transmitted securely."
+    }
+  },
+  "Contact": {
+    "cardTitle":  "MAB SERVICES",
+    "phoneLabel": "PHONE",
+    "phoneValue": "613-261-4428",
+    "emailLabel": "EMAIL",
+    "emailValue": "sales@mabservices-ca.com",
+    "follow":     "FOLLOW US",
+    "zones":      "Coverage areas: Québec & Ontario",
+    "cta":        "Or use our consultation form below",
+    "freeNote":   "100% free, no-obligation consultation"
+  },
+  "Footer": {
+    "tagline":    "\"Your trust builds our future\" — Insurance and investment solutions in Québec and Ontario.",
+    "nav":        "Navigation",
+    "services":   "Services",
+    "legal":      "Legal",
+    "serviceLinks": ["Life Insurance", "Disability Insurance", "RRSP & Retirement", "TFSA & FHSA", "RESP & RDSP"],
+    "legalLinks":   ["Privacy Policy", "Regulatory Notice"],
+    "disclaimer": "The information presented on this site is for informational purposes only and does not constitute personalized financial advice. Subject to eligibility. Mohammed Amine BENZAKOUR is authorized to practice as a financial security advisor in Québec (AMF No. [XXXXX]) and as a life insurance broker in Ontario (FSRA No. [XXXXX]).",
+    "copyright":  "© {year} MAB Services. All rights reserved."
+  },
+  "Forms": {
+    "required":      "Required field",
+    "invalidEmail":  "Invalid email address",
+    "invalidPhone":  "Invalid phone number (min. 10 digits)",
+    "minLength":     "Minimum {min} characters required",
+    "sending":       "Sending…",
+    "nomPlaceholder":    "Your last name",
+    "prenomPlaceholder": "Your first name",
+    "emailPlaceholder":  "your@email.com",
+    "phonePlaceholder":  "514-XXX-XXXX"
+  }
+}

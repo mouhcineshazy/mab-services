@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 56" fill="none" role="img" aria-label="MAB Services">
+  <defs>
+    <linearGradient id="mark-grad" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+    <filter id="mark-glow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- ── Mark: rounded square background ── -->
+  <rect x="0" y="0" width="56" height="56" rx="13" fill="url(#mark-grad)"/>
+
+  <!-- ── Network constellation: connection lines (behind nodes) ── -->
+  <line x1="28" y1="11" x2="13" y2="38" stroke="white" stroke-width="1.8" stroke-opacity="0.5" stroke-linecap="round"/>
+  <line x1="28" y1="11" x2="43" y2="38" stroke="white" stroke-width="1.8" stroke-opacity="0.5" stroke-linecap="round"/>
+  <line x1="13" y1="38" x2="43" y2="38" stroke="white" stroke-width="1.8" stroke-opacity="0.5" stroke-linecap="round"/>
+  <!-- Midpoint accent lines for depth -->
+  <line x1="28" y1="11" x2="20.5" y2="24.5" stroke="white" stroke-width="1" stroke-opacity="0.2" stroke-linecap="round"/>
+  <line x1="28" y1="11" x2="35.5" y2="24.5" stroke="white" stroke-width="1" stroke-opacity="0.2" stroke-linecap="round"/>
+
+  <!-- ── Primary nodes ── -->
+  <circle cx="28" cy="11" r="4.5" fill="white" filter="url(#mark-glow)"/>
+  <circle cx="13" cy="38" r="3.5" fill="white" fill-opacity="0.88"/>
+  <circle cx="43" cy="38" r="3.5" fill="white" fill-opacity="0.88"/>
+
+  <!-- ── Secondary accent nodes (midpoints) ── -->
+  <circle cx="20.5" cy="24.5" r="1.8" fill="white" fill-opacity="0.45"/>
+  <circle cx="35.5" cy="24.5" r="1.8" fill="white" fill-opacity="0.45"/>
+
+  <!-- ── Wordmark: MAB ── -->
+  <text x="68" y="32" font-family="Montserrat, system-ui, sans-serif" font-size="20" font-weight="800" letter-spacing="0.08em" fill="#F9FAFB">MAB</text>
+
+  <!-- ── Wordmark: SERVICES ── -->
+  <text x="68" y="47" font-family="Montserrat, system-ui, sans-serif" font-size="11" font-weight="500" letter-spacing="0.22em" fill="#6B7280">SERVICES</text>
+</svg>

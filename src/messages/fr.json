@@ -1,0 +1,210 @@
+{
+  "Metadata": {
+    "home":       { "title": "MAB Services — Courtier Assurance & Conseiller Financier QC/ON", "description": "Mohammed Amine BENZAKOUR, conseiller en sécurité financière (AMF) et courtier en assurance de personnes (FSRA). Solutions sur mesure en assurance vie, REER, CELI au Québec et Ontario." },
+    "about":      { "title": "À Propos", "description": "Découvrez l'approche personnalisée et transparente de MAB Services pour vos besoins en assurance et en épargne au Québec et en Ontario." },
+    "insurance":  { "title": "Assurance & Protection", "description": "Assurance vie temporaire et permanente, invalidité, maladies graves. Protégez votre famille et votre patrimoine." },
+    "savings":    { "title": "Épargne & Investissement", "description": "REER, CELI, CELIAPP, REEE, REEI. Optimisez votre fiscalité et atteignez vos objectifs financiers." },
+    "privacy":    { "title": "Politique de Confidentialité", "description": "Notre engagement pour la protection de vos renseignements personnels." },
+    "contact":    { "title": "Contact", "description": "Contactez MAB Services pour votre consultation gratuite. 613-261-4428 | sales@mabservices-ca.com" }
+  },
+  "Nav": {
+    "home":     "Accueil",
+    "about":    "À Propos",
+    "insurance":"Assurance",
+    "more":     "Plus",
+    "savings":  "Épargne & Investissement",
+    "masterclass": "Masterclass Gratuite",
+    "privacy":  "Confidentialité",
+    "contact":  "Contact",
+    "cta":      "Consultation Gratuite",
+    "menuOpen": "Ouvrir le menu",
+    "menuClose":"Fermer le menu"
+  },
+  "Hero": {
+    "badge":       "Agréé AMF Québec · FSRA Ontario",
+    "name":        "MAB SERVICES",
+    "person":      "Mohammed Amine BENZAKOUR",
+    "title1":      "Conseiller en Sécurité Financière — Québec",
+    "title2":      "Courtier en Assurance de Personnes — Ontario",
+    "tagline":     "\"Votre confiance construit notre avenir\"",
+    "taglineEn":   "Your trust builds our future",
+    "description": "Solutions sur mesure en <em>assurance vie, épargne et investissement</em> pour protéger vos proches et préparer votre avenir financier au Québec et en Ontario.",
+    "ctaPrimary":  "Consultation Gratuite",
+    "ctaSecondary":"Découvrir nos services",
+    "scroll":      "Défiler"
+  },
+  "Trust": {
+    "amf":        "Agréé <strong>AMF</strong> Québec",
+    "fsra":       "Agréé <strong>FSRA</strong> Ontario",
+    "independent":"<strong>Courtier Indépendant</strong> & Impartial",
+    "free":       "Consultation <strong>100% Gratuite</strong>"
+  },
+  "Services": {
+    "label":    "Nos Solutions",
+    "title":    "Une couverture <em>complète</em><br/>pour chaque étape de votre vie",
+    "subtitle": "Des solutions personnalisées pour protéger votre famille, optimiser votre fiscalité et préparer votre retraite.",
+    "savings": {
+      "title": "Épargne & Investissements",
+      "reer":  { "name": "REER", "desc": "Régime enregistré d'épargne-retraite" },
+      "celi":  { "name": "CELI", "desc": "Compte d'épargne libre d'impôt" },
+      "celiapp":{ "name": "CELIAPP", "desc": "Pour l'achat d'une première propriété" },
+      "reee":  { "name": "REEE", "desc": "Régime enregistré d'épargne-études" },
+      "reei":  { "name": "REEI", "desc": "Régime enregistré d'épargne-invalidité" },
+      "nonreg":{ "name": "Non enregistré", "desc": "Investissements non enregistrés" }
+    },
+    "insurance": {
+      "title":    "Assurance & Protection",
+      "term":     { "name": "Assurance vie temporaire",  "desc": "Protection sur une période déterminée" },
+      "perm":     { "name": "Assurance vie permanente",  "desc": "Couverture garantie à vie" },
+      "disability":{ "name": "Assurance invalidité",    "desc": "Remplacement de revenu essentiel" },
+      "critical": { "name": "Maladies graves",           "desc": "Versement forfaitaire libre d'impôt" },
+      "health":   { "name": "Soins de santé",            "desc": "Médicaments, dentaire, vision" },
+      "travel":   { "name": "Assurance voyage",          "desc": "Protection à l'international" }
+    }
+  },
+  "Why": {
+    "label":    "Pourquoi MAB Services",
+    "title":    "Une approche <em>simple, transparente</em><br/>et entièrement personnalisée",
+    "subtitle": "MAB Services vous accompagne avec honnêteté pour trouver les solutions les mieux adaptées à votre situation — pas celles qui rapportent le plus de commissions.",
+    "card1": { "title": "Double Agrément Professionnel", "desc": "Autorisé par l'AMF au Québec et la FSRA en Ontario — une couverture unique sur les deux plus grands marchés canadiens." },
+    "card2": { "title": "Approche Personnalisée",        "desc": "Chaque client reçoit une analyse de ses besoins spécifiques. Pas de solution générique — des stratégies sur mesure pour votre situation." },
+    "card3": { "title": "Transparence Totale",           "desc": "Toutes les options sont présentées clairement, avec leurs avantages et limites. Vous choisissez en toute connaissance de cause." }
+  },
+  "Stats": {
+    "provinces": { "num": "2",    "label": "Provinces couvertes\n(QC & ON)" },
+    "free":      { "num": "100%", "label": "Consultation\ngratuite" },
+    "amf":       { "num": "AMF",  "label": "Autorité des marchés\nfinanciers" },
+    "fsra":      { "num": "FSRA", "label": "Financial Services\nRegulatory Authority" }
+  },
+  "Masterclass": {
+    "badge":    "Prochaine session disponible",
+    "title":    "Masterclass Gratuite <em>MAB Services</em>",
+    "subtitle": "Comprenez vos droits et options en matière d'épargne et d'assurance. Une session éducative offerte gratuitement à tous.",
+    "topic1":   "REER, CELI, CELIAPP, REEE, REEI — comment choisir le bon régime",
+    "topic2":   "Assurance vie, invalidité, maladie grave — ce que couvre vraiment votre contrat",
+    "topic3":   "Stratégies fiscales pour familles et propriétaires d'entreprise",
+    "topic4":   "Questions & réponses en direct avec le conseiller",
+    "warning":  "Les places sont limitées — inscription gratuite",
+    "formTitle":"Inscription Masterclass Gratuite",
+    "nom":       "Nom",
+    "prenom":    "Prénom",
+    "email":     "Courriel",
+    "telephone": "Téléphone",
+    "option":    "Option choisie",
+    "opt1title": "Option 1 — Épargne & Investissement",
+    "opt1desc":  "REER, CELI, CELIAPP, REEE, REEI et stratégies d'épargne",
+    "opt2title": "Option 2 — Assurance vie, invalidité & maladie",
+    "opt2desc":  "Couvertures, comparaisons et conseils personnalisés",
+    "opt3title": "Option 3 — Présentation complète ✦ Recommandée",
+    "opt3desc":  "L'ensemble des deux modules — la formation la plus complète",
+    "submit":    "S'inscrire à la Masterclass",
+    "disclaimer":"Inscription 100% gratuite · Aucune obligation d'achat",
+    "success":   "Inscription confirmée ! Nous vous contacterons sous peu.",
+    "error":     "Une erreur est survenue. Veuillez réessayer."
+  },
+  "Consultation": {
+    "label":    "Contact Direct",
+    "title":    "Votre consultation <em>gratuite</em> commence ici",
+    "subtitle": "Décrivez brièvement votre situation et Mohammed Amine vous contactera dans les 24 heures pour un premier échange sans engagement.",
+    "phone":    { "label": "Téléphone", "value": "613-261-4428" },
+    "email":    { "label": "Courriel",  "value": "sales@mabservices-ca.com" },
+    "zones":    { "label": "Zones desservies", "value": "Québec & Ontario" },
+    "follow":   "Suivez-nous",
+    "formTitle":"Demande de Consultation Gratuite",
+    "nom":        "Nom",
+    "prenom":     "Prénom",
+    "emailField": "Courriel",
+    "telephone":  "Téléphone",
+    "description":"Décrivez vos projets financiers",
+    "descPlaceholder": "Ex: Je souhaite épargner pour la retraite et protéger ma famille avec une assurance vie…",
+    "availability":"Disponibilités préférées",
+    "availPlaceholder": "Ex: Lundi après 18h, ou samedi matin",
+    "submit":    "Envoyer ma demande",
+    "disclaimer":"Réponse garantie sous 24h · Consultation sans frais ni engagement",
+    "success":   "Votre demande a été envoyée ! Nous vous contacterons sous 24h.",
+    "error":     "Une erreur est survenue. Veuillez nous contacter directement."
+  },
+  "About": {
+    "title": "À propos de MAB SERVICES",
+    "p1": "<strong>MAB SERVICES</strong>, représenté par <strong>Mohammed Amine BENZAKOUR</strong>, courtier en assurance de personnes et conseiller en sécurité financière, offre ses services au Québec et en Ontario.",
+    "p2": "Il accompagne sa clientèle dans la recherche de solutions adaptées à leurs besoins personnels et familiaux, notamment en assurance vie ainsi qu'en matière d'épargne et d'investissement. Les stratégies d'épargne sont mises en place à travers des régimes enregistrés ou des solutions d'assurance vie.",
+    "p3": "Une approche visant à protéger les proches, à préparer l'avenir et à répondre à divers objectifs de sécurité financière est privilégiée. Elle repose sur une démarche simple, transparente et personnalisée, permettant à chaque client de choisir les solutions les mieux adaptées à sa situation."
+  },
+  "Insurance": {
+    "title":    "SOLUTIONS D'ASSURANCE ET PROTECTION",
+    "intro":    "Nous offrons une gamme complète de couvertures pour sécuriser votre patrimoine et protéger vos proches face aux imprévus.",
+    "term":     { "title": "Assurance vie temporaire",  "desc": "Une protection flexible pour couvrir vos besoins financiers sur une période déterminée. Idéale pour protéger une hypothèque, des dettes ou des personnes à charge pendant les années critiques." },
+    "perm":     { "title": "Assurance vie permanente",  "desc": "Une couverture garantie pour toute la vie, incluant souvent une composante d'épargne ou de valeur de rachat. Un outil de planification successorale efficace." },
+    "disability":{ "title": "Assurance invalidité",    "desc": "Un remplacement de revenu essentiel si vous devenez incapable de travailler suite à un accident ou une maladie. Protégez votre mode de vie et celui de votre famille." },
+    "critical": { "title": "Assurance maladies graves","desc": "Un versement forfaitaire libre d'impôt pour vous soutenir financièrement lors du diagnostic d'une maladie grave couverte (cancer, crise cardiaque, AVC, etc.)." },
+    "faqTitle": "Questions fréquentes sur l'assurance",
+    "faq": [
+      { "q": "Quelle est la différence entre l'assurance vie temporaire et permanente ?", "a": "L'assurance temporaire offre une protection pour une période fixe (10, 20 ou 30 ans) et est généralement moins coûteuse. L'assurance permanente couvre toute la vie et peut inclure une valeur de rachat. Le choix dépend de vos objectifs et de votre budget." },
+      { "q": "Ai-je besoin d'une assurance invalidité si j'ai une couverture au travail ?", "a": "La couverture offerte par l'employeur est souvent partielle et peut se terminer si vous changez d'emploi. Une police personnelle vous garantit une protection continue, quelle que soit votre situation professionnelle." },
+      { "q": "L'assurance maladies graves est-elle vraiment utile ?", "a": "Oui. Au Canada, 1 personne sur 2 développera un cancer au cours de sa vie. Le versement forfaitaire vous permet de couvrir les traitements non couverts par la RAMQ/OHIP, les frais de subsistance pendant la convalescence, et de rembourser des dettes." }
+    ]
+  },
+  "Savings": {
+    "title":    "RÉGIMES D'ÉPARGNE ET D'INVESTISSEMENT",
+    "intro":    "Découvrez les différents véhicules de placement pour optimiser votre fiscalité et atteindre vos objectifs financiers.",
+    "celi":     { "title": "CELI — Compte d'épargne libre d'impôt", "desc": "Un régime qui permet de mettre de l'argent de côté à l'abri de l'impôt. Les gains de placement (intérêts, dividendes, gains en capital) réalisés dans un CELI ne sont pas imposables, même lors du retrait. Plafond 2025 : 7 000 $ par an.", "highlight": "Plafond cumulatif 2025 : 95 000 $" },
+    "celiapp":  { "title": "CELIAPP — Compte d'épargne libre d'impôt pour l'achat d'une première propriété", "desc": "Un régime conçu pour aider les particuliers à épargner pour l'achat de leur première habitation. Il combine les avantages du REER (cotisations déductibles) et du CELI (retraits non imposables pour l'achat d'une maison).", "highlight": "Cotisation maximale : 8 000 $/an (40 000 $ à vie)" },
+    "reer":     { "title": "REER — Régime enregistré d'épargne-retraite", "desc": "Un régime destiné principalement à l'épargne pour la retraite. Les cotisations sont déductibles de votre revenu imposable, ce qui réduit votre impôt à payer annuellement. L'impôt est reporté au moment du retrait des fonds.", "highlight": "Limite de cotisation 2025 : 18 % du revenu gagnée (max 31 560 $)" },
+    "reee":     { "title": "REEE — Régime enregistré d'épargne-études", "desc": "Un compte de placement spécial utilisé par les parents pour épargner en vue des études postsecondaires d'un enfant. Ce régime donne accès à des subventions gouvernementales généreuses qui s'ajoutent à votre épargne.", "highlight": "Subvention canadienne pour l'épargne-études (SCEE) : jusqu'à 7 200 $" },
+    "reei":     { "title": "REEI — Régime enregistré d'épargne-invalidité", "desc": "Un régime d'épargne qui aide les Canadiens vivant avec une déficience et leur famille à épargner pour assurer leur sécurité financière à long terme. Il permet également de bénéficier de bons et de subventions de l'État.", "highlight": "Subventions et bons gouvernementaux disponibles" },
+    "faqTitle": "Questions fréquentes sur l'épargne",
+    "faq": [
+      { "q": "Quelle est la différence entre un REER et un CELI ?", "a": "Le REER offre une déduction fiscale à la cotisation mais les retraits sont imposables — idéal pour réduire l'impôt aujourd'hui si vous êtes dans une tranche élevée. Le CELI ne donne pas de déduction, mais les retraits sont entièrement non imposables — idéal pour l'épargne flexible à long terme." },
+      { "q": "Puis-je cotiser au REER et au CELI en même temps ?", "a": "Oui, absolument. C'est même recommandé dans bien des situations. Votre conseiller MAB peut vous aider à déterminer la répartition optimale selon votre tranche d'imposition, vos objectifs et votre horizon de placement." },
+      { "q": "À partir de quel âge devrais-je commencer à épargner ?", "a": "Le plus tôt est le mieux. Grâce à l'intérêt composé, même de petites cotisations à 25 ans valent beaucoup plus qu'une grosse cotisation à 45 ans. Une consultation gratuite permet d'établir un plan adapté à votre situation actuelle." }
+    ]
+  },
+  "Privacy": {
+    "title": "Politique de Confidentialité",
+    "intro": "<strong>MAB SERVICES</strong> s'engage à assurer la protection de vos renseignements personnels recueillis au Québec et en Ontario.",
+    "section1": {
+      "title": "Collecte des renseignements",
+      "content": "Les données transmises via le formulaire de contact sont utilisées exclusivement par <strong>Mohammed Amine BENZAKOUR</strong> pour l'analyse de vos besoins financiers et la proposition de contrats d'assurance ou d'investissement. Nous collectons votre nom, courriel, numéro de téléphone et les informations que vous nous fournissez volontairement."
+    },
+    "section2": {
+      "title": "Vos Droits",
+      "content": "Conformément à la <strong>Loi 25</strong> (Québec) et à la <strong>LPRPDE</strong> (Canada), vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Aucune information n'est transmise à des tiers sans votre consentement explicite. Pour exercer vos droits, contactez-nous à <strong>sales@mabservices-ca.com</strong>."
+    },
+    "section3": {
+      "title": "Sécurité",
+      "content": "Nous mettons en œuvre des mesures de sécurité appropriées pour protéger vos données contre tout accès non autorisé. Ce site utilise le protocole HTTPS. Les formulaires de contact sont transmis de manière sécurisée."
+    }
+  },
+  "Contact": {
+    "cardTitle":  "MAB SERVICES",
+    "phoneLabel": "TÉLÉPHONE",
+    "phoneValue": "613-261-4428",
+    "emailLabel": "ADRESSE COURRIEL",
+    "emailValue": "sales@mabservices-ca.com",
+    "follow":     "SUIVEZ-NOUS",
+    "zones":      "Zones desservies : Québec & Ontario",
+    "cta":        "Ou utilisez notre formulaire de consultation ci-dessous",
+    "freeNote":   "Consultation 100% gratuite et sans engagement"
+  },
+  "Footer": {
+    "tagline":    "\"Votre confiance construit notre avenir\" — Solutions d'assurance et d'investissement au Québec et en Ontario.",
+    "nav":        "Navigation",
+    "services":   "Services",
+    "legal":      "Légal",
+    "serviceLinks": ["Assurance vie", "Assurance invalidité", "REER & Retraite", "CELI & CELIAPP", "REEE & REEI"],
+    "legalLinks":   ["Confidentialité", "Avis réglementaire"],
+    "disclaimer": "Les informations présentées sur ce site sont à titre informatif seulement et ne constituent pas un conseil financier personnalisé. Sous réserve d'admissibilité. Mohammed Amine BENZAKOUR est autorisé à exercer à titre de conseiller en sécurité financière au Québec (AMF n° [XXXXX]) et de courtier en assurance de personnes en Ontario (FSRA n° [XXXXX]).",
+    "copyright":  "© {year} MAB Services. Tous droits réservés."
+  },
+  "Forms": {
+    "required":      "Champ requis",
+    "invalidEmail":  "Adresse courriel invalide",
+    "invalidPhone":  "Numéro de téléphone invalide (min. 10 chiffres)",
+    "minLength":     "Minimum {min} caractères requis",
+    "sending":       "Envoi en cours…",
+    "nomPlaceholder":    "Votre nom de famille",
+    "prenomPlaceholder": "Votre prénom",
+    "emailPlaceholder":  "votre@email.com",
+    "phonePlaceholder":  "514-XXX-XXXX"
+  }
+}

@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAB Services — Design Prototype v1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ────────────────────────────────────────────────────────── */
+:root {
+  --bg:           #111827;
+  --bg-2:         #1F2937;
+  --bg-3:         #162032;
+  --border:       rgba(255,255,255,0.07);
+  --border-em:    rgba(16,185,129,0.35);
+  --text:         #F9FAFB;
+  --text-2:       #9CA3AF;
+  --text-3:       #6B7280;
+  --em:           #10B981;
+  --em-dark:      #059669;
+  --em-light:     #34D399;
+  --em-subtle:    rgba(16,185,129,0.08);
+  --em-glow:      rgba(16,185,129,0.18);
+  --gold:         #F59E0B;
+  --red:          #EF4444;
+  --r:            12px;
+  --r-lg:         20px;
+  --shadow:       0 4px 24px rgba(0,0,0,0.4);
+  --shadow-em:    0 0 32px rgba(16,185,129,0.15);
+  --ff-h:         'Montserrat', sans-serif;
+  --ff-b:         'Inter', sans-serif;
+  --transition:   all 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ─── RESET ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--ff-b); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+img { max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+input, textarea, select { font-family: var(--ff-b); }
+button { cursor: pointer; font-family: var(--ff-b); border: none; background: none; }
+
+/* ─── SCROLLBAR ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--em-dark); border-radius: 3px; }
+
+/* ─── UTILITY ────────────────────────────────────────────────────────── */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 96px 0; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--ff-h); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--em); margin-bottom: 16px;
+}
+.section-label::before { content: ''; display: block; width: 28px; height: 2px; background: var(--em); border-radius: 2px; }
+.section-title {
+  font-family: var(--ff-h); font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 800; color: var(--text); line-height: 1.2; margin-bottom: 16px;
+}
+.section-sub { font-size: 1.05rem; color: var(--text-2); max-width: 600px; line-height: 1.7; }
+.em { color: var(--em); }
+.gradient-text {
+  background: linear-gradient(135deg, var(--em-light) 0%, var(--em) 50%, #0891b2 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px; border-radius: 99px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  border: 1px solid var(--border-em); background: var(--em-subtle); color: var(--em);
+}
+.badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--em); animation: pulse-dot 2s ease-in-out infinite; }
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+
+/* ─── BUTTONS ────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: var(--r);
+  font-family: var(--ff-h); font-size: 14px; font-weight: 700; letter-spacing: 0.04em;
+  transition: var(--transition); position: relative; overflow: hidden;
+}
+.btn::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.12) 50%, transparent 100%);
+  transform: translateX(-100%); transition: transform 0.5s ease;
+}
+.btn:hover::after { transform: translateX(100%); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--em) 0%, var(--em-dark) 100%);
+  color: #fff; box-shadow: 0 4px 20px rgba(16,185,129,0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(16,185,129,0.45); }
+.btn-outline {
+  border: 1.5px solid var(--border-em); color: var(--em); background: transparent;
+}
+.btn-outline:hover { background: var(--em-subtle); transform: translateY(-2px); }
+.btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* ─── NAVBAR ─────────────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(17,24,39,0.85); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: var(--transition);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 70px;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--ff-h); font-weight: 800; font-size: 18px; letter-spacing: 0.06em;
+}
+.nav-logo-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--em) 0%, var(--em-dark) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 900; color: #fff; letter-spacing: 0.02em;
+  box-shadow: 0 2px 12px rgba(16,185,129,0.35);
+}
+.nav-links { display: flex; align-items: center; gap: 6px; }
+.nav-link {
+  padding: 8px 14px; border-radius: 8px;
+  font-size: 14px; font-weight: 500; color: var(--text-2);
+  transition: var(--transition); position: relative;
+}
+.nav-link:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+.nav-link.active { color: var(--em); }
+.nav-dropdown { position: relative; }
+.nav-dropdown-menu {
+  position: absolute; top: calc(100% + 8px); left: 0; min-width: 200px;
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: var(--r); padding: 6px;
+  box-shadow: var(--shadow); opacity: 0; pointer-events: none;
+  transform: translateY(-8px); transition: var(--transition);
+}
+.nav-dropdown:hover .nav-dropdown-menu { opacity: 1; pointer-events: all; transform: translateY(0); }
+.nav-dropdown-item {
+  display: block; padding: 10px 14px; border-radius: 8px;
+  font-size: 14px; color: var(--text-2); transition: var(--transition);
+}
+.nav-dropdown-item:hover { background: var(--em-subtle); color: var(--em); }
+.nav-cta { margin-left: 8px; padding: 10px 22px; font-size: 14px; }
+
+/* ─── LANGUAGE SWITCHER ──────────────────────────────────────────────── */
+.lang-switch {
+  display: flex; align-items: center; gap: 2px;
+  padding: 3px; background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border); border-radius: 8px; margin-left: 4px;
+}
+.lang-btn {
+  padding: 5px 11px; border-radius: 6px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  color: var(--text-3); transition: var(--transition); line-height: 1;
+}
+.lang-btn.active {
+  background: var(--em-subtle); color: var(--em);
+  box-shadow: 0 0 0 1px var(--border-em);
+}
+.lang-btn:hover:not(.active) { color: var(--text-2); background: rgba(255,255,255,0.04); }
+
+/* ─── LOGO SVG MARK ──────────────────────────────────────────────────── */
+.nav-logo-svg { width: 38px; height: 38px; flex-shrink: 0; }
+.nav-logo-svg-sm { width: 32px; height: 32px; flex-shrink: 0; }
+
+/* ─── HERO ───────────────────────────────────────────────────────────── */
+#hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+#particles {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(6,78,59,0.18) 0%, transparent 70%),
+              linear-gradient(180deg, rgba(17,24,39,0) 0%, rgba(17,24,39,0.6) 100%);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 140px 0 80px;
+  max-width: 780px; margin: 0 auto; text-align: center;
+}
+.hero-badge { margin-bottom: 32px; }
+.hero-name {
+  font-family: var(--ff-h); font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 900; letter-spacing: 0.04em; line-height: 1;
+  margin-bottom: 12px;
+}
+.hero-person {
+  font-family: var(--ff-h); font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 600; color: var(--em-light); letter-spacing: 0.06em;
+  margin-bottom: 16px;
+}
+.hero-titles {
+  display: flex; flex-direction: column; gap: 4px;
+  font-size: 13px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-3); margin-bottom: 28px;
+}
+.hero-divider {
+  width: 60px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--em), transparent);
+  margin: 0 auto 28px;
+}
+.hero-tagline {
+  font-family: var(--ff-h); font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  font-style: italic; font-weight: 500; color: var(--text-2);
+  margin-bottom: 12px;
+}
+.hero-tagline-en { font-size: 0.9rem; color: var(--text-3); margin-bottom: 40px; }
+.hero-desc {
+  font-size: 1.05rem; color: var(--text-2); line-height: 1.8;
+  margin-bottom: 44px; max-width: 580px; margin-left: auto; margin-right: auto;
+}
+.hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.hero-scroll {
+  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  font-size: 11px; letter-spacing: 0.1em; color: var(--text-3); text-transform: uppercase;
+  animation: bounce 2.5s ease-in-out infinite;
+}
+.hero-scroll svg { width: 20px; height: 20px; }
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+/* ─── TRUST STRIP ────────────────────────────────────────────────────── */
+.trust-strip {
+  background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  padding: 20px 0;
+}
+.trust-strip-inner {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 32px; border-right: 1px solid var(--border);
+  font-size: 13px; font-weight: 600; color: var(--text-2); letter-spacing: 0.04em;
+}
+.trust-item:last-child { border-right: none; }
+.trust-item svg { width: 18px; height: 18px; color: var(--em); flex-shrink: 0; }
+.trust-item span { color: var(--text); }
+
+/* ─── SERVICES ───────────────────────────────────────────────────────── */
+.services-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  margin-top: 56px;
+}
+.service-card {
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 40px 36px;
+  border-left: 4px solid var(--em);
+  transition: var(--transition); position: relative; overflow: hidden;
+}
+.service-card::before {
+  content: ''; position: absolute; top: 0; right: 0;
+  width: 120px; height: 120px;
+  background: radial-gradient(circle, var(--em-glow) 0%, transparent 70%);
+  transform: translate(30%, -30%);
+}
+.service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-em); border-color: var(--em); }
+.service-card-icon {
+  width: 52px; height: 52px; border-radius: 12px;
+  background: var(--em-subtle); border: 1px solid var(--border-em);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px; font-size: 24px;
+}
+.service-card-title {
+  font-family: var(--ff-h); font-size: 1.2rem; font-weight: 700;
+  color: var(--text); margin-bottom: 20px;
+}
+.service-list { display: flex; flex-direction: column; gap: 12px; }
+.service-list-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 14px; color: var(--text-2);
+}
+.service-list-item::before {
+  content: ''; flex-shrink: 0; width: 6px; height: 6px;
+  border-radius: 50%; background: var(--em); margin-top: 7px;
+}
+.service-list-item strong { color: var(--text); font-weight: 600; }
+
+/* ─── WHY MAB ────────────────────────────────────────────────────────── */
+.why-section { background: var(--bg-3); }
+.why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px; }
+.why-card {
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 36px 28px;
+  text-align: center; transition: var(--transition);
+}
+.why-card:hover { border-color: var(--border-em); background: rgba(16,185,129,0.04); transform: translateY(-4px); }
+.why-icon {
+  width: 64px; height: 64px; border-radius: 16px;
+  background: var(--em-subtle); border: 1px solid var(--border-em);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; margin: 0 auto 20px;
+}
+.why-title {
+  font-family: var(--ff-h); font-size: 1rem; font-weight: 700;
+  color: var(--text); margin-bottom: 10px;
+}
+.why-desc { font-size: 14px; color: var(--text-2); line-height: 1.7; }
+
+/* ─── STATS STRIP ────────────────────────────────────────────────────── */
+.stats-strip { background: var(--bg); padding: 72px 0; }
+.stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: var(--ff-h); font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 900; color: var(--em); line-height: 1; margin-bottom: 8px;
+}
+.stat-label { font-size: 13px; color: var(--text-2); font-weight: 500; letter-spacing: 0.05em; }
+
+/* ─── MASTERCLASS ────────────────────────────────────────────────────── */
+.masterclass-section { background: var(--bg-3); }
+.masterclass-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+}
+.masterclass-promo {
+  position: sticky; top: 100px;
+}
+.masterclass-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 16px 6px 8px; border-radius: 99px;
+  background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3);
+  font-size: 12px; font-weight: 700; color: var(--gold); letter-spacing: 0.08em;
+  text-transform: uppercase; margin-bottom: 24px;
+}
+.masterclass-badge-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--gold);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+.masterclass-title {
+  font-family: var(--ff-h); font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800; line-height: 1.25; margin-bottom: 16px;
+}
+.masterclass-sub { font-size: 1rem; color: var(--text-2); line-height: 1.7; margin-bottom: 28px; }
+.masterclass-topics { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+.topic-item {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 14px; color: var(--text-2);
+}
+.topic-check {
+  width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0;
+  background: var(--em-subtle); border: 1px solid var(--border-em);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: var(--em);
+}
+.spots-warning {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 16px; border-radius: 8px;
+  background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2);
+  font-size: 13px; color: var(--gold);
+}
+.spots-warning svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* ─── FORMS ──────────────────────────────────────────────────────────── */
+.form-card {
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 36px;
+  box-shadow: var(--shadow);
+}
+.form-title {
+  font-family: var(--ff-h); font-size: 1.15rem; font-weight: 700;
+  color: var(--text); margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
+}
+.form-title::before {
+  content: ''; width: 4px; height: 22px; background: var(--em); border-radius: 2px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.form-label { font-size: 12px; font-weight: 600; color: var(--text-2); letter-spacing: 0.05em; text-transform: uppercase; }
+.form-input, .form-textarea {
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  border-radius: 8px; padding: 12px 14px;
+  font-size: 14px; color: var(--text);
+  transition: var(--transition); outline: none; width: 100%;
+}
+.form-input:focus, .form-textarea:focus {
+  border-color: var(--em); background: var(--em-subtle);
+  box-shadow: 0 0 0 3px rgba(16,185,129,0.12);
+}
+.form-input::placeholder, .form-textarea::placeholder { color: var(--text-3); }
+.form-textarea { resize: vertical; min-height: 90px; }
+.radio-group { display: flex; flex-direction: column; gap: 10px; }
+.radio-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 14px 16px; border-radius: 10px;
+  border: 1px solid var(--border); cursor: pointer;
+  transition: var(--transition);
+}
+.radio-item:hover { border-color: var(--border-em); background: var(--em-subtle); }
+.radio-item input { width: 16px; height: 16px; accent-color: var(--em); flex-shrink: 0; margin-top: 2px; cursor: pointer; }
+.radio-item-label { font-size: 14px; color: var(--text-2); line-height: 1.5; }
+.radio-item-label strong { display: block; color: var(--text); font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+
+/* ─── CONSULTATION SPLIT ─────────────────────────────────────────────── */
+.consultation-section { background: var(--bg); }
+.consultation-inner { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; align-items: start; }
+.consultation-info { position: sticky; top: 100px; }
+.consultation-title {
+  font-family: var(--ff-h); font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800; line-height: 1.25; margin-bottom: 16px;
+}
+.consultation-sub { font-size: 1rem; color: var(--text-2); line-height: 1.7; margin-bottom: 32px; }
+.contact-block { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
+.contact-line {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 18px; background: var(--bg-2);
+  border: 1px solid var(--border); border-radius: 10px;
+}
+.contact-line-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: var(--em-subtle); border: 1px solid var(--border-em);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.contact-line-label { font-size: 11px; color: var(--text-3); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+.contact-line-value { font-size: 15px; color: var(--text); font-weight: 600; }
+.social-row { display: flex; align-items: center; gap: 10px; }
+.social-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--bg-2); border: 1px solid var(--border);
+  color: var(--text-2); transition: var(--transition); font-size: 16px;
+}
+.social-btn:hover { background: var(--em-subtle); border-color: var(--border-em); color: var(--em); }
+
+/* ─── FOOTER ─────────────────────────────────────────────────────────── */
+footer {
+  background: var(--bg-3); border-top: 1px solid var(--border);
+  padding: 60px 0 0;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px;
+  padding-bottom: 48px; border-bottom: 1px solid var(--border);
+}
+.footer-brand-tagline {
+  font-size: 14px; color: var(--text-2); line-height: 1.7;
+  margin-top: 16px; margin-bottom: 20px; max-width: 240px;
+}
+.footer-col-title {
+  font-family: var(--ff-h); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--em); margin-bottom: 16px;
+}
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-link {
+  font-size: 14px; color: var(--text-2);
+  transition: var(--transition);
+}
+.footer-link:hover { color: var(--em); padding-left: 4px; }
+.footer-bottom {
+  padding: 20px 0;
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap;
+}
+.footer-disclaimer {
+  font-size: 11px; color: var(--text-3); line-height: 1.6;
+  max-width: 700px;
+}
+.footer-copy { font-size: 12px; color: var(--text-3); white-space: nowrap; margin-top: 2px; }
+
+/* ─── SCROLLED NAV ────────────────────────────────────────────────────── */
+nav.scrolled { background: rgba(17,24,39,0.97); box-shadow: 0 2px 24px rgba(0,0,0,0.4); }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .stats-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 768px) {
+  .section { padding: 64px 0; }
+  .services-grid, .why-grid, .masterclass-inner,
+  .consultation-inner { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .trust-item { padding: 10px 18px; font-size: 12px; }
+  .nav-links, .nav-cta { display: none; }
+  .consultation-info, .masterclass-promo { position: static; }
+}
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .hero-ctas { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══════════════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">
+      <!-- SVG Logo Mark -->
+      <svg class="nav-logo-svg" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="lg-nav" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#10B981"/>
+            <stop offset="100%" stop-color="#047857"/>
+          </linearGradient>
+        </defs>
+        <rect width="56" height="56" rx="13" fill="url(#lg-nav)"/>
+        <line x1="28" y1="11" x2="13" y2="39" stroke="white" stroke-width="1.8" stroke-opacity="0.5" stroke-linecap="round"/>
+        <line x1="28" y1="11" x2="43" y2="39" stroke="white" stroke-width="1.8" stroke-opacity="0.5" stroke-linecap="round"/>
+        <line x1="13" y1="39" x2="43" y2="39" stroke="white" stroke-width="1.8" stroke-opacity="0.5" stroke-linecap="round"/>
+        <line x1="28" y1="11" x2="20.5" y2="25" stroke="white" stroke-width="1" stroke-opacity="0.2" stroke-linecap="round"/>
+        <line x1="28" y1="11" x2="35.5" y2="25" stroke="white" stroke-width="1" stroke-opacity="0.2" stroke-linecap="round"/>
+        <circle cx="28" cy="11" r="4.5" fill="white"/>
+        <circle cx="13" cy="39" r="3.5" fill="white" fill-opacity="0.88"/>
+        <circle cx="43" cy="39" r="3.5" fill="white" fill-opacity="0.88"/>
+        <circle cx="20.5" cy="25" r="1.8" fill="white" fill-opacity="0.45"/>
+        <circle cx="35.5" cy="25" r="1.8" fill="white" fill-opacity="0.45"/>
+      </svg>
+      <span>MAB <span style="font-weight:400;color:var(--text-2)">SERVICES</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#hero" class="nav-link active" id="nav-accueil">Accueil</a>
+      <a href="#about" class="nav-link" id="nav-about">À Propos</a>
+      <a href="#services" class="nav-link" id="nav-assurance">Assurance</a>
+      <div class="nav-dropdown">
+        <a href="#" class="nav-link" style="display:flex;align-items:center;gap:5px">
+          <span id="nav-plus">Plus</span>
+          <svg viewBox="0 0 16 16" fill="none" width="12" height="12"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </a>
+        <div class="nav-dropdown-menu">
+          <a href="#savings" class="nav-dropdown-item">Épargne & Investissement</a>
+          <a href="#masterclass" class="nav-dropdown-item">Masterclass Gratuite</a>
+          <a href="#contact" class="nav-dropdown-item">Contact</a>
+          <a href="#" class="nav-dropdown-item" style="border-top:1px solid var(--border);margin-top:4px;padding-top:14px;">Confidentialité</a>
+        </div>
+      </div>
+    </div>
+    <!-- Language Switcher -->
+    <div class="lang-switch" id="langSwitch">
+      <button class="lang-btn active" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a href="#contact" class="btn btn-primary nav-cta" id="nav-cta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+      <span id="nav-cta-text">Consultation Gratuite</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════════════ -->
+<section id="hero">
+  <canvas id="particles"></canvas>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge"><span id="hero-badge-text">Agréé AMF Québec · FSRA Ontario</span></span>
+      </div>
+      <h1 class="hero-name gradient-text" id="hero-name">MAB SERVICES</h1>
+      <p class="hero-person" id="hero-person">Mohammed Amine BENZAKOUR</p>
+      <div class="hero-titles">
+        <span id="hero-title1">Conseiller en Sécurité Financière — Québec</span>
+        <span id="hero-title2">Courtier en Assurance de Personnes — Ontario</span>
+      </div>
+      <div class="hero-divider"></div>
+      <p class="hero-tagline" id="hero-tagline">"Votre confiance construit notre avenir"</p>
+      <p class="hero-tagline-en" id="hero-tagline-en">Your trust builds our future</p>
+      <p class="hero-desc" id="hero-desc">
+        Solutions sur mesure en <strong style="color:var(--em-light)">assurance vie, épargne et investissement</strong>
+        pour protéger vos proches et préparer votre avenir financier au Québec et en Ontario.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary" style="font-size:15px;padding:16px 32px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          <span id="hero-cta1">Consultation Gratuite</span>
+        </a>
+        <a href="#services" class="btn btn-outline" style="font-size:15px;padding:16px 32px;">
+          <span id="hero-cta2">Découvrir nos services</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    Défiler
+  </div>
+</section>
+
+<!-- ═══ TRUST STRIP ════════════════════════════════════════════════════════ -->
+<div class="trust-strip">
+  <div class="container trust-strip-inner">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      <span>Agréé <strong>AMF</strong> Québec</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      <span>Agréé <strong>FSRA</strong> Ontario</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      <span><strong>Courtier Indépendant</strong> & Impartial</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <span>Consultation <strong>100% Gratuite</strong></span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SERVICES ══════════════════════════════════════════════════════════ -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="section-label" id="section-label-services">Nos Solutions</div>
+    <h2 class="section-title" id="section-title-services">Une couverture <span class="em">complète</span><br>pour chaque étape de votre vie</h2>
+    <p class="section-sub" id="section-sub-services">Des solutions personnalisées pour protéger votre famille, optimiser votre fiscalité et préparer votre retraite.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-card-icon">💰</div>
+        <h3 class="service-card-title">Épargne & Investissements</h3>
+        <ul class="service-list">
+          <li class="service-list-item"><div><strong>REER</strong> — Régime enregistré d'épargne-retraite</div></li>
+          <li class="service-list-item"><div><strong>CELI</strong> — Compte d'épargne libre d'impôt</div></li>
+          <li class="service-list-item"><div><strong>CELIAPP</strong> — Pour l'achat d'une première propriété</div></li>
+          <li class="service-list-item"><div><strong>REEE</strong> — Régime enregistré d'épargne-études</div></li>
+          <li class="service-list-item"><div><strong>REEI</strong> — Régime enregistré d'épargne-invalidité</div></li>
+          <li class="service-list-item"><div>Investissements non enregistrés</div></li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">🛡️</div>
+        <h3 class="service-card-title">Assurance & Protection</h3>
+        <ul class="service-list">
+          <li class="service-list-item"><div><strong>Assurance vie temporaire</strong> — Protection sur période déterminée</div></li>
+          <li class="service-list-item"><div><strong>Assurance vie permanente</strong> — Couverture garantie à vie</div></li>
+          <li class="service-list-item"><div><strong>Assurance invalidité</strong> — Remplacement de revenu</div></li>
+          <li class="service-list-item"><div><strong>Maladies graves</strong> — Versement forfaitaire libre d'impôt</div></li>
+          <li class="service-list-item"><div><strong>Soins de santé</strong> — Médicaments, dentaire, vision</div></li>
+          <li class="service-list-item"><div><strong>Assurance voyage</strong> — Protection à l'international</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY MAB ════════════════════════════════════════════════════════════ -->
+<section id="about" class="section why-section">
+  <div class="container">
+    <div class="section-label" id="section-label-why">Pourquoi MAB Services</div>
+    <h2 class="section-title" id="section-title-why">Une approche <span class="em">simple, transparente</span><br>et entièrement personnalisée</h2>
+    <p class="section-sub">MAB Services vous accompagne avec honnêteté pour trouver les solutions les mieux adaptées à votre situation — pas celles qui rapportent le plus de commissions.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🏛️</div>
+        <h4 class="why-title">Double Agrément Professionnel</h4>
+        <p class="why-desc">Autorisé par l'AMF au Québec et la FSRA en Ontario — une couverture unique sur les deux plus grands marchés canadiens.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <h4 class="why-title">Approche Personnalisée</h4>
+        <p class="why-desc">Chaque client reçoit une analyse de ses besoins spécifiques. Pas de solution générique — des stratégies sur mesure pour votre situation.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔍</div>
+        <h4 class="why-title">Transparence Totale</h4>
+        <p class="why-desc">Toutes les options sont présentées clairement, avec leurs avantages et limites. Vous choisissez en toute connaissance de cause.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS ══════════════════════════════════════════════════════════════ -->
+<div class="stats-strip">
+  <div class="container stats-grid">
+    <div class="stat-item">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Provinces couvertes<br>(QC & ON)</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Consultation<br>gratuite</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">AMF</div>
+      <div class="stat-label">Autorité des marchés<br>financiers</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">FSRA</div>
+      <div class="stat-label">Financial Services<br>Regulatory Authority</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MASTERCLASS ════════════════════════════════════════════════════════ -->
+<section id="masterclass" class="section masterclass-section">
+  <div class="container">
+    <div class="masterclass-inner">
+      <div class="masterclass-promo">
+        <div class="masterclass-badge">
+          <span class="masterclass-badge-dot"></span>
+          Prochaine session disponible
+        </div>
+        <h2 class="masterclass-title">Masterclass Gratuite <span class="em">MAB Services</span></h2>
+        <p class="masterclass-sub">Comprenez vos droits et options en matière d'épargne et d'assurance. Une session éducative offerte gratuitement à tous.</p>
+        <div class="masterclass-topics">
+          <div class="topic-item">
+            <div class="topic-check">✓</div>
+            <span>REER, CELI, CELIAPP, REEE — comment choisir le bon régime</span>
+          </div>
+          <div class="topic-item">
+            <div class="topic-check">✓</div>
+            <span>Assurance vie, invalidité, maladie grave — ce que couvre vraiment votre contrat</span>
+          </div>
+          <div class="topic-item">
+            <div class="topic-check">✓</div>
+            <span>Stratégies fiscales pour familles et propriétaires d'entreprise</span>
+          </div>
+          <div class="topic-item">
+            <div class="topic-check">✓</div>
+            <span>Questions & réponses en direct avec le conseiller</span>
+          </div>
+        </div>
+        <div class="spots-warning">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+          Les places sont limitées — inscription gratuite
+        </div>
+      </div>
+      <div class="form-card">
+        <h3 class="form-title">Inscription Masterclass Gratuite</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nom</label>
+            <input class="form-input" type="text" placeholder="Votre nom de famille">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Prénom</label>
+            <input class="form-input" type="text" placeholder="Votre prénom">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Courriel</label>
+            <input class="form-input" type="email" placeholder="votre@email.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Téléphone</label>
+            <input class="form-input" type="tel" placeholder="514-XXX-XXXX">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Option choisie</label>
+          <div class="radio-group">
+            <label class="radio-item">
+              <input type="radio" name="masterclass" value="epargne">
+              <div class="radio-item-label">
+                <strong>Option 1 — Épargne & Investissement</strong>
+                REER, CELI, CELIAPP, REEE, REEI et stratégies d'épargne
+              </div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="masterclass" value="assurance">
+              <div class="radio-item-label">
+                <strong>Option 2 — Assurance vie, invalidité & maladie</strong>
+                Couvertures, comparaisons et conseils personnalisés
+              </div>
+            </label>
+            <label class="radio-item">
+              <input type="radio" name="masterclass" value="complet" checked>
+              <div class="radio-item-label" style="color:var(--em)">
+                <strong style="color:var(--em-light)">Option 3 — Présentation complète ✦ Recommandée</strong>
+                L'ensemble des deux modules — la formation la plus complète
+              </div>
+            </label>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px;padding:15px;">
+          S'inscrire à la Masterclass
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </button>
+        <p style="font-size:12px;color:var(--text-3);text-align:center;margin-top:12px;">
+          Inscription 100% gratuite · Aucune obligation d'achat
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONSULTATION ═══════════════════════════════════════════════════════ -->
+<section id="contact" class="section consultation-section">
+  <div class="container">
+    <div class="consultation-inner">
+      <div class="consultation-info">
+        <div class="section-label">Contact Direct</div>
+        <h2 class="consultation-title">Votre consultation <span class="em">gratuite</span> commence ici</h2>
+        <p class="consultation-sub">Décrivez brièvement votre situation et Mohammed Amine vous contactera dans les 24 heures pour un premier échange sans engagement.</p>
+        <div class="contact-block">
+          <div class="contact-line">
+            <div class="contact-line-icon">📞</div>
+            <div>
+              <div class="contact-line-label">Téléphone</div>
+              <div class="contact-line-value">613-261-4428</div>
+            </div>
+          </div>
+          <div class="contact-line">
+            <div class="contact-line-icon">✉️</div>
+            <div>
+              <div class="contact-line-label">Courriel</div>
+              <div class="contact-line-value">sales@mabservices-ca.com</div>
+            </div>
+          </div>
+          <div class="contact-line">
+            <div class="contact-line-icon">📍</div>
+            <div>
+              <div class="contact-line-label">Zones desservies</div>
+              <div class="contact-line-value">Québec & Ontario</div>
+            </div>
+          </div>
+        </div>
+        <div class="social-row">
+          <span style="font-size:13px;color:var(--text-3);margin-right:4px;">Suivez-nous</span>
+          <a href="#" class="social-btn" title="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-btn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="form-card">
+        <h3 class="form-title">Demande de Consultation Gratuite</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nom</label>
+            <input class="form-input" type="text" placeholder="Votre nom">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Prénom</label>
+            <input class="form-input" type="text" placeholder="Votre prénom">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Courriel</label>
+            <input class="form-input" type="email" placeholder="votre@email.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Téléphone</label>
+            <input class="form-input" type="tel" placeholder="514-XXX-XXXX">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Décrivez vos projets financiers</label>
+          <textarea class="form-textarea" placeholder="Ex: Je souhaite épargner pour la retraite et protéger ma famille avec une assurance vie…" style="min-height:110px;"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Disponibilités préférées</label>
+          <input class="form-input" type="text" placeholder="Ex: Lundi après 18h, ou samedi matin">
+        </div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:4px;padding:15px;background:linear-gradient(135deg,#059669,#047857);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          Envoyer ma demande
+        </button>
+        <p style="font-size:12px;color:var(--text-3);text-align:center;margin-top:12px;">
+          Réponse garantie sous 24h · Consultation sans frais ni engagement
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="nav-logo" style="margin-bottom:0">
+          <!-- SVG Logo Mark (footer) -->
+          <svg class="nav-logo-svg-sm" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="lg-foot" x1="0" y1="0" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#10B981"/>
+                <stop offset="100%" stop-color="#047857"/>
+              </linearGradient>
+            </defs>
+            <rect width="56" height="56" rx="13" fill="url(#lg-foot)"/>
+            <line x1="28" y1="11" x2="13" y2="39" stroke="white" stroke-width="1.8" stroke-opacity="0.5" stroke-linecap="round"/>
+            <line x1="28" y1="11" x2="43" y2="39" stroke="white" stroke-width="1.8" stroke-opacity="0.5" stroke-linecap="round"/>
+            <line x1="13" y1="39" x2="43" y2="39" stroke="white" stroke-width="1.8" stroke-opacity="0.5" stroke-linecap="round"/>
+            <circle cx="28" cy="11" r="4.5" fill="white"/>
+            <circle cx="13" cy="39" r="3.5" fill="white" fill-opacity="0.88"/>
+            <circle cx="43" cy="39" r="3.5" fill="white" fill-opacity="0.88"/>
+            <circle cx="20.5" cy="25" r="1.8" fill="white" fill-opacity="0.45"/>
+            <circle cx="35.5" cy="25" r="1.8" fill="white" fill-opacity="0.45"/>
+          </svg>
+          <span style="font-family:var(--ff-h);font-weight:800;font-size:17px;letter-spacing:0.06em">
+            MAB <span style="font-weight:400;color:var(--text-2)">SERVICES</span>
+          </span>
+        </div>
+        <p class="footer-brand-tagline" id="footer-tagline">"Votre confiance construit notre avenir" — Solutions d'assurance et d'investissement au Québec et en Ontario.</p>
+        <div class="social-row">
+          <a href="#" class="social-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <div class="footer-links">
+          <a href="#hero" class="footer-link">Accueil</a>
+          <a href="#about" class="footer-link">À Propos</a>
+          <a href="#services" class="footer-link">Assurance & Protection</a>
+          <a href="#savings" class="footer-link">Épargne & Investissement</a>
+          <a href="#masterclass" class="footer-link">Masterclass Gratuite</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Assurance vie</a>
+          <a href="#" class="footer-link">Assurance invalidité</a>
+          <a href="#" class="footer-link">REER & Retraite</a>
+          <a href="#" class="footer-link">CELI & CELIAPP</a>
+          <a href="#" class="footer-link">REEE & REEI</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-links">
+          <a href="tel:6132614428" class="footer-link">📞 613-261-4428</a>
+          <a href="mailto:sales@mabservices-ca.com" class="footer-link">✉ sales@mabservices-ca.com</a>
+          <a href="#" class="footer-link">Confidentialité</a>
+          <a href="#contact" class="footer-link" style="color:var(--em);margin-top:4px;">→ Consultation gratuite</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer">
+        <strong style="color:var(--text-2)">Avertissement réglementaire :</strong> Les informations présentées sur ce site sont à titre informatif seulement et ne constituent pas un conseil financier personnalisé. Mohammed Amine BENZAKOUR est autorisé à exercer à titre de conseiller en sécurité financière au Québec (AMF n° [XXXXX]) et de courtier en assurance de personnes en Ontario (FSRA n° [XXXXX]). Sous réserve d'admissibilité. © 2026 MAB Services.
+      </p>
+      <p class="footer-copy">© 2026 MAB Services</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ STELLAR PARTICLE NETWORK JS ══════════════════════════════════════ -->
+<script>
+(function() {
+  const canvas = document.getElementById('particles');
+  const ctx    = canvas.getContext('2d');
+  let W, H, stars = [], nets = [], mouse = { x: null, y: null }, tick = 0;
+
+  // ── Tuning ──────────────────────────────────────────────────────────────
+  const STAR_COUNT = 260;   // background star field
+  const NET_COUNT  = 120;   // network/constellation nodes
+  const MAX_DIST   = 145;   // max connection distance
+  const NET_SPEED  = 0.28;
+
+  // ── Factories ────────────────────────────────────────────────────────────
+  function mkStar() {
+    return {
+      x:     Math.random() * W,
+      y:     Math.random() * H,
+      vx:    (Math.random() - 0.5) * 0.06,
+      vy:    (Math.random() - 0.5) * 0.06,
+      r:     Math.random() * 0.9 + 0.2,
+      baseO: Math.random() * 0.55 + 0.15,
+      phase: Math.random() * Math.PI * 2,
+      speed: Math.random() * 0.018 + 0.004,
+      // ~15 % of stars are slightly larger "bright" ones
+      bright: Math.random() < 0.15,
+    };
+  }
+
+  function mkNet() {
+    return {
+      x:  Math.random() * W,
+      y:  Math.random() * H,
+      vx: (Math.random() - 0.5) * NET_SPEED,
+      vy: (Math.random() - 0.5) * NET_SPEED,
+      r:  Math.random() * 1.6 + 1.0,
+      o:  Math.random() * 0.45 + 0.25,
+    };
+  }
+
+  // ── Init / Resize ────────────────────────────────────────────────────────
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  function init() {
+    resize();
+    stars = Array.from({ length: STAR_COUNT }, mkStar);
+    nets  = Array.from({ length: NET_COUNT  }, mkNet);
+  }
+
+  // ── Main loop ────────────────────────────────────────────────────────────
+  function draw() {
+    tick++;
+    ctx.clearRect(0, 0, W, H);
+
+    // ── Layer 1: twinkling star field ──────────────────────────────────────
+    for (const s of stars) {
+      s.phase += s.speed;
+      s.x += s.vx; s.y += s.vy;
+      if (s.x < 0) s.x = W; else if (s.x > W) s.x = 0;
+      if (s.y < 0) s.y = H; else if (s.y > H) s.y = 0;
+
+      const o = s.baseO + Math.sin(s.phase) * 0.28;
+      const r = s.bright ? s.r * 1.6 : s.r;
+
+      // White-ish with a slight emerald tint on bright stars
+      const color = s.bright
+        ? `rgba(180,255,230,${Math.max(0, o)})`
+        : `rgba(220,255,245,${Math.max(0, o)})`;
+
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.fill();
+    }
+
+    // ── Layer 2: network particles — update ────────────────────────────────
+    for (const p of nets) {
+      // Mouse repulsion (radius 130px)
+      if (mouse.x !== null) {
+        const dx = p.x - mouse.x, dy = p.y - mouse.y;
+        const d2 = dx * dx + dy * dy;
+        if (d2 < 16900) {
+          const d = Math.sqrt(d2), f = (130 - d) / 130;
+          p.vx += (dx / d) * f * 0.07;
+          p.vy += (dy / d) * f * 0.07;
+        }
+      }
+      p.vx *= 0.982; p.vy *= 0.982;
+      const spd = Math.hypot(p.vx, p.vy);
+      if (spd > 1.1) { p.vx = p.vx / spd * 1.1; p.vy = p.vy / spd * 1.1; }
+      p.x += p.vx; p.y += p.vy;
+      // Wrap edges
+      if (p.x < -20) p.x = W + 20; else if (p.x > W + 20) p.x = -20;
+      if (p.y < -20) p.y = H + 20; else if (p.y > H + 20) p.y = -20;
+    }
+
+    // ── Layer 2: network connections ───────────────────────────────────────
+    for (let i = 0; i < nets.length; i++) {
+      for (let j = i + 1; j < nets.length; j++) {
+        const dx = nets[i].x - nets[j].x;
+        const dy = nets[i].y - nets[j].y;
+        const d  = Math.hypot(dx, dy);
+        if (d < MAX_DIST) {
+          const a = (1 - d / MAX_DIST) * 0.32;
+          ctx.strokeStyle = `rgba(16,185,129,${a})`;
+          ctx.lineWidth   = 0.55;
+          ctx.beginPath();
+          ctx.moveTo(nets[i].x, nets[i].y);
+          ctx.lineTo(nets[j].x, nets[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    // ── Layer 2: network node dots ─────────────────────────────────────────
+    for (const p of nets) {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(52,211,153,${p.o})`;
+      ctx.fill();
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  // ── Events ───────────────────────────────────────────────────────────────
+  window.addEventListener('resize', () => { resize(); });
+
+  const hero = document.getElementById('hero');
+  hero.addEventListener('mousemove', e => {
+    const r = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - r.left;
+    mouse.y = e.clientY - r.top;
+  });
+  hero.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
+
+  init();
+  draw();
+})();
+
+// Nav scroll behaviour
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Active nav link on scroll
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks  = document.querySelectorAll('.nav-link');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id);
+      });
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+sections.forEach(s => observer.observe(s));
+
+// Radio item visual highlight
+document.querySelectorAll('.radio-item input').forEach(radio => {
+  radio.addEventListener('change', function () {
+    document.querySelectorAll('.radio-item').forEach(item => {
+      item.style.borderColor = '';
+      item.style.background  = '';
+    });
+    if (this.checked) {
+      const item = this.closest('.radio-item');
+      item.style.borderColor = 'var(--border-em)';
+      item.style.background  = 'var(--em-subtle)';
+    }
+  });
+  if (radio.checked) {
+    const item = radio.closest('.radio-item');
+    item.style.borderColor = 'var(--border-em)';
+    item.style.background  = 'var(--em-subtle)';
+  }
+});
+
+// Smooth scroll offset for fixed nav
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+    }
+  });
+});
+
+// ── Language switcher ────────────────────────────────────────────────────
+const COPY = {
+  fr: {
+    'nav-accueil': 'Accueil',   'nav-about': 'À Propos',
+    'nav-assurance': 'Assurance', 'nav-plus': 'Plus',
+    'nav-cta': 'Consultation Gratuite',
+    'hero-badge': 'Agréé AMF Québec · FSRA Ontario',
+    'hero-name': 'MAB SERVICES',
+    'hero-person': 'Mohammed Amine BENZAKOUR',
+    'hero-title1': 'Conseiller en Sécurité Financière — Québec',
+    'hero-title2': 'Courtier en Assurance de Personnes — Ontario',
+    'hero-tagline': '"Votre confiance construit notre avenir"',
+    'hero-tagline-en': 'Your trust builds our future',
+    'hero-desc': 'Solutions sur mesure en <strong style="color:var(--em-light)">assurance vie, épargne et investissement</strong> pour protéger vos proches et préparer votre avenir financier au Québec et en Ontario.',
+    'hero-cta1': 'Consultation Gratuite', 'hero-cta2': 'Découvrir nos services',
+    'section-label-services': 'Nos Solutions',
+    'section-title-services': 'Une couverture <span class="em">complète</span><br>pour chaque étape de votre vie',
+    'section-sub-services': 'Des solutions personnalisées pour protéger votre famille, optimiser votre fiscalité et préparer votre retraite.',
+    'section-label-why': 'Pourquoi MAB Services',
+    'section-title-why': 'Une approche <span class="em">simple, transparente</span><br>et entièrement personnalisée',
+    'footer-tagline': '"Votre confiance construit notre avenir" — Solutions d\'assurance et d\'investissement au Québec et en Ontario.',
+  },
+  en: {
+    'nav-accueil': 'Home',   'nav-about': 'About',
+    'nav-assurance': 'Insurance', 'nav-plus': 'More',
+    'nav-cta': 'Free Consultation',
+    'hero-badge': 'Licensed AMF Québec · FSRA Ontario',
+    'hero-name': 'MAB SERVICES',
+    'hero-person': 'Mohammed Amine BENZAKOUR',
+    'hero-title1': 'Financial Security Advisor — Québec',
+    'hero-title2': 'Life Insurance Broker — Ontario',
+    'hero-tagline': '"Your trust builds our future"',
+    'hero-tagline-en': 'Votre confiance construit notre avenir',
+    'hero-desc': 'Tailored solutions in <strong style="color:var(--em-light)">life insurance, savings and investment</strong> to protect your loved ones and secure your financial future in Québec and Ontario.',
+    'hero-cta1': 'Free Consultation', 'hero-cta2': 'Explore our services',
+    'section-label-services': 'Our Solutions',
+    'section-title-services': 'A <span class="em">complete</span> coverage<br>for every stage of your life',
+    'section-sub-services': 'Personalized solutions to protect your family, optimize your taxes and prepare for retirement.',
+    'section-label-why': 'Why MAB Services',
+    'section-title-why': 'A <span class="em">simple, transparent</span> approach<br>tailored entirely to you',
+    'footer-tagline': '"Your trust builds our future" — Insurance and investment solutions in Québec and Ontario.',
+  }
+};
+
+function applyLang(lang) {
+  const c = COPY[lang];
+  const set = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
+  const setText = (id, t) => { const el = document.getElementById(id); if (el) el.textContent = t; };
+  setText('nav-accueil', c['nav-accueil']);
+  setText('nav-about', c['nav-about']);
+  setText('nav-assurance', c['nav-assurance']);
+  setText('nav-plus', c['nav-plus']);
+  setText('nav-cta-text', c['nav-cta']);
+  setText('hero-badge-text', c['hero-badge']);
+  setText('hero-name', c['hero-name']);
+  setText('hero-person', c['hero-person']);
+  setText('hero-title1', c['hero-title1']);
+  setText('hero-title2', c['hero-title2']);
+  setText('hero-tagline', c['hero-tagline']);
+  setText('hero-tagline-en', c['hero-tagline-en']);
+  set('hero-desc', c['hero-desc']);
+  setText('hero-cta1', c['hero-cta1']);
+  setText('hero-cta2', c['hero-cta2']);
+  setText('section-label-services', c['section-label-services']);
+  set('section-title-services', c['section-title-services']);
+  setText('section-sub-services', c['section-sub-services']);
+  setText('section-label-why', c['section-label-why']);
+  set('section-title-why', c['section-title-why']);
+  setText('footer-tagline', c['footer-tagline']);
+  document.documentElement.lang = lang;
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    applyLang(this.dataset.lang);
+  });
+});
+</script>
+</body>
+</html>

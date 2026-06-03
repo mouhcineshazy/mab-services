@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg:        #111827;
+    --bg-2:      #1F2937;
+    --bg-3:      #162032;
+    --border:    rgba(255, 255, 255, 0.07);
+    --border-em: rgba(16, 185, 129, 0.35);
+    --text:      #F9FAFB;
+    --text-2:    #9CA3AF;
+    --text-3:    #6B7280;
+    --em:        #10B981;
+    --em-dark:   #059669;
+    --em-light:  #34D399;
+    --em-subtle: rgba(16, 185, 129, 0.08);
+    --em-glow:   rgba(16, 185, 129, 0.18);
+    --gold:      #F59E0B;
+  }
+
+  html  { scroll-behavior: smooth; }
+  body  { background: var(--bg); color: var(--text); font-family: var(--font-inter), system-ui, sans-serif; overflow-x: hidden; }
+
+  ::-webkit-scrollbar       { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--em-dark); border-radius: 3px; }
+}
+
+@layer components {
+  /* ── Section scaffold ───────────────────────────── */
+  .section        { @apply py-20 md:py-24; }
+  .section-alt    { @apply py-20 md:py-24 bg-[var(--bg-3)]; }
+  .container-page { @apply max-width-[1200px] mx-auto px-4 sm:px-6 lg:px-8; }
+
+  /* ── Section heading helpers ────────────────────── */
+  .section-label {
+    @apply inline-flex items-center gap-2.5
+           font-heading text-[11px] font-bold tracking-[0.18em] uppercase text-em
+           mb-4;
+  }
+  .section-label::before {
+    content: '';
+    @apply block w-7 h-0.5 bg-em rounded-full flex-shrink-0;
+  }
+  .section-title {
+    @apply font-heading text-3xl sm:text-4xl font-extrabold text-content leading-tight mb-4;
+  }
+  .section-sub { @apply text-[1.05rem] text-content-muted max-w-xl leading-relaxed; }
+
+  /* ── Gradient text ──────────────────────────────── */
+  .gradient-text {
+    background: linear-gradient(135deg, #34D399 0%, #10B981 50%, #0891b2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Buttons ────────────────────────────────────── */
+  .btn {
+    @apply inline-flex items-center gap-2 px-6 py-3.5 rounded-xl
+           font-heading text-sm font-bold tracking-wide
+           transition-all duration-200 relative overflow-hidden;
+  }
+  .btn::after {
+    content: '';
+    @apply absolute inset-0 translate-x-[-100%] transition-transform duration-500;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  }
+  .btn:hover::after { @apply translate-x-[100%]; }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--em), var(--em-dark));
+    @apply text-white shadow-em-sm hover:-translate-y-0.5 hover:shadow-em-md;
+  }
+  .btn-outline {
+    @apply border border-[var(--border-em)] text-em
+           hover:bg-[var(--em-subtle)] hover:-translate-y-0.5;
+  }
+  .btn-green-dark {
+    background: linear-gradient(135deg, #059669, #047857);
+    @apply text-white shadow-em-sm hover:-translate-y-0.5 hover:shadow-em-md;
+  }
+
+  /* ── Cards ──────────────────────────────────────── */
+  .card {
+    @apply bg-[var(--bg-2)] border border-[var(--border)] rounded-2xl
+           transition-all duration-200;
+  }
+  .card-hover { @apply hover:-translate-y-1 hover:shadow-em-sm hover:border-[var(--border-em)]; }
+  .card-accent { @apply border-l-4 border-l-em; }
+
+  /* ── Form elements ──────────────────────────────── */
+  .form-input {
+    @apply w-full bg-white/[0.04] border border-[var(--border)] rounded-lg
+           px-3.5 py-3 text-sm text-content placeholder:text-content-subtle
+           outline-none transition-all duration-200
+           focus:border-[var(--border-em)] focus:bg-[var(--em-subtle)]
+           focus:ring-2 focus:ring-em/10;
+  }
+  .form-label {
+    @apply block text-[11px] font-semibold text-content-muted uppercase tracking-wide mb-1.5;
+  }
+
+  /* ── Badge ──────────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-3.5 py-1.5
+           rounded-full text-[11px] font-semibold uppercase tracking-wide
+           border border-[var(--border-em)] bg-[var(--em-subtle)] text-em;
+  }
+  .badge-dot {
+    @apply w-1.5 h-1.5 rounded-full bg-em animate-pulse-dot flex-shrink-0;
+  }
+}
