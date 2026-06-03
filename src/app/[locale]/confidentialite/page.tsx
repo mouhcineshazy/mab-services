@@ -39,7 +39,7 @@ export default async function PrivacyPage({ params }: Props) {
     <div className="pt-24 pb-20">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
-          <span className="section-label">Légal</span>
+          <span className="section-label">{t('label')}</span>
           <h1 className="font-heading text-3xl sm:text-4xl font-extrabold text-content mb-8">{t('title')}</h1>
           <p className="text-content-muted leading-relaxed mb-10" dangerouslySetInnerHTML={{ __html: t.raw('intro') as string }} />
           <div className="flex flex-col gap-8">

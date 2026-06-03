@@ -48,21 +48,15 @@ export default function Navbar() {
   function handleHashClick(e: React.MouseEvent, href: string) {
     const hash = href.includes('#') ? href.split('#')[1] : null;
     if (!hash) return;
+    // Only intercept when already on the home page — smooth scroll in place.
+    // On other pages, do nothing and let <Link> navigate to /#hash naturally
+    // (next-intl prefixes the locale, so it becomes /fr#masterclass etc.)
+    if (pathname !== '/') return;
+    e.preventDefault();
     setDropdownOpen(false);
     setMobileOpen(false);
-    const isHomePage = pathname === '/';
-    if (isHomePage) {
-      e.preventDefault();
-      const el = document.getElementById(hash);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-      e.preventDefault();
-      router.push(`/#${hash}`);
-      setTimeout(() => {
-        const el = document.getElementById(hash);
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 300);
-    }
+    const el = document.getElementById(hash);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   return (

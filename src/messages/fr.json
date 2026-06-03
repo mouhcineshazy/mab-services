@@ -40,9 +40,10 @@
     "free":       "Consultation <strong>100% Gratuite</strong>"
   },
   "Services": {
-    "label":    "Nos Solutions",
-    "title":    "Une couverture <em>complète</em><br/>pour chaque étape de votre vie",
-    "subtitle": "Des solutions personnalisées pour protéger votre famille, optimiser votre fiscalité et préparer votre retraite.",
+    "label":     "Nos Solutions",
+    "title":     "Une couverture <em>complète</em><br/>pour chaque étape de votre vie",
+    "subtitle":  "Des solutions personnalisées pour protéger votre famille, optimiser votre fiscalité et préparer votre retraite.",
+    "learnMore": "En savoir plus",
     "savings": {
       "title": "Épargne & Investissements",
       "reer":  { "name": "REER", "desc": "Régime enregistré d'épargne-retraite" },
@@ -125,12 +126,15 @@
     "error":     "Une erreur est survenue. Veuillez nous contacter directement."
   },
   "About": {
+    "label": "À Propos",
     "title": "À propos de MAB SERVICES",
     "p1": "<strong>MAB SERVICES</strong>, représenté par <strong>Mohammed Amine BENZAKOUR</strong>, courtier en assurance de personnes et conseiller en sécurité financière, offre ses services au Québec et en Ontario.",
     "p2": "Il accompagne sa clientèle dans la recherche de solutions adaptées à leurs besoins personnels et familiaux, notamment en assurance vie ainsi qu'en matière d'épargne et d'investissement. Les stratégies d'épargne sont mises en place à travers des régimes enregistrés ou des solutions d'assurance vie.",
     "p3": "Une approche visant à protéger les proches, à préparer l'avenir et à répondre à divers objectifs de sécurité financière est privilégiée. Elle repose sur une démarche simple, transparente et personnalisée, permettant à chaque client de choisir les solutions les mieux adaptées à sa situation."
   },
   "Insurance": {
+    "label":    "Assurance",
+    "cta":      "Consultation Gratuite",
     "title":    "SOLUTIONS D'ASSURANCE ET PROTECTION",
     "intro":    "Nous offrons une gamme complète de couvertures pour sécuriser votre patrimoine et protéger vos proches face aux imprévus.",
     "term":     { "title": "Assurance vie temporaire",  "desc": "Une protection flexible pour couvrir vos besoins financiers sur une période déterminée. Idéale pour protéger une hypothèque, des dettes ou des personnes à charge pendant les années critiques." },
@@ -145,6 +149,8 @@
     ]
   },
   "Savings": {
+    "label":    "Épargne",
+    "cta":      "Consultation Gratuite",
     "title":    "RÉGIMES D'ÉPARGNE ET D'INVESTISSEMENT",
     "intro":    "Découvrez les différents véhicules de placement pour optimiser votre fiscalité et atteindre vos objectifs financiers.",
     "celi":     { "title": "CELI — Compte d'épargne libre d'impôt", "desc": "Un régime qui permet de mettre de l'argent de côté à l'abri de l'impôt. Les gains de placement (intérêts, dividendes, gains en capital) réalisés dans un CELI ne sont pas imposables, même lors du retrait. Plafond 2025 : 7 000 $ par an.", "highlight": "Plafond cumulatif 2025 : 95 000 $" },
@@ -160,6 +166,7 @@
     ]
   },
   "Privacy": {
+    "label": "Légal",
     "title": "Politique de Confidentialité",
     "intro": "<strong>MAB SERVICES</strong> s'engage à assurer la protection de vos renseignements personnels recueillis au Québec et en Ontario.",
     "section1": {

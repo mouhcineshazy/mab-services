@@ -62,7 +62,7 @@ export default async function InsurancePage({ params }: Props) {
 
           {/* Header */}
           <div className="max-w-3xl mb-14">
-            <span className="section-label">Assurance</span>
+            <span className="section-label">{t('label')}</span>
             <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-content leading-tight mb-4">
               {t('title')}
             </h1>
@@ -107,7 +107,7 @@ export default async function InsurancePage({ params }: Props) {
           {/* CTA */}
           <div className="mt-16 text-center">
             <Link href="/contact" className="btn btn-primary text-base px-10 py-4">
-              {locale === 'fr' ? 'Consultation Gratuite' : 'Free Consultation'}
+              {t('cta')}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
                 <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>

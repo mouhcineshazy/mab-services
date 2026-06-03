@@ -40,9 +40,10 @@
     "free":       "<strong>100% Free</strong> Consultation"
   },
   "Services": {
-    "label":    "Our Solutions",
-    "title":    "A <em>complete</em> coverage<br/>for every stage of your life",
-    "subtitle": "Personalized solutions to protect your family, optimize your taxes and prepare for retirement.",
+    "label":     "Our Solutions",
+    "title":     "A <em>complete</em> coverage<br/>for every stage of your life",
+    "subtitle":  "Personalized solutions to protect your family, optimize your taxes and prepare for retirement.",
+    "learnMore": "Learn more",
     "savings": {
       "title": "Savings & Investments",
       "reer":  { "name": "RRSP", "desc": "Registered Retirement Savings Plan" },
@@ -125,12 +126,15 @@
     "error":     "An error occurred. Please contact us directly."
   },
   "About": {
+    "label": "About",
     "title": "About MAB SERVICES",
     "p1": "<strong>MAB SERVICES</strong>, represented by <strong>Mohammed Amine BENZAKOUR</strong>, life insurance broker and financial security advisor, provides services in Québec and Ontario.",
     "p2": "He guides clients in finding solutions tailored to their personal and family needs, particularly in life insurance and in savings and investment. Savings strategies are implemented through registered plans or life insurance solutions.",
     "p3": "An approach aimed at protecting loved ones, preparing for the future, and meeting various financial security objectives is favored. It rests on a simple, transparent and personalized process, allowing each client to choose the solutions best suited to their situation."
   },
   "Insurance": {
+    "label":    "Insurance",
+    "cta":      "Free Consultation",
     "title":    "INSURANCE AND PROTECTION SOLUTIONS",
     "intro":    "We offer a comprehensive range of coverages to secure your assets and protect your loved ones from the unexpected.",
     "term":     { "title": "Term Life Insurance",       "desc": "Flexible protection to cover your financial needs over a defined period. Ideal for protecting a mortgage, debts or dependants during critical years." },
@@ -145,6 +149,8 @@
     ]
   },
   "Savings": {
+    "label":    "Savings",
+    "cta":      "Free Consultation",
     "title":    "SAVINGS AND INVESTMENT PLANS",
     "intro":    "Discover the different investment vehicles to optimize your taxes and reach your financial goals.",
     "celi":     { "title": "TFSA — Tax-Free Savings Account", "desc": "A plan that lets you set money aside sheltered from tax. Investment gains (interest, dividends, capital gains) earned in a TFSA are not taxable, even when withdrawn. 2025 limit: $7,000/year.", "highlight": "2025 cumulative limit: $95,000" },
@@ -160,6 +166,7 @@
     ]
   },
   "Privacy": {
+    "label": "Legal",
     "title": "Privacy Policy",
     "intro": "<strong>MAB SERVICES</strong> is committed to protecting your personal information collected in Québec and Ontario.",
     "section1": {

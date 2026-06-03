@@ -43,7 +43,7 @@ export default function ServicesGrid() {
               ))}
             </ul>
             <Link href="/epargne-investissement" className="btn btn-outline mt-6 text-sm">
-              En savoir plus
+              {t('learnMore')}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5"><path d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </Link>
           </div>
@@ -67,7 +67,7 @@ export default function ServicesGrid() {
               ))}
             </ul>
             <Link href="/assurance-protection" className="btn btn-outline mt-6 text-sm">
-              En savoir plus
+              {t('learnMore')}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5"><path d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </Link>
           </div>
