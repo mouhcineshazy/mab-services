@@ -126,16 +126,24 @@ export default function ParticleCanvas() {
     };
     const onMouseLeave = () => { mouseRef.current = { x: null, y: null }; };
 
-    window.addEventListener('resize', resize);
+    // ResizeObserver avoids forced synchronous layout reads on window.resize
+    const ro = new ResizeObserver(resize);
+    ro.observe(canvas);
+
     hero.addEventListener('mousemove', onMouseMove as EventListener);
     hero.addEventListener('mouseleave', onMouseLeave);
 
-    init();
-    draw();
+    // Defer init+draw past first paint so the canvas setup does not block LCP.
+    // startRafId cancels the deferred start if the component unmounts immediately.
+    const startRafId = requestAnimationFrame(() => {
+      init();
+      draw();
+    });
 
     return () => {
+      cancelAnimationFrame(startRafId);
       cancelAnimationFrame(rafId);
-      window.removeEventListener('resize', resize);
+      ro.disconnect();
       hero.removeEventListener('mousemove', onMouseMove as EventListener);
       hero.removeEventListener('mouseleave', onMouseLeave);
     };

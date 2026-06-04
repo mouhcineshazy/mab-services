@@ -30,7 +30,7 @@ const config: Config = {
         content: {
           DEFAULT:   '#F9FAFB',
           muted:     '#9CA3AF',
-          subtle:    '#6B7280',
+          subtle:    '#9198A6',
         },
       },
       animation: {

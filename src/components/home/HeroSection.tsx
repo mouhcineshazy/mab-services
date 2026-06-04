@@ -38,18 +38,18 @@ export default function HeroSection() {
             {t('badge')}
           </div>
 
-          {/* Name */}
+          {/* Name — no fade-in: must be visible on first paint for LCP */}
           <h1
-            className="gradient-text font-heading font-black leading-none tracking-wide mb-3 animate-fade-up"
-            style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)', animationDelay: '0.2s' }}
+            className="gradient-text font-heading font-black leading-none tracking-wide mb-3"
+            style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)' }}
           >
             {t('name')}
           </h1>
 
           {/* Person */}
           <p
-            className="font-heading font-semibold text-em-light tracking-[0.06em] mb-4 animate-fade-up"
-            style={{ fontSize: 'clamp(1.05rem, 2.5vw, 1.4rem)', animationDelay: '0.3s' }}
+            className="font-heading font-semibold text-em-light tracking-[0.06em] mb-4"
+            style={{ fontSize: 'clamp(1.05rem, 2.5vw, 1.4rem)' }}
           >
             {t('person')}
           </p>

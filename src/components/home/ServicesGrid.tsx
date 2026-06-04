@@ -41,7 +41,7 @@ export default function ServicesGrid() {
                 </li>
               ))}
             </ul>
-            <Link href="/epargne-investissement" className="btn btn-outline mt-6 text-sm">
+            <Link href="/epargne-investissement" className="btn btn-outline mt-6 text-sm" aria-label={t('savings.title')}>
               {t('learnMore')}
               <IconArrowRight className="w-3.5 h-3.5" />
             </Link>
@@ -65,7 +65,7 @@ export default function ServicesGrid() {
                 </li>
               ))}
             </ul>
-            <Link href="/assurance-protection" className="btn btn-outline mt-6 text-sm">
+            <Link href="/assurance-protection" className="btn btn-outline mt-6 text-sm" aria-label={t('insurance.title')}>
               {t('learnMore')}
               <IconArrowRight className="w-3.5 h-3.5" />
             </Link>
