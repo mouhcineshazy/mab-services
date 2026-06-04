@@ -1,4 +1,4 @@
-const BASE_URL = 'https://mabservices-ca.com';
+import { BASE_URL } from './constants';
 
 const ORGANIZATION = {
   '@type': ['FinancialService', 'LocalBusiness'],
@@ -64,7 +64,7 @@ export function localBusinessSchema(locale: string) {
   };
 }
 
-export function personSchema() {
+export function personSchema(locale: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -74,7 +74,7 @@ export function personSchema() {
     description:
       'Courtier en assurance de personnes agréé par la FSRA (Ontario) et conseiller en sécurité financière agréé par l\'AMF (Québec).',
     worksFor: { '@id': `${BASE_URL}/#organization` },
-    url: `${BASE_URL}/fr/a-propos`,
+    url: `${BASE_URL}/${locale}/a-propos`,
     telephone: '+16132614428',
     email: 'sales@mabservices-ca.com',
     knowsAbout: ['Assurance vie', 'Épargne', 'Investissement', 'REER', 'CELI', 'Planification financière'],
@@ -169,10 +169,5 @@ export function webSiteSchema() {
     url: BASE_URL,
     publisher: { '@id': `${BASE_URL}/#organization` },
     inLanguage: ['fr-CA', 'en-CA'],
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: { '@type': 'EntryPoint', urlTemplate: `${BASE_URL}/fr/contact` },
-      'query-input': 'required name=search_term_string',
-    },
   };
 }

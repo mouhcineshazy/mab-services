@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import JsonLd from '@/components/shared/JsonLd';
 import { personSchema } from '@/lib/schemas';
-
-const BASE_URL = 'https://mabservices-ca.com';
+import { IconEnvelope } from '@/components/shared/icons';
+import { BASE_URL } from '@/lib/constants';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -47,7 +47,7 @@ export default async function AboutPage({ params }: Props) {
 
   return (
     <>
-      <JsonLd schema={personSchema()} />
+      <JsonLd schema={personSchema(locale)} />
 
       <div className="pt-24 pb-20">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -80,9 +80,7 @@ export default async function AboutPage({ params }: Props) {
                   <span>📞</span> 613-261-4428
                 </a>
                 <a href="mailto:sales@mabservices-ca.com" className="flex items-center gap-2 text-content-muted hover:text-em transition-colors justify-center lg:justify-start break-all">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4 flex-shrink-0">
-                    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
+                  <IconEnvelope className="w-4 h-4 flex-shrink-0" />
                   sales@mabservices-ca.com
                 </a>
               </div>

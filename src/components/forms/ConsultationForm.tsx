@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { consultationSchema, type ConsultationData } from '@/lib/validations';
 import { submitConsultation } from '@/actions/consultation';
+import { IconSend } from '@/components/shared/icons';
 import { cn } from '@/lib/utils';
 
 export default function ConsultationForm() {
@@ -87,9 +88,7 @@ export default function ConsultationForm() {
       <button type="submit" disabled={isPending} className="btn btn-green-dark justify-center mt-1 w-full py-3.5 disabled:opacity-60">
         {isPending ? tf('sending') : (
           <>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
-              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
-            </svg>
+            <IconSend className="w-4 h-4" />
             {t('submit')}
           </>
         )}

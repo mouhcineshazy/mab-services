@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
+import { IconChat, IconArrowRight, IconScrollDown } from '@/components/shared/icons';
 
 const ParticleCanvas = dynamic(() => import('@/components/shared/ParticleCanvas'), { ssr: false });
 
@@ -99,16 +100,12 @@ export default function HeroSection() {
             style={{ animationDelay: '0.6s' }}
           >
             <Link href="/contact" className="btn btn-primary text-[15px] px-8 py-4 justify-center">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4 flex-shrink-0">
-                <path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-              </svg>
+              <IconChat className="w-4 h-4 flex-shrink-0" />
               {t('ctaPrimary')}
             </Link>
             <Link href="/assurance-protection" className="btn btn-outline text-[15px] px-8 py-4 justify-center">
               {t('ctaSecondary')}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4 flex-shrink-0">
-                <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              <IconArrowRight className="w-4 h-4 flex-shrink-0" />
             </Link>
           </div>
         </div>
@@ -116,9 +113,7 @@ export default function HeroSection() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 animate-bounce-slow pointer-events-none">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5 text-content-subtle">
-          <path d="M12 5v14M5 12l7 7 7-7" />
-        </svg>
+        <IconScrollDown className="w-5 h-5 text-content-subtle" />
         <span className="text-[10px] tracking-[0.1em] uppercase text-content-subtle">{t('scroll')}</span>
       </div>
     </section>

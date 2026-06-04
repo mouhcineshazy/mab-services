@@ -118,7 +118,6 @@ export default function ParticleCanvas() {
       rafId = requestAnimationFrame(draw);
     }
 
-    const onResize = () => resize();
     const hero = canvas.parentElement!;
 
     const onMouseMove = (e: MouseEvent) => {
@@ -127,7 +126,7 @@ export default function ParticleCanvas() {
     };
     const onMouseLeave = () => { mouseRef.current = { x: null, y: null }; };
 
-    window.addEventListener('resize', onResize);
+    window.addEventListener('resize', resize);
     hero.addEventListener('mousemove', onMouseMove as EventListener);
     hero.addEventListener('mouseleave', onMouseLeave);
 
@@ -136,7 +135,7 @@ export default function ParticleCanvas() {
 
     return () => {
       cancelAnimationFrame(rafId);
-      window.removeEventListener('resize', onResize);
+      window.removeEventListener('resize', resize);
       hero.removeEventListener('mousemove', onMouseMove as EventListener);
       hero.removeEventListener('mouseleave', onMouseLeave);
     };

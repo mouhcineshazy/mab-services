@@ -1,6 +1,5 @@
 import { MetadataRoute } from 'next';
-
-const BASE_URL = 'https://mabservices-ca.com';
+import { BASE_URL } from '@/lib/constants';
 const locales = ['fr', 'en'] as const;
 
 const pages = [

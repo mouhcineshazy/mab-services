@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import MasterclassForm from '@/components/forms/MasterclassForm';
+import { IconAlertTriangle } from '@/components/shared/icons';
 
 export default function MasterclassSection() {
   const t = useTranslations('Masterclass');
@@ -43,9 +44,7 @@ export default function MasterclassSection() {
             {/* Warning */}
             <div className="flex items-center gap-2.5 px-4 py-3 rounded-xl text-sm"
               style={{ background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.2)', color: 'var(--gold)' }}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4 flex-shrink-0">
-                <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-              </svg>
+              <IconAlertTriangle className="w-4 h-4 flex-shrink-0" />
               {t('warning')}
             </div>
           </div>

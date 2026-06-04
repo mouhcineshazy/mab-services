@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
+import { IconArrowRight } from '@/components/shared/icons';
 
 export default function ServicesGrid() {
   const t = useTranslations('Services');
@@ -10,9 +11,7 @@ export default function ServicesGrid() {
   return (
     <section id="services" className="section scroll-mt-[70px]">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="section-label"
-          dangerouslySetInnerHTML={{ __html: t('label') }}
-        />
+        <span className="section-label">{t('label')}</span>
         <h2
           className="section-title"
           dangerouslySetInnerHTML={{
@@ -44,7 +43,7 @@ export default function ServicesGrid() {
             </ul>
             <Link href="/epargne-investissement" className="btn btn-outline mt-6 text-sm">
               {t('learnMore')}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5"><path d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              <IconArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
@@ -68,7 +67,7 @@ export default function ServicesGrid() {
             </ul>
             <Link href="/assurance-protection" className="btn btn-outline mt-6 text-sm">
               {t('learnMore')}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5"><path d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              <IconArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>

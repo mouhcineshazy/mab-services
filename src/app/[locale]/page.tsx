@@ -7,8 +7,7 @@ import WhySection          from '@/components/home/WhySection';
 import StatsStrip          from '@/components/home/StatsStrip';
 import MasterclassSection  from '@/components/home/MasterclassSection';
 import ConsultationSection from '@/components/home/ConsultationSection';
-
-const BASE_URL = 'https://mabservices-ca.com';
+import { BASE_URL } from '@/lib/constants';
 
 type Props = { params: Promise<{ locale: string }> };
 

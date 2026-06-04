@@ -7,13 +7,13 @@ import { routing } from '@/i18n/routing';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import JsonLd from '@/components/shared/JsonLd';
+import HashScrollHandler from '@/components/shared/HashScrollHandler';
 import { localBusinessSchema, webSiteSchema } from '@/lib/schemas';
+import { BASE_URL } from '@/lib/constants';
 import '../globals.css';
 
 const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-montserrat', display: 'swap' });
 const inter      = Inter({      subsets: ['latin'], variable: '--font-inter',      display: 'swap' });
-
-const BASE_URL = 'https://mabservices-ca.com';
 
 type Props = { children: React.ReactNode; params: Promise<{ locale: string }> };
 
@@ -78,6 +78,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <JsonLd schema={localBusinessSchema(locale)} />
         <JsonLd schema={webSiteSchema()} />
         <NextIntlClientProvider messages={messages}>
+          <HashScrollHandler />
           <Navbar />
           <main>{children}</main>
           <Footer />

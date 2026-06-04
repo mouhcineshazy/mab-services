@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import JsonLd from '@/components/shared/JsonLd';
+import { IconChevronDown, IconArrowRight } from '@/components/shared/icons';
 import { savingsServiceSchema, faqSchema } from '@/lib/schemas';
-
-const BASE_URL = 'https://mabservices-ca.com';
+import { BASE_URL } from '@/lib/constants';
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -101,10 +101,7 @@ export default async function SavingsPage({ params }: Props) {
                 <details key={i} className="card group p-0 overflow-hidden">
                   <summary className="flex items-start justify-between gap-4 p-5 cursor-pointer list-none text-content font-medium hover:text-em transition-colors">
                     <span>{faq.q}</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-                      className="w-4 h-4 flex-shrink-0 mt-0.5 transition-transform group-open:rotate-180">
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
+                    <IconChevronDown className="w-4 h-4 flex-shrink-0 mt-0.5 transition-transform group-open:rotate-180" />
                   </summary>
                   <p className="px-5 pb-5 text-sm text-content-muted leading-relaxed border-t border-[var(--border)] pt-4">{faq.a}</p>
                 </details>
@@ -116,9 +113,7 @@ export default async function SavingsPage({ params }: Props) {
           <div className="mt-16 text-center">
             <Link href="/contact" className="btn btn-primary text-base px-10 py-4">
               {t('cta')}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
-                <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              <IconArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

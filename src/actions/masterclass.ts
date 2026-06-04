@@ -2,6 +2,7 @@
 
 import { masterclassSchema, type MasterclassData } from '@/lib/validations';
 import { resend, FROM_EMAIL, TO_EMAIL } from '@/lib/resend';
+import { escapeHtml } from '@/lib/utils';
 
 const OPTION_LABELS: Record<string, string> = {
   epargne:   'Option 1 — Épargne & Investissement',
@@ -14,6 +15,7 @@ export async function submitMasterclass(data: MasterclassData) {
   if (!parsed.success) return { success: false, error: 'Validation failed' };
 
   const { nom, prenom, email, telephone, option } = parsed.data;
+  const e = escapeHtml;
 
   try {
     await resend.emails.send({
@@ -22,9 +24,9 @@ export async function submitMasterclass(data: MasterclassData) {
       subject: 'Inscription Masterclass MAB Services',
       html: `
         <h2>Nouvelle inscription à la Masterclass</h2>
-        <p><strong>Nom:</strong> ${nom} ${prenom}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Téléphone:</strong> ${telephone}</p>
+        <p><strong>Nom:</strong> ${e(nom)} ${e(prenom)}</p>
+        <p><strong>Email:</strong> ${e(email)}</p>
+        <p><strong>Téléphone:</strong> ${e(telephone)}</p>
         <p><strong>Option choisie:</strong> ${OPTION_LABELS[option]}</p>
       `,
     });

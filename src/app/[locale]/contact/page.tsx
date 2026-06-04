@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import ConsultationSection from '@/components/home/ConsultationSection';
-
-const BASE_URL = 'https://mabservices-ca.com';
+import { BASE_URL } from '@/lib/constants';
 
 type Props = { params: Promise<{ locale: string }> };
 

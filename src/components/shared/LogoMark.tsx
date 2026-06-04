@@ -2,8 +2,10 @@ import { cn } from '@/lib/utils';
 
 interface Props { className?: string; size?: number }
 
+const GRADIENT_ID = 'logo-gradient';
+
 export default function LogoMark({ className, size = 38 }: Props) {
-  const id = `lg-${Math.random().toString(36).slice(2, 7)}`;
+  const id = GRADIENT_ID;
   return (
     <svg
       width={size}

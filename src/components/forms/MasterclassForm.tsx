@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { masterclassSchema, type MasterclassData } from '@/lib/validations';
 import { submitMasterclass } from '@/actions/masterclass';
+import { IconArrowRight } from '@/components/shared/icons';
 import { cn } from '@/lib/utils';
 
 export default function MasterclassForm() {
@@ -100,11 +101,7 @@ export default function MasterclassForm() {
 
       <button type="submit" disabled={isPending} className="btn btn-primary justify-center mt-1 w-full py-3.5 disabled:opacity-60">
         {isPending ? tf('sending') : t('submit')}
-        {!isPending && (
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
-            <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        )}
+        {!isPending && <IconArrowRight className="w-4 h-4" />}
       </button>
       <p className="text-[11px] text-content-subtle text-center">{t('disclaimer')}</p>
     </form>

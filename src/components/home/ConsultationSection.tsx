@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import ConsultationForm from '@/components/forms/ConsultationForm';
+import { IconFacebook, IconLinkedIn } from '@/components/shared/icons';
 
 export default function ConsultationSection() {
   const t = useTranslations('Consultation');
@@ -52,15 +53,11 @@ export default function ConsultationSection() {
               <span className="text-sm text-content-subtle">{t('follow')}</span>
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
                 className="flex items-center justify-center w-9 h-9 rounded-lg bg-[var(--bg-2)] border border-[var(--border)] text-content-muted hover:bg-[var(--em-subtle)] hover:border-[var(--border-em)] hover:text-em transition-all">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-                </svg>
+                <IconFacebook className="w-4 h-4" />
               </a>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
                 className="flex items-center justify-center w-9 h-9 rounded-lg bg-[var(--bg-2)] border border-[var(--border)] text-content-muted hover:bg-[var(--em-subtle)] hover:border-[var(--border-em)] hover:text-em transition-all">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
-                  <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" /><circle cx="4" cy="4" r="2" />
-                </svg>
+                <IconLinkedIn className="w-4 h-4" />
               </a>
             </div>
           </div>

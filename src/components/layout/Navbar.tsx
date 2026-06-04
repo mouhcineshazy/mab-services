@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import LogoMark from '@/components/shared/LogoMark';
 import LangSwitcher from '@/components/shared/LangSwitcher';
+import { IconChevronDown, IconList, IconMenu, IconClose } from '@/components/shared/icons';
 import { cn } from '@/lib/utils';
 
 const ROUTES = [
@@ -46,17 +47,22 @@ export default function Navbar() {
   }
 
   function handleHashClick(e: React.MouseEvent, href: string) {
-    const hash = href.includes('#') ? href.split('#')[1] : null;
+    const hash = href.split('#')[1];
     if (!hash) return;
-    // Only intercept when already on the home page — smooth scroll in place.
-    // On other pages, do nothing and let <Link> navigate to /#hash naturally
-    // (next-intl prefixes the locale, so it becomes /fr#masterclass etc.)
-    if (pathname !== '/') return;
+
     e.preventDefault();
     setDropdownOpen(false);
     setMobileOpen(false);
-    const el = document.getElementById(hash);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    if (pathname === '/') {
+      // Already on the home page — scroll directly.
+      document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      // Cross-page: navigate to home with the hash in the URL.
+      // HashScrollHandler in the layout picks up window.location.hash after
+      // the route change and scrolls to the target section.
+      router.push(`/#${hash}`);
+    }
   }
 
   return (
@@ -110,9 +116,7 @@ export default function Navbar() {
                 onBlur={closeDropdown}
               >
                 {t('more')}
-                <svg viewBox="0 0 16 16" fill="none" className={cn('w-3 h-3 transition-transform duration-200', dropdownOpen && 'rotate-180')}>
-                  <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                </svg>
+                <IconChevronDown className={cn('w-3 h-3 transition-transform duration-200', dropdownOpen && 'rotate-180')} />
               </button>
 
               {/* Transparent bridge fills the gap so mouse doesn't leave the zone */}
@@ -147,9 +151,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-2">
             <LangSwitcher />
             <Link href="/contact" className="btn btn-primary text-sm px-5 py-2.5">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-3.5 h-3.5">
-                <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
-              </svg>
+              <IconList className="w-3.5 h-3.5" />
               {t('cta')}
             </Link>
           </div>
@@ -162,15 +164,10 @@ export default function Navbar() {
               aria-label={mobileOpen ? t('menuClose') : t('menuOpen')}
               className="p-2 rounded-lg text-content-muted hover:text-content hover:bg-white/5 transition-colors"
             >
-              {mobileOpen ? (
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-                  <path d="M18 6L6 18M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-                  <path d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
+              {mobileOpen
+                ? <IconClose className="w-5 h-5" />
+                : <IconMenu className="w-5 h-5" />
+              }
             </button>
           </div>
         </div>
