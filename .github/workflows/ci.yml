@@ -2,9 +2,9 @@ name: MAB-SERVICES-CI
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 # Cancel a running workflow if a newer commit arrives on the same branch/PR
 concurrency:
