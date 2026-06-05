@@ -45,7 +45,7 @@ jobs:
     env:
       # Real secrets are not needed at build time — Cal.com and Resend are
       # only invoked at request time, not during static generation.
-      # Cal.com vars are empty so getNextMasterclassSlot() returns null
+      # Cal.com vars are empty, so getNextMasterclassSlot() returns null
       # gracefully and all Cal buttons fall back to their unconfigured state.
       NEXT_PUBLIC_BASE_URL: https://mabservices-ca.com
       NEXT_PUBLIC_CAL_USERNAME: ''
