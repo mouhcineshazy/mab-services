@@ -10,13 +10,13 @@
 
 | Layer | Choice | Why |
 |---|---|---|
-| Framework | **Next.js 14+ (App Router)** | SSG + Server Actions, Vercel-native, best DX |
-| Styling | **Tailwind CSS + shadcn/ui** | Fastest professional UI, design-token aligned |
+| Framework | **Next.js 15 (App Router)** | SSG + Server Actions, best DX |
+| Styling | **Tailwind CSS + CSS custom properties** | Fastest professional UI, design-token aligned |
 | i18n | **next-intl** | Best App Router bilingual support |
 | Forms / Email | **Server Actions + Resend** | No backend, free 3K emails/month |
 | Booking | **Cal.com** | Free, embeddable, open-source |
-| Deployment | **Vercel (Hobby — free)** | Native Next.js, HTTPS, CDN, preview deploys |
-| Analytics | **Vercel Analytics** | Zero config, free, GDPR-friendly |
+| Deployment | **Netlify (free tier)** | Excellent Next.js support, HTTPS, CDN, 300 build min/month |
+| Analytics | **Plausible (optional)** | Privacy-first, no cookie banner, GDPR-friendly |
 | CMS | **None (start) → Keystatic (optional)** | 6 static pages; CMS adds cost with no immediate return |
 
 ---
@@ -52,7 +52,7 @@ None of this changes week-to-week. An insurance broker is not a blogger.
 | Keystatic | **Free** (git-based) | Low | Right choice **if** client wants self-service editing later |
 
 ### Decision
-**Start without a CMS.** Content lives in `.ts`/`.json` files inside the repo. Changes are a one-line edit + deploy (takes 2 minutes on Vercel). This is faster to build, simpler to maintain, zero security surface, and zero cost.
+**Start without a CMS.** Content lives in `.ts`/`.json` files inside the repo. Changes are a one-line edit + deploy (takes 2 minutes on Netlify). This is faster to build, simpler to maintain, zero security surface, and zero cost.
 
 **When to add a CMS:** If the client launches a blog, or insists on editing the site himself without developer help. In that case, add **Keystatic** — it is git-based, fully free, integrates natively with Next.js App Router, requires no external service, and gives the client a clean editing UI without touching code.
 
@@ -245,38 +245,48 @@ The Cal.com booking widget is embedded directly in the page — no redirect away
 
 ---
 
-## 7. Deployment: Vercel (Hobby — Free)
+## 7. Deployment: Netlify (Free tier)
 
-### Why Vercel
+### Why Netlify
 
-| Feature | Vercel Hobby | Netlify Free | GitHub Pages |
+| Feature | Netlify Free | Vercel Hobby | GitHub Pages |
 |---|---|---|---|
 | Custom domain | Yes | Yes | Yes |
 | HTTPS/SSL | Auto | Auto | Auto |
-| CDN (global) | Yes (edge network) | Yes | Limited |
+| CDN (global) | Yes | Yes (edge network) | Limited |
 | Preview deploys | Yes (every PR/push) | Yes | No |
-| Server Actions | Yes (native) | Yes | No (static only) |
-| Next.js support | First-class (same company) | Good | Poor |
-| Build minutes | 6,000/month | 300/month | Unlimited |
+| Server Actions | Yes (Next.js runtime) | Yes (native) | No (static only) |
+| Next.js support | Excellent (Next.js runtime) | First-class (same company) | Poor |
+| Build minutes | 300/month | 6,000/month | Unlimited |
 | Bandwidth | 100 GB/month | 100 GB/month | Soft limit |
-| Functions | 100K invocations/month | 125K/month | No |
+| Functions | 125K invocations/month | 100K/month | No |
 
-Vercel wins unambiguously for a Next.js project. The 100 GB bandwidth and 6,000 build minutes are far more than an independent broker's site will ever use.
+Netlify works excellently for Next.js 15. The free 300 build minutes is more than enough for a simple site with infrequent deploys. The Next.js runtime on Netlify handles Server Actions, ISR, and middleware natively.
 
-**Custom domain:** The client's domain (mabservices-ca.com) is pointed to Vercel with a DNS CNAME record. SSL certificate is provisioned automatically by Vercel (Let's Encrypt). Takes 5 minutes.
+**Custom domain:** The client's domain (mabservices-ca.com) is pointed to Netlify with a DNS CNAME record. SSL certificate is provisioned automatically (Let's Encrypt). Takes 5 minutes.
+
+**Setup:**
+1. Connect GitHub repo on app.netlify.com → New site from Git
+2. Build command: `npm run build` (auto-detected)
+3. Add all env vars from `.env.local.example` in Site settings → Environment variables
+4. Set branch to deploy: `master`
+
 
 ---
 
-## 8. Analytics: Vercel Analytics + Speed Insights
+## 8. Analytics: Plausible (optional)
 
-Built into Vercel, zero configuration, free. Tracks:
-- Page views, unique visitors
-- Core Web Vitals (LCP, CLS, FID) per page
-- Top referrers, geographic breakdown
+Netlify does not include a built-in analytics dashboard on the free tier. The recommended option for this project is **Plausible Analytics** ($9/month) when ready — or simply skip analytics until the site is live and traffic justifies it.
 
-**Privacy:** Vercel Analytics does not use cookies. This is important for the Quebec Law 25 and Canadian PIPEDA compliance context — no cookie consent banner needed for analytics.
+**Why Plausible and not Google Analytics 4:**
+- No cookies — no consent banner required under Quebec Law 25 / PIPEDA
+- Simple dashboard: page views, referrers, countries, devices
+- Script is 1 KB vs GA4's ~45 KB (Core Web Vitals impact)
+- GDPR-compliant by design
 
-If the client later wants deeper funnel tracking, **Plausible** ($9/month) is a clean, GDPR-compliant upgrade. Avoid Google Analytics 4 — it is complex to configure correctly for privacy compliance in Quebec and adds cookie consent obligations.
+**Free alternative in the meantime:** Netlify provides basic traffic stats (page views, unique visitors) in the dashboard at no cost, without any script on the site.
+
+Avoid Google Analytics 4 — it requires a cookie consent banner in Quebec, adds complexity, and the data model is unnecessarily complex for a 6-page site.
 
 ---
 
@@ -646,7 +656,7 @@ Mobile performance is the priority — the spec explicitly states the majority o
 
 | Phase | Tasks | Days |
 |---|---|---|
-| 1 — Setup | Next.js + Tailwind + shadcn/ui + next-intl + Vercel project | 0.5 |
+| 1 — Setup | Next.js + Tailwind + next-intl + Netlify project | 0.5 |
 | 2 — Layout | Navbar (with dropdown, mobile hamburger), Footer (with regulatory disclaimer) | 1 |
 | 3 — Home | Hero, Services grid, Consultation form, Masterclass form + Server Actions | 2 |
 | 4 — Inner pages | About, Insurance, Savings, Privacy, Contact | 1.5 |
@@ -663,12 +673,12 @@ Mobile performance is the priority — the spec explicitly states the majority o
 
 | Item | Cost |
 |---|---|
-| Vercel Hosting | **$0** (Hobby plan) |
+| Netlify Hosting | **$0** (free tier) |
 | Resend (email) | **$0** (3K emails/month free tier) |
 | Cal.com | **$0** (free cloud tier) |
-| Vercel Analytics | **$0** (included) |
+| Analytics | **$0** (Netlify basic stats) or $9/month (Plausible) |
 | Domain (mabservices-ca.com) | ~$15–20/year (already owned) |
-| SSL Certificate | **$0** (Let's Encrypt via Vercel) |
+| SSL Certificate | **$0** (Let's Encrypt via Netlify) |
 | **Total infrastructure** | **~$0/month** |
 
 The only recurring cost is the domain registration, which the client presumably already pays.
@@ -685,14 +695,14 @@ These are not in scope now but the architecture supports them without rework:
 | Témoignages clients | After 6 months | Static JSON array, rendered as carousel |
 | Live chat | If conversion rate needs improvement | Crisp.chat (free tier) or Tawk.to (free) |
 | Email newsletter | If masterclass list grows | Integrate with Brevo (ex-Sendinblue, free 300/day) |
-| Upgrade hosting | If site gets significant traffic | Vercel Pro ($20/month) or keep free indefinitely |
+| Upgrade hosting | If site gets significant traffic | Netlify Pro ($19/month) or keep free indefinitely |
 | Google My Business map | Early addition | Embed Google Maps iframe (free) |
 
 ---
 
 ## 17. Final Recommendation Summary
 
-Build this as a **statically generated Next.js 14 site** deployed on **Vercel's free tier**. This is the fastest path to a professional, performant, bilingual, SEO-optimized site with working forms. It costs nothing to run, can be built in under 2 weeks, and the architecture can grow with the practice over the next 5 years without a rewrite.
+Build this as a **statically generated Next.js 15 site** deployed on **Netlify's free tier**. This is the fastest path to a professional, performant, bilingual, SEO-optimized site with working forms. It costs nothing to run, can be built in under 2 weeks, and the architecture can grow with the practice over the next 5 years without a rewrite.
 
 **Do not use a CMS** for the initial build. The content is static and small. Add Keystatic later if the client wants self-service editing.
 

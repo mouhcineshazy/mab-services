@@ -33,11 +33,11 @@ The following three expert skills are active in every conversation for this proj
 | Framework | Next.js 15 (App Router) |
 | Language | TypeScript (strict) |
 | Styling | Tailwind CSS v3 + CSS custom properties |
-| i18n | next-intl v3.26 — FR (default) and EN |
+| i18n | next-intl v4 — FR and EN (default: EN) |
 | Forms | React Hook Form + Zod + Server Actions |
 | Email | Resend (3k/month free) |
-| Hosting | Vercel Hobby (free) |
-| Analytics | Vercel Analytics (optional) |
+| Hosting | Netlify (free tier) |
+| Analytics | Plausible (optional) |
 
 ---
 

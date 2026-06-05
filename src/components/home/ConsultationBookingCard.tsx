@@ -1,17 +1,13 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import ConsultationForm from '@/components/forms/ConsultationForm';
 import CalPopupButton from '@/components/shared/CalPopupButton';
 import { IconArrowRight } from '@/components/shared/icons';
-
-const CAL_LINK = `${process.env.NEXT_PUBLIC_CAL_USERNAME}/${process.env.NEXT_PUBLIC_CAL_CONSULTATION_SLUG}`;
-const CAL_CONFIGURED = Boolean(
-  process.env.NEXT_PUBLIC_CAL_USERNAME && process.env.NEXT_PUBLIC_CAL_CONSULTATION_SLUG,
-);
+import { CONSULTATION_CAL_LINK, CONSULTATION_CAL_CONFIGURED } from '@/lib/calcom';
 
 const BADGE_KEYS = ['bookingBadge1', 'bookingBadge2', 'bookingBadge3'] as const;
 
-export default function ConsultationBookingCard() {
-  const t = useTranslations('Consultation');
+export default async function ConsultationBookingCard() {
+  const t = await getTranslations('Consultation');
 
   return (
     <div className="flex flex-col gap-8">
@@ -34,9 +30,9 @@ export default function ConsultationBookingCard() {
           ))}
         </div>
 
-        {CAL_CONFIGURED ? (
+        {CONSULTATION_CAL_CONFIGURED ? (
           <CalPopupButton
-            calLink={CAL_LINK}
+            calLink={CONSULTATION_CAL_LINK}
             namespace="consultation"
             layout="month_view"
             className="btn btn-primary justify-center w-full py-4 text-[15px]"

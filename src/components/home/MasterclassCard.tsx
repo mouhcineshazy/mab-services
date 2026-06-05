@@ -1,20 +1,15 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import CalPopupButton from '@/components/shared/CalPopupButton';
 import CountdownTimer from '@/components/shared/CountdownTimer';
 import { IconArrowRight } from '@/components/shared/icons';
-import type { CalSlot } from '@/lib/calcom';
-
-const CAL_LINK = `${process.env.NEXT_PUBLIC_CAL_USERNAME}/${process.env.NEXT_PUBLIC_CAL_EVENT_SLUG}`;
-const CAL_CONFIGURED = Boolean(
-  process.env.NEXT_PUBLIC_CAL_USERNAME && process.env.NEXT_PUBLIC_CAL_EVENT_SLUG,
-);
+import { type CalSlot, MASTERCLASS_CAL_LINK, MASTERCLASS_CAL_CONFIGURED } from '@/lib/calcom';
 
 interface Props { nextSlot: CalSlot | null }
 
-export default function MasterclassCard({ nextSlot }: Props) {
-  const t = useTranslations('Masterclass');
+export default async function MasterclassCard({ nextSlot }: Props) {
+  const t = await getTranslations('Masterclass');
 
-  const features = [t('cardFeature1'), t('cardFeature2'), t('cardFeature3')] as const;
+  const features = [t('cardFeature1'), t('cardFeature2'), t('cardFeature3')];
 
   return (
     <div className="card card-accent p-8 lg:p-10 flex flex-col gap-6">
@@ -53,8 +48,8 @@ export default function MasterclassCard({ nextSlot }: Props) {
       </ul>
 
       {/* CTA */}
-      {CAL_CONFIGURED ? (
-        <CalPopupButton calLink={CAL_LINK} namespace="masterclass" layout="column_view" className="btn btn-primary justify-center w-full py-4 text-[15px]">
+      {MASTERCLASS_CAL_CONFIGURED ? (
+        <CalPopupButton calLink={MASTERCLASS_CAL_LINK} namespace="masterclass" layout="column_view" className="btn btn-primary justify-center w-full py-4 text-[15px]">
           {t('cardCta')}
           <IconArrowRight className="w-4 h-4 flex-shrink-0" />
         </CalPopupButton>

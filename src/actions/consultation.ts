@@ -26,8 +26,7 @@ export async function submitConsultation(data: ConsultationData) {
       `,
     });
     return { success: true };
-  } catch (err) {
-    console.error('Resend error:', err);
+  } catch {
     return { success: false, error: 'Email send failed' };
   }
 }

@@ -2,22 +2,21 @@
 
 import { useEffect } from 'react';
 import { usePathname } from '@/i18n/navigation';
+import { consumeScrollTarget } from '@/lib/scroll-target';
 
-/**
- * Fires after every client-side route change. When the target page is home ("/"),
- * reads window.location.hash and scrolls to the matching section.
- *
- * Needed because Next.js App Router's router.push() does not scroll to hash
- * anchors automatically — it only restores scroll to the top.
- */
 export default function HashScrollHandler() {
   const pathname = usePathname();
 
   useEffect(() => {
     if (pathname !== '/') return;
-    const hash = window.location.hash.slice(1);
+    // consumeScrollTarget() handles cross-page nav (set by Navbar before router.push).
+    // window.location.hash handles direct URL access like /en#masterclass.
+    const hash = consumeScrollTarget() ?? window.location.hash.slice(1);
     if (!hash) return;
-    document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const id = setTimeout(() => {
+      document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 80);
+    return () => clearTimeout(id);
   }, [pathname]);
 
   return null;

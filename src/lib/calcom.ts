@@ -2,6 +2,16 @@ export interface CalSlot {
   start: string; // ISO 8601
 }
 
+export const CONSULTATION_CAL_LINK = `${process.env.NEXT_PUBLIC_CAL_USERNAME}/${process.env.NEXT_PUBLIC_CAL_CONSULTATION_SLUG}`;
+export const CONSULTATION_CAL_CONFIGURED = Boolean(
+  process.env.NEXT_PUBLIC_CAL_USERNAME && process.env.NEXT_PUBLIC_CAL_CONSULTATION_SLUG,
+);
+
+export const MASTERCLASS_CAL_LINK = `${process.env.NEXT_PUBLIC_CAL_USERNAME}/${process.env.NEXT_PUBLIC_CAL_EVENT_SLUG}`;
+export const MASTERCLASS_CAL_CONFIGURED = Boolean(
+  process.env.NEXT_PUBLIC_CAL_USERNAME && process.env.NEXT_PUBLIC_CAL_EVENT_SLUG,
+);
+
 const CAL_API = 'https://api.cal.com/v2';
 
 export async function getNextMasterclassSlot(): Promise<CalSlot | null> {

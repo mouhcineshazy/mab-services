@@ -16,10 +16,17 @@ export default function Footer() {
     { label: tNav('masterclass'), href: '/#masterclass' },
   ];
 
-  const serviceLinks: string[] = t.raw('serviceLinks') as string[];
-  const legalLinks:   string[] = t.raw('legalLinks')   as string[];
-  const serviceHrefs  = ['/assurance-protection', '/assurance-protection', '/epargne-investissement', '/epargne-investissement', '/epargne-investissement'];
-  const legalHrefs    = ['/confidentialite', '/confidentialite'];
+  const SERVICE_HREFS = [
+    '/assurance-protection',
+    '/assurance-protection',
+    '/epargne-investissement',
+    '/epargne-investissement',
+    '/epargne-investissement',
+  ] as const;
+  const LEGAL_HREFS = ['/confidentialite', '/confidentialite'] as const;
+
+  const serviceLinks = (t.raw('serviceLinks') as string[]).map((label, i) => ({ label, href: SERVICE_HREFS[i] ?? '/' }));
+  const legalLinks   = (t.raw('legalLinks')   as string[]).map((label, i) => ({ label, href: LEGAL_HREFS[i]   ?? '/' }));
 
   return (
     <footer className="bg-[var(--bg-3)] border-t border-[var(--border)]">
@@ -77,9 +84,9 @@ export default function Footer() {
           <div>
             <p className="text-[12px] font-bold uppercase tracking-[0.12em] text-em mb-4">{t('services')}</p>
             <ul className="flex flex-col gap-2.5">
-              {serviceLinks.map((label, i) => (
-                <li key={i}>
-                  <Link href={serviceHrefs[i] ?? '/'} className="text-sm text-content-muted hover:text-em hover:pl-1 transition-all duration-150">
+              {serviceLinks.map(({ label, href }) => (
+                <li key={href + label}>
+                  <Link href={href} className="text-sm text-content-muted hover:text-em hover:pl-1 transition-all duration-150">
                     {label}
                   </Link>
                 </li>
@@ -91,9 +98,9 @@ export default function Footer() {
           <div>
             <p className="text-[12px] font-bold uppercase tracking-[0.12em] text-em mb-4">{t('legal')}</p>
             <ul className="flex flex-col gap-2.5 mb-6">
-              {legalLinks.map((label, i) => (
-                <li key={i}>
-                  <Link href={legalHrefs[i] ?? '/'} className="text-sm text-content-muted hover:text-em hover:pl-1 transition-all duration-150">
+              {legalLinks.map(({ label, href }) => (
+                <li key={href + label}>
+                  <Link href={href} className="text-sm text-content-muted hover:text-em hover:pl-1 transition-all duration-150">
                     {label}
                   </Link>
                 </li>

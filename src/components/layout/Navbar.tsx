@@ -8,11 +8,8 @@ import LangSwitcher from '@/components/shared/LangSwitcher';
 import { IconChevronDown, IconList, IconMenu, IconClose } from '@/components/shared/icons';
 import CalPopupButton from '@/components/shared/CalPopupButton';
 import { cn } from '@/lib/utils';
-
-const CAL_LINK = `${process.env.NEXT_PUBLIC_CAL_USERNAME}/${process.env.NEXT_PUBLIC_CAL_CONSULTATION_SLUG}`;
-const CAL_CONFIGURED = Boolean(
-  process.env.NEXT_PUBLIC_CAL_USERNAME && process.env.NEXT_PUBLIC_CAL_CONSULTATION_SLUG,
-);
+import { CONSULTATION_CAL_LINK, CONSULTATION_CAL_CONFIGURED } from '@/lib/calcom';
+import { setScrollTarget } from '@/lib/scroll-target';
 
 const ROUTES = [
   { key: 'home',      href: '/' },
@@ -61,13 +58,10 @@ export default function Navbar() {
     setMobileOpen(false);
 
     if (pathname === '/') {
-      // Already on the home page — scroll directly.
       document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
-      // Cross-page: navigate to home with the hash in the URL.
-      // HashScrollHandler in the layout picks up window.location.hash after
-      // the route change and scrolls to the target section.
-      router.push(`/#${hash}`);
+      setScrollTarget(hash);
+      router.push('/', { scroll: false });
     }
   }
 
@@ -156,8 +150,8 @@ export default function Navbar() {
           {/* Right side: lang + CTA */}
           <div className="hidden md:flex items-center gap-2">
             <LangSwitcher />
-            {CAL_CONFIGURED ? (
-              <CalPopupButton calLink={CAL_LINK} namespace="consultation" layout="month_view" className="btn btn-primary text-sm px-5 py-2.5">
+            {CONSULTATION_CAL_CONFIGURED ? (
+              <CalPopupButton calLink={CONSULTATION_CAL_LINK} namespace="consultation" layout="month_view" className="btn btn-primary text-sm px-5 py-2.5">
                 <IconList className="w-3.5 h-3.5" />
                 {t('cta')}
               </CalPopupButton>
@@ -218,8 +212,8 @@ export default function Navbar() {
             </Link>
           ))}
           <div className="pt-2 pb-1">
-            {CAL_CONFIGURED ? (
-              <CalPopupButton calLink={CAL_LINK} namespace="consultation" layout="month_view" className="btn btn-primary w-full justify-center">
+            {CONSULTATION_CAL_CONFIGURED ? (
+              <CalPopupButton calLink={CONSULTATION_CAL_LINK} namespace="consultation" layout="month_view" className="btn btn-primary w-full justify-center">
                 {t('cta')}
               </CalPopupButton>
             ) : (
