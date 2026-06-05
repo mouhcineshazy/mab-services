@@ -223,7 +223,15 @@
     "submit": "Envoyer ma demande",
     "disclaimer": "Réponse garantie sous 24h · Consultation sans frais ni engagement",
     "success": "Votre demande a été envoyée ! Nous vous contacterons sous 24h.",
-    "error": "Une erreur est survenue. Veuillez nous contacter directement."
+    "error": "Une erreur est survenue. Veuillez nous contacter directement.",
+    "bookingTitle": "Réservez votre consultation",
+    "bookingSubtitle": "Choisissez directement un créneau dans l'agenda de Mohammed Amine — consultation gratuite de 30 à 60 minutes, en ligne ou par téléphone.",
+    "bookingCta": "Choisir un créneau",
+    "bookingBadge1": "100 % Gratuit",
+    "bookingBadge2": "En ligne",
+    "bookingBadge3": "Annulable",
+    "orDivider": "Ou envoyez-nous un message",
+    "calNotConfigured": "Bientôt disponible"
   },
   "About": {
     "label": "À Propos",

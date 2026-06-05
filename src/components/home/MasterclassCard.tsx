@@ -54,7 +54,7 @@ export default function MasterclassCard({ nextSlot }: Props) {
 
       {/* CTA */}
       {CAL_CONFIGURED ? (
-        <CalPopupButton calLink={CAL_LINK} className="btn btn-primary justify-center w-full py-4 text-[15px]">
+        <CalPopupButton calLink={CAL_LINK} namespace="masterclass" layout="column_view" className="btn btn-primary justify-center w-full py-4 text-[15px]">
           {t('cardCta')}
           <IconArrowRight className="w-4 h-4 flex-shrink-0" />
         </CalPopupButton>

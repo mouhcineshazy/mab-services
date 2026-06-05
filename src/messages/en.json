@@ -223,7 +223,15 @@
     "submit": "Send my request",
     "disclaimer": "Reply guaranteed within 24h · Free, no-obligation consultation",
     "success": "Your request has been sent! We will contact you within 24h.",
-    "error": "An error occurred. Please contact us directly."
+    "error": "An error occurred. Please contact us directly.",
+    "bookingTitle": "Book your consultation",
+    "bookingSubtitle": "Pick a time directly in Mohammed Amine's calendar — free 30 to 60-minute consultation, online or by phone.",
+    "bookingCta": "Choose a time slot",
+    "bookingBadge1": "100% Free",
+    "bookingBadge2": "Online",
+    "bookingBadge3": "Cancellable",
+    "orDivider": "Or send us a message",
+    "calNotConfigured": "Coming soon"
   },
   "About": {
     "label": "About",

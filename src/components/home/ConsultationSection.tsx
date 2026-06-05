@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import ConsultationForm from '@/components/forms/ConsultationForm';
+import ConsultationBookingCard from '@/components/home/ConsultationBookingCard';
 import { IconFacebook, IconLinkedIn } from '@/components/shared/icons';
 
 export default function ConsultationSection() {
@@ -62,8 +62,8 @@ export default function ConsultationSection() {
             </div>
           </div>
 
-          {/* Form */}
-          <ConsultationForm />
+          {/* Booking card + form fallback */}
+          <ConsultationBookingCard />
         </div>
       </div>
     </section>
