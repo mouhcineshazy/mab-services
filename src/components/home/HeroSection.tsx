@@ -4,6 +4,12 @@ import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { IconChat, IconArrowRight, IconScrollDown } from '@/components/shared/icons';
+import CalPopupButton from '@/components/shared/CalPopupButton';
+
+const CAL_LINK = `${process.env.NEXT_PUBLIC_CAL_USERNAME}/${process.env.NEXT_PUBLIC_CAL_CONSULTATION_SLUG}`;
+const CAL_CONFIGURED = Boolean(
+  process.env.NEXT_PUBLIC_CAL_USERNAME && process.env.NEXT_PUBLIC_CAL_CONSULTATION_SLUG,
+);
 
 const ParticleCanvas = dynamic(() => import('@/components/shared/ParticleCanvas'), { ssr: false });
 
@@ -99,10 +105,22 @@ export default function HeroSection() {
             className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto justify-center animate-fade-up"
             style={{ animationDelay: '0.6s' }}
           >
-            <Link href="/contact" className="btn btn-primary text-[15px] px-8 py-4 justify-center">
-              <IconChat className="w-4 h-4 flex-shrink-0" />
-              {t('ctaPrimary')}
-            </Link>
+            {CAL_CONFIGURED ? (
+              <CalPopupButton
+                calLink={CAL_LINK}
+                namespace="consultation"
+                layout="month_view"
+                className="btn btn-primary text-[15px] px-8 py-4 justify-center"
+              >
+                <IconChat className="w-4 h-4 flex-shrink-0" />
+                {t('ctaPrimary')}
+              </CalPopupButton>
+            ) : (
+              <Link href="/contact" className="btn btn-primary text-[15px] px-8 py-4 justify-center">
+                <IconChat className="w-4 h-4 flex-shrink-0" />
+                {t('ctaPrimary')}
+              </Link>
+            )}
             <Link href="/assurance-protection" className="btn btn-outline text-[15px] px-8 py-4 justify-center">
               {t('ctaSecondary')}
               <IconArrowRight className="w-4 h-4 flex-shrink-0" />

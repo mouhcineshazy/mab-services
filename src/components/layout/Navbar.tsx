@@ -6,7 +6,13 @@ import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import LogoMark from '@/components/shared/LogoMark';
 import LangSwitcher from '@/components/shared/LangSwitcher';
 import { IconChevronDown, IconList, IconMenu, IconClose } from '@/components/shared/icons';
+import CalPopupButton from '@/components/shared/CalPopupButton';
 import { cn } from '@/lib/utils';
+
+const CAL_LINK = `${process.env.NEXT_PUBLIC_CAL_USERNAME}/${process.env.NEXT_PUBLIC_CAL_CONSULTATION_SLUG}`;
+const CAL_CONFIGURED = Boolean(
+  process.env.NEXT_PUBLIC_CAL_USERNAME && process.env.NEXT_PUBLIC_CAL_CONSULTATION_SLUG,
+);
 
 const ROUTES = [
   { key: 'home',      href: '/' },
@@ -150,10 +156,17 @@ export default function Navbar() {
           {/* Right side: lang + CTA */}
           <div className="hidden md:flex items-center gap-2">
             <LangSwitcher />
-            <Link href="/contact" className="btn btn-primary text-sm px-5 py-2.5">
-              <IconList className="w-3.5 h-3.5" />
-              {t('cta')}
-            </Link>
+            {CAL_CONFIGURED ? (
+              <CalPopupButton calLink={CAL_LINK} namespace="consultation" layout="month_view" className="btn btn-primary text-sm px-5 py-2.5">
+                <IconList className="w-3.5 h-3.5" />
+                {t('cta')}
+              </CalPopupButton>
+            ) : (
+              <Link href="/contact" className="btn btn-primary text-sm px-5 py-2.5">
+                <IconList className="w-3.5 h-3.5" />
+                {t('cta')}
+              </Link>
+            )}
           </div>
 
           {/* Mobile: lang + hamburger */}
@@ -205,9 +218,15 @@ export default function Navbar() {
             </Link>
           ))}
           <div className="pt-2 pb-1">
-            <Link href="/contact" className="btn btn-primary w-full justify-center">
-              {t('cta')}
-            </Link>
+            {CAL_CONFIGURED ? (
+              <CalPopupButton calLink={CAL_LINK} namespace="consultation" layout="month_view" className="btn btn-primary w-full justify-center">
+                {t('cta')}
+              </CalPopupButton>
+            ) : (
+              <Link href="/contact" className="btn btn-primary w-full justify-center">
+                {t('cta')}
+              </Link>
+            )}
           </div>
         </div>
       </div>
