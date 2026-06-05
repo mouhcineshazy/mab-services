@@ -265,15 +265,27 @@
     "faq": [
       {
         "q": "Quelle est la différence entre l'assurance vie temporaire et permanente ?",
-        "a": "L'assurance temporaire offre une protection pour une période fixe (10, 20 ou 30 ans) et est généralement moins coûteuse. L'assurance permanente couvre toute la vie et peut inclure une valeur de rachat. Le choix dépend de vos objectifs et de votre budget."
+        "a": "L'assurance temporaire couvre une période fixe — 10, 20 ou 30 ans — et offre les primes les plus basses pour un montant de couverture élevé. Elle convient parfaitement pour protéger une hypothèque, des dettes ou des personnes à charge pendant les années critiques. L'assurance permanente (vie entière ou universelle) couvre toute la durée de votre vie et peut accumuler une valeur de rachat accessible de votre vivant, ce qui en fait un outil de planification successorale. Elle coûte généralement 5 à 10 fois plus que la temporaire, mais les primes sont garanties et ne varient pas avec l'âge. Le bon choix dépend de votre horizon, de votre budget et de vos objectifs de transmission."
       },
       {
-        "q": "Ai-je besoin d'une assurance invalidité si j'ai une couverture au travail ?",
-        "a": "La couverture offerte par l'employeur est souvent partielle et peut se terminer si vous changez d'emploi. Une police personnelle vous garantit une protection continue, quelle que soit votre situation professionnelle."
+        "q": "Ai-je besoin d'une assurance invalidité si mon employeur m'en offre une ?",
+        "a": "La couverture collective remplace généralement 60 à 70 % du salaire brut, avec un plafond mensuel souvent fixé entre 4 000 $ et 6 000 $. De plus, les prestations d'un régime payé par l'employeur sont imposables, ce qui réduit encore le montant net reçu. Cette couverture prend fin si vous changez d'emploi, devenez travailleur autonome ou prenez votre retraite anticipée. Une police personnelle, dont les primes sont payées par vous, verse des prestations non imposables et vous suit peu importe votre situation professionnelle. Selon l'Association canadienne des compagnies d'assurances de personnes, 1 Canadien sur 3 sera invalide pour plus de 90 jours avant l'âge de 65 ans — un risque que peu de ménages peuvent absorber sans protection adéquate."
       },
       {
         "q": "L'assurance maladies graves est-elle vraiment utile ?",
-        "a": "Oui. Au Canada, 1 personne sur 2 développera un cancer au cours de sa vie. Le versement forfaitaire vous permet de couvrir les traitements non couverts par la RAMQ/OHIP, les frais de subsistance pendant la convalescence, et de rembourser des dettes."
+        "a": "Oui. Selon la Société canadienne du cancer, 1 Canadien sur 2 recevra un diagnostic de cancer au cours de sa vie. L'assurance maladies graves verse un montant forfaitaire non imposable — généralement entre 25 000 $ et 500 000 $ — lors du diagnostic d'une maladie couverte telle que le cancer, l'infarctus du myocarde ou l'accident vasculaire cérébral, qui représentent à eux seuls environ 85 % des réclamations. Ces fonds permettent de financer des traitements non remboursés par la RAMQ ou l'OHIP, de maintenir votre style de vie durant la convalescence, de rembourser l'hypothèque ou de couvrir les soins d'un proche aidant. Contrairement à l'assurance invalidité, le versement n'est pas conditionnel à votre incapacité à travailler."
+      },
+      {
+        "q": "Combien coûte une assurance vie au Canada ?",
+        "a": "Le coût dépend de votre âge, de votre état de santé, de vos habitudes (tabagisme) et du montant de couverture souhaité. À titre indicatif, un homme de 30 ans non-fumeur en bonne santé peut obtenir 500 000 $ de protection temporaire sur 20 ans pour environ 25 à 40 $ par mois ; une femme du même profil paiera légèrement moins. Plus on attend, plus les primes augmentent : à 40 ans, les mêmes conditions coûteront environ deux fois plus cher. L'assurance permanente est significativement plus coûteuse, mais les primes sont fixes pour la vie. Souscrire jeune et en bonne santé permet de verrouiller un taux avantageux à long terme. Une comparaison entre plusieurs assureurs est essentielle pour obtenir le meilleur rapport qualité-prix."
+      },
+      {
+        "q": "Puis-je être assuré si j'ai une condition préexistante ?",
+        "a": "Dans la grande majorité des cas, oui. Les options disponibles varient selon la condition : une police standard avec une exclusion spécifique à la condition, une police avec prime majorée, ou une police sans examen médical à émission garantie. Des conditions comme le diabète contrôlé, l'hypertension traitée, une dépression antérieure ou un excès de poids sont fréquemment couvertes avec des ajustements mineurs. L'importance du conseiller est déterminante : chaque assureur évalue les risques différemment, et un courtier indépendant comme MAB Services peut soumettre votre dossier aux assureurs les plus favorables à votre profil. Il est primordial de ne jamais omettre d'informations lors de la déclaration — cela pourrait invalider votre police au moment d'une réclamation."
+      },
+      {
+        "q": "À quel moment devrais-je réévaluer mes couvertures d'assurance ?",
+        "a": "Certains événements de vie doivent automatiquement déclencher une révision : mariage ou union de fait, naissance ou adoption d'un enfant, achat d'une propriété, changement ou perte d'emploi, augmentation significative des revenus, divorce, ou décès d'un conjoint. Au-delà de ces déclencheurs, une révision tous les deux à trois ans est recommandée, car vos besoins évoluent. Avec le temps, votre hypothèque diminue, vos enfants deviennent autonomes et votre patrimoine s'accumule — vos couvertures doivent refléter cette réalité. Une consultation annuelle avec votre conseiller MAB permet de s'assurer que vous n'êtes ni sous-assuré (exposition au risque) ni sur-assuré (primes inutiles)."
       }
     ]
   },
@@ -311,15 +323,27 @@
     "faq": [
       {
         "q": "Quelle est la différence entre un REER et un CELI ?",
-        "a": "Le REER offre une déduction fiscale à la cotisation mais les retraits sont imposables — idéal pour réduire l'impôt aujourd'hui si vous êtes dans une tranche élevée. Le CELI ne donne pas de déduction, mais les retraits sont entièrement non imposables — idéal pour l'épargne flexible à long terme."
+        "a": "Le REER (Régime enregistré d'épargne-retraite) permet de déduire vos cotisations de votre revenu imposable, ce qui réduit immédiatement votre facture fiscale. La croissance est à imposition différée, mais les retraits s'ajoutent à votre revenu imposable lors de la retraite. Il doit être converti en FERR au plus tard à 71 ans. Le plafond de cotisation 2025 est de 18 % du revenu gagné, jusqu'à 31 560 $. Le CELI (Compte d'épargne libre d'impôt), lui, n'offre pas de déduction fiscale à la cotisation, mais tous les retraits — gains inclus — sont non imposables. Le plafond annuel est de 7 000 $ (plafond cumulatif 2025 : 95 000 $). Stratégie : privilégiez le REER si votre taux marginal actuel est élevé, le CELI si votre revenu est faible ou si vous voulez une flexibilité totale."
       },
       {
-        "q": "Puis-je cotiser au REER et au CELI en même temps ?",
-        "a": "Oui, absolument. C'est même recommandé dans bien des situations. Votre conseiller MAB peut vous aider à déterminer la répartition optimale selon votre tranche d'imposition, vos objectifs et votre horizon de placement."
+        "q": "Qu'est-ce que le CELIAPP et qui peut y cotiser ?",
+        "a": "Le CELIAPP (Compte d'épargne libre d'impôt pour l'achat d'une première propriété), lancé en 2023, est conçu exclusivement pour les acheteurs d'une première habitation. Il combine les avantages du REER (cotisations déductibles du revenu) et du CELI (retraits non imposables pour l'achat). La cotisation annuelle maximale est de 8 000 $, avec un plafond à vie de 40 000 $. Les droits inutilisés peuvent être reportés à l'année suivante, mais seulement jusqu'à concurrence de 8 000 $ supplémentaires. Pour être admissible, vous ne devez pas avoir été propriétaire de votre résidence principale au cours des quatre dernières années. Le compte doit être fermé dans les 15 ans suivant son ouverture ou dès l'achat. Il peut être combiné avec le Régime d'accession à la propriété (RAP) du REER pour maximiser la mise de fonds."
       },
       {
-        "q": "À partir de quel âge devrais-je commencer à épargner ?",
-        "a": "Le plus tôt est le mieux. Grâce à l'intérêt composé, même de petites cotisations à 25 ans valent beaucoup plus qu'une grosse cotisation à 45 ans. Une consultation gratuite permet d'établir un plan adapté à votre situation actuelle."
+        "q": "Comment fonctionne la Subvention canadienne pour l'épargne-études (SCEE) dans un REEE ?",
+        "a": "Le gouvernement fédéral verse automatiquement 20 % des cotisations annuelles au REEE jusqu'à un maximum de 2 500 $ par an, soit une subvention de 500 $ par enfant par année. Le maximum cumulatif est de 7 200 $ par enfant. Les familles à revenu faible ou moyen peuvent recevoir une Subvention canadienne pour l'épargne-études additionnelle (SCÉÉ additionnelle) allant jusqu'à 100 $ supplémentaires par an. Le Québec offre en sus l'Incitatif québécois à l'épargne-études (IQÉÉ), qui verse 10 % des premiers 2 500 $ cotisés annuellement. Les droits à la SCEE non utilisés une année peuvent être reportés et rattrapés les années suivantes, jusqu'à l'âge de 17 ans de l'enfant. Les retraits pour études sont imposés dans les mains de l'étudiant, dont le revenu est généralement faible."
+      },
+      {
+        "q": "Puis-je retirer de mon REER avant ma retraite ?",
+        "a": "Oui, mais des implications fiscales importantes s'appliquent. En dehors de programmes spécifiques, tout retrait s'ajoute à votre revenu imposable de l'année et est sujet à une retenue à la source de 10 % (jusqu'à 5 000 $), 20 % (5 001 $ à 15 000 $) ou 30 % (au-delà de 15 000 $). Deux programmes permettent des retraits sans impôt immédiat : le Régime d'accession à la propriété (RAP), qui permet de retirer jusqu'à 35 000 $ pour l'achat d'une première propriété (remboursable sur 15 ans), et le Régime d'encouragement à l'éducation permanente (REEP), jusqu'à 20 000 $ sur 4 ans pour des études à temps plein. Contrairement au CELI, les droits de cotisation REER utilisés lors d'un retrait ordinaire ne sont pas récupérables."
+      },
+      {
+        "q": "À partir de quel âge devrais-je commencer à investir ?",
+        "a": "Le plus tôt possible. L'intérêt composé est l'outil le plus puissant en finance personnelle : 200 $ investis mensuellement à 25 ans à un rendement annuel moyen de 6 % vaudront environ 400 000 $ à 65 ans. En commençant à 35 ans avec le même montant et le même rendement, vous obtiendrez environ 200 000 $ — la moitié, pour la même dépense totale. Même de petites sommes régulières font une différence significative. La priorité à tout âge : d'abord profiter des cotisations de l'employeur si disponibles (rendement immédiat de 50 à 100 %), puis maximiser le CELIAPP si vous envisagez l'achat d'une propriété, puis répartir entre REER et CELI selon votre situation fiscale. Une consultation gratuite avec MAB Services permet d'établir un plan réaliste dès aujourd'hui."
+      },
+      {
+        "q": "Comment choisir entre rembourser mes dettes et investir dans un REER ou un CELI ?",
+        "a": "La règle générale : remboursez en priorité les dettes dont le taux d'intérêt dépasse 5 à 6 %, car c'est un rendement garanti que peu de placements surpassent de façon constante. Les dettes de cartes de crédit (18 à 22 %) et les prêts personnels à taux élevé sont toujours prioritaires. Pour une hypothèque à taux faible (sous 4 %), il est souvent plus avantageux d'investir en parallèle, notamment dans un REER si vous bénéficiez d'un remboursement d'impôt que vous réinvestissez ensuite. Exception notable : si votre employeur offre une contribution REER équivalente, cotisez toujours au maximum pour bénéficier du rendement immédiat. La bonne stratégie dépend de votre taux marginal d'imposition, de votre horizon et de votre profil de risque."
       }
     ]
   },
