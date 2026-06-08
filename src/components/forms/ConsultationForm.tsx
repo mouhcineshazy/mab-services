@@ -14,6 +14,7 @@ export default function ConsultationForm() {
   const tf = useTranslations('Forms');
   const [isPending, startTransition] = useTransition();
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState<string>('');
 
   const { register, handleSubmit, formState: { errors } } = useForm<ConsultationData>({
     resolver: zodResolver(consultationSchema),
@@ -22,7 +23,12 @@ export default function ConsultationForm() {
   function onSubmit(data: ConsultationData) {
     startTransition(async () => {
       const res = await submitConsultation(data);
-      setStatus(res.success ? 'success' : 'error');
+      if (res.success) {
+        setStatus('success');
+      } else {
+        setErrorMsg(res.error ?? '');
+        setStatus('error');
+      }
     });
   }
 
@@ -82,7 +88,9 @@ export default function ConsultationForm() {
       </div>
 
       {status === 'error' && (
-        <p className="text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-3">{t('error')}</p>
+        <p className="text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-3">
+          {t('error')}{errorMsg ? ` — ${errorMsg}` : ''}
+        </p>
       )}
 
       <button type="submit" disabled={isPending} className="btn btn-green-dark justify-center mt-1 w-full py-3.5 disabled:opacity-60">

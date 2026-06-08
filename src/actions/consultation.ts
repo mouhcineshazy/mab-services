@@ -5,6 +5,8 @@ import { resend, FROM_EMAIL, TO_EMAIL } from '@/lib/resend';
 import { escapeHtml } from '@/lib/utils';
 
 export async function submitConsultation(data: ConsultationData) {
+  if (!process.env.RESEND_API_KEY) return { success: false, error: 'RESEND_API_KEY not set' };
+
   const parsed = consultationSchema.safeParse(data);
   if (!parsed.success) return { success: false, error: 'Validation failed' };
 
