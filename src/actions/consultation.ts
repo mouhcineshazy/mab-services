@@ -13,23 +13,20 @@ export async function submitConsultation(data: ConsultationData) {
   const { nom, prenom, email, telephone, description, availability } = parsed.data;
   const e = escapeHtml;
 
-  try {
-    await resend.emails.send({
-      from:    FROM_EMAIL,
-      to:      TO_EMAIL,
-      subject: 'Demande de Consultation Gratuite MAB Services',
-      html: `
-        <h2>Nouvelle demande de consultation</h2>
-        <p><strong>Nom:</strong> ${e(nom)} ${e(prenom)}</p>
-        <p><strong>Email:</strong> ${e(email)}</p>
-        <p><strong>Téléphone:</strong> ${e(telephone)}</p>
-        <p><strong>Projets financiers:</strong><br>${e(description)}</p>
-        ${availability ? `<p><strong>Disponibilités:</strong> ${e(availability)}</p>` : ''}
-      `,
-    });
-    return { success: true };
-  } catch (err) {
-    const message = err instanceof Error ? err.message : 'Unknown error';
-    return { success: false, error: message };
-  }
+  const { error } = await resend.emails.send({
+    from:    FROM_EMAIL,
+    to:      TO_EMAIL,
+    subject: 'Demande de Consultation Gratuite MAB Services',
+    html: `
+      <h2>Nouvelle demande de consultation</h2>
+      <p><strong>Nom:</strong> ${e(nom)} ${e(prenom)}</p>
+      <p><strong>Email:</strong> ${e(email)}</p>
+      <p><strong>Téléphone:</strong> ${e(telephone)}</p>
+      <p><strong>Projets financiers:</strong><br>${e(description)}</p>
+      ${availability ? `<p><strong>Disponibilités:</strong> ${e(availability)}</p>` : ''}
+    `,
+  });
+
+  if (error) return { success: false, error: error.message };
+  return { success: true };
 }
