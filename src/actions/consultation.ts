@@ -26,7 +26,8 @@ export async function submitConsultation(data: ConsultationData) {
       `,
     });
     return { success: true };
-  } catch {
-    return { success: false, error: 'Email send failed' };
+  } catch (err) {
+    const message = err instanceof Error ? err.message : 'Unknown error';
+    return { success: false, error: message };
   }
 }
