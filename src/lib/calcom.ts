@@ -21,12 +21,12 @@ export async function getNextMasterclassSlot(): Promise<CalSlot | null> {
 
   if (!apiKey || !username || !slug) return null;
 
-  const start = new Date().toISOString();
-  const end   = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(); // 90 days ahead
+  const startTime = new Date().toISOString();
+  const endTime   = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(); // 90 days ahead
 
   try {
     const res = await fetch(
-      `${CAL_API}/slots/available?start=${encodeURIComponent(start)}&end=${encodeURIComponent(end)}&username=${encodeURIComponent(username)}&eventTypeSlug=${encodeURIComponent(slug)}`,
+      `${CAL_API}/slots/available?startTime=${encodeURIComponent(startTime)}&endTime=${encodeURIComponent(endTime)}&username=${encodeURIComponent(username)}&eventTypeSlug=${encodeURIComponent(slug)}`,
       {
         headers: {
           Authorization: `Bearer ${apiKey}`,
