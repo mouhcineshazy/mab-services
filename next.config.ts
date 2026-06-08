@@ -4,15 +4,17 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 // 'unsafe-inline' is required by Next.js App Router (RSC payload + hydration inline scripts).
-// 'unsafe-eval' is intentionally omitted — the only legit source was webpack dev-mode
-// source maps, which are never present in a production build.
+// 'unsafe-eval' is intentionally omitted — not needed in production builds.
+// Cal.com embed requires: script-src for embed.js, frame-src for the popup iframe,
+// connect-src for its internal API calls, img-src for user avatars.
 const CSP = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  "script-src 'self' 'unsafe-inline' https://app.cal.com",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob:",
+  "img-src 'self' data: blob: https://cal.com https://app.cal.com",
   "font-src 'self' data:",
-  "connect-src 'self'",
+  "connect-src 'self' https://cal.com https://app.cal.com https://api.cal.com",
+  "frame-src https://cal.com https://app.cal.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
