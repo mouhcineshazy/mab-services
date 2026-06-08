@@ -192,7 +192,8 @@
     "countdownHours": "Hours",
     "countdownMin": "Min",
     "countdownSec": "Sec",
-    "sessionLive": "Session is live · Join now"
+    "sessionLive": "Session is live · Join now",
+    "seatsLeft": "{count, plural, one {🔴 # spot remaining} other {🔴 # spots remaining}}"
   },
   "Consultation": {
     "label": "Direct Contact",

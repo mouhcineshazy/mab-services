@@ -59,7 +59,15 @@ export default async function MasterclassCard({ nextSlot }: Props) {
         </button>
       )}
 
-      <p className="text-[11px] text-content-subtle text-center">{t('cardDisclaimer')}</p>
+      {/* Seats remaining + warning */}
+      <div className="flex flex-col gap-2">
+        {nextSlot?.seatsAvailable !== undefined && (
+          <p className="text-[12px] font-bold text-center" style={{ color: 'var(--gold)' }}>
+            {t('seatsLeft', { count: nextSlot.seatsAvailable })}
+          </p>
+        )}
+        <p className="text-[11px] text-content-subtle text-center">{t('cardDisclaimer')}</p>
+      </div>
     </div>
   );
 }
