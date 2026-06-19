@@ -46,8 +46,8 @@ export default async function InsurancePage({ params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'Insurance' });
 
-  const products = ['term', 'perm', 'disability', 'critical'] as const;
-  const icons    = ['⏱️', '🏛️', '🩺', '💊'];
+  const products = ['term', 'perm', 'disability', 'critical', 'health', 'travel'] as const;
+  const icons    = ['⏱️', '🏛️', '🩺', '💊', '🦷', '✈️'];
 
   type FaqItem = { q: string; a: string };
   const faqs: FaqItem[] = t.raw('faq') as FaqItem[];

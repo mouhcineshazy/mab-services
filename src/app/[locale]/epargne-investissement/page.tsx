@@ -79,13 +79,7 @@ export default async function SavingsPage({ params }: Props) {
                     {icons[i]}
                   </div>
                   <div className="flex-1">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
-                      <h2 className="font-heading text-[15px] font-bold text-content">{t(`${key}.title`)}</h2>
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold"
-                        style={{ background: 'var(--em-subtle)', border: '1px solid var(--border-em)', color: 'var(--em-light)' }}>
-                        {t(`${key}.highlight`)}
-                      </span>
-                    </div>
+                    <h2 className="font-heading text-[15px] font-bold text-content mb-3">{t(`${key}.title`)}</h2>
                     <p className="text-sm text-content-muted leading-relaxed">{t(`${key}.desc`)}</p>
                   </div>
                 </div>

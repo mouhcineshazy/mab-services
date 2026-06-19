@@ -237,9 +237,9 @@
   "About": {
     "label": "About",
     "title": "About MAB SERVICES",
-    "p1": "<strong>MAB SERVICES</strong>, represented by <strong>Mohammed Amine BENZAKOUR</strong>, life insurance broker and financial security advisor, provides services in Québec and Ontario.",
-    "p2": "He guides clients in finding solutions tailored to their personal and family needs, particularly in life insurance and in savings and investment. Savings strategies are implemented through registered plans or life insurance solutions.",
-    "p3": "An approach aimed at protecting loved ones, preparing for the future, and meeting various financial security objectives is favored. It rests on a simple, transparent and personalized process, allowing each client to choose the solutions best suited to their situation."
+    "p1": "<strong>MAB SERVICES</strong>, represented by <strong>Mohammed Amine BENZAKOUR</strong>, life insurance broker and financial security advisor, provides services in Ontario and Québec.",
+    "p2": "He guides clients in finding solutions tailored to their personal and family needs, particularly in life insurance and in savings and investment. Savings strategies are implemented through registered plans, non-registered plans, or life insurance solutions.",
+    "p3": "An approach aimed at protecting loved ones, preparing for the future and meeting various financial security objectives, while offering a simple, transparent and personalized process that allows each client to choose the solutions best suited to their situation."
   },
   "Insurance": {
     "label": "Insurance",
@@ -262,31 +262,35 @@
       "title": "Critical Illness Insurance",
       "desc": "A tax-free lump-sum payment to support you financially upon diagnosis of a covered critical illness (cancer, heart attack, stroke, etc.)."
     },
+    "health": {
+      "title": "Health and Dental Insurance",
+      "desc": "Supplemental coverage for medical, dental, vision and paramedical expenses not covered by provincial health plans. Ideal for self-employed individuals, retirees and employees without group benefits."
+    },
+    "travel": {
+      "title": "Travel and Emergency Medical Insurance",
+      "desc": "Essential protection when travelling outside Canada or your province. Covers emergency medical expenses, hospitalization and medical evacuation, along with other benefits depending on the plan selected."
+    },
     "faqTitle": "Frequently asked questions about insurance",
     "faq": [
       {
         "q": "What is the difference between term and permanent life insurance?",
-        "a": "Term life insurance covers a fixed period — 10, 20 or 30 years — and offers the lowest premiums for a high coverage amount. It is ideal for protecting a mortgage, debts or dependants during critical years. Permanent life insurance (whole life or universal life) covers you for your entire lifetime and can accumulate a cash value accessible during your lifetime, making it a powerful estate planning tool. It typically costs 5 to 10 times more than term coverage, but premiums are guaranteed and never increase with age. The right choice depends on your time horizon, budget and wealth transfer goals. An independent broker like MAB Services can compare multiple insurers to find the optimal solution for your profile."
+        "a": "Term life insurance covers a fixed period — 10, 20 or 30 years. It is ideal for protecting a mortgage, debts or dependants during critical years. Permanent life insurance (whole life or universal life) covers you for your entire lifetime and can accumulate a cash value accessible during your lifetime, making it a powerful estate planning tool. The right choice depends on your time horizon, your budget and your wealth transfer goals."
       },
       {
         "q": "Do I need disability insurance if my employer provides it?",
-        "a": "Group coverage typically replaces 60 to 70% of gross salary, with a monthly cap often set between $4,000 and $6,000. Furthermore, benefits from an employer-paid plan are taxable, further reducing the net amount you receive. This coverage ends if you change jobs, become self-employed or take early retirement. A personal disability policy, funded by your own premiums, pays tax-free benefits and follows you regardless of your employment status. According to the Canadian Life and Health Insurance Association, 1 in 3 Canadians will be disabled for more than 90 days before age 65 — a risk very few households can absorb without adequate protection. A personal policy fills the gaps left by group plans."
+        "a": "This coverage ends if you change jobs, become self-employed or take early retirement. A personal disability policy, funded by your own premiums, pays tax-free benefits and follows you regardless of your employment status. According to the Canadian Life and Health Insurance Association, 1 in 3 Canadians will be disabled for more than 90 days before age 65 — a risk very few households can absorb without adequate protection."
       },
       {
         "q": "Is critical illness insurance really necessary?",
-        "a": "Yes. According to the Canadian Cancer Society, 1 in 2 Canadians will be diagnosed with cancer in their lifetime. Critical illness insurance pays a tax-free lump sum — typically between $25,000 and $500,000 — upon diagnosis of a covered condition such as cancer, heart attack or stroke, which together account for roughly 85% of all claims. These funds can be used to cover treatments not reimbursed by provincial health plans (OHIP in Ontario, RAMQ in Québec), maintain your lifestyle during recovery, pay down your mortgage, or cover the cost of a caregiver. Unlike disability insurance, the payment is not conditional on your inability to work — you receive it simply upon diagnosis, giving you full flexibility over how to use it."
-      },
-      {
-        "q": "How much does life insurance cost in Canada?",
-        "a": "The cost depends on your age, health status, smoking habits and the coverage amount you choose. As a general reference, a healthy non-smoking 30-year-old male can obtain $500,000 of 20-year term coverage for approximately $25 to $40 per month; a female with the same profile will pay slightly less. The same coverage at age 40 costs roughly twice as much, and at age 50 it can be three to four times the premium. Permanent coverage is significantly more expensive but locks in premiums for life. Securing coverage while young and healthy is one of the most cost-effective financial decisions you can make. Working with an independent broker means your application goes to the insurer most favourable to your specific health profile."
+        "a": "The cost depends on your age, health status, lifestyle habits (such as smoking) and the coverage amount you choose. Securing coverage while young and in good health allows you to lock in a favourable rate for the long term. Comparing quotes from multiple insurers is essential to get the best value for your needs."
       },
       {
         "q": "Can I get coverage if I have a pre-existing condition?",
-        "a": "In the vast majority of cases, yes. Available options vary depending on the condition: a standard policy with a specific exclusion for the condition, a policy with a higher premium, or a no-medical guaranteed-issue policy. Conditions such as controlled diabetes, treated hypertension, a past history of depression or a higher BMI are frequently covered with minor adjustments. The role of an independent broker is critical here: each insurer assesses risk differently, and MAB Services can submit your file to the insurers most favourable to your health profile. It is essential to never omit any information on the application — misrepresentation, even unintentional, can void your policy at the time of a claim."
+        "a": "Available options vary depending on your health situation and may include a standard policy with an exclusion for the specific condition, a policy with a higher premium, or a no-medical guaranteed-issue policy. Conditions such as controlled diabetes, treated hypertension, a history of depression or excess weight can often be accepted, with adjustments as needed. Since insurers do not all assess risk the same way, decisions may vary from one company to another. It is important to provide complete and accurate information at the time of application, as any omission or inaccuracy may affect the validity of the contract or the settlement of a claim."
       },
       {
         "q": "When should I review my insurance coverage?",
-        "a": "Certain life events should automatically trigger a coverage review: marriage or common-law union, birth or adoption of a child, purchase of a home, job change or income increase, divorce, or the death of a spouse. Beyond these triggers, a review every two to three years is recommended, as your needs evolve continuously. Over time, your mortgage decreases, children become financially independent and your net worth grows — your coverage should reflect this reality. With the right adjustments, you avoid being under-insured (financial risk) or over-insured (paying unnecessary premiums). An annual check-in with your MAB Services advisor ensures your protection stays aligned with your life stage."
+        "a": "Certain life events should prompt a review of your situation, including marriage, common-law partnership, the birth or adoption of a child, the purchase of a property, a job change or loss, a significant increase in income, a divorce or the death of a spouse. Beyond these events, a periodic review is recommended, as personal and financial situations evolve over time. As your mortgage decreases, children grow up and wealth accumulates, coverage adjustments may be needed. Regular reviews help maintain appropriate protection and avoid being either under-insured or over-insured."
       }
     ]
   },
@@ -297,73 +301,56 @@
     "intro": "Discover the different investment vehicles to optimize your taxes and reach your financial goals.",
     "celi": {
       "title": "TFSA — Tax-Free Savings Account",
-      "desc": "A plan that lets you set money aside sheltered from tax. Investment gains (interest, dividends, capital gains) earned in a TFSA are not taxable, even when withdrawn. 2025 limit: $7,000/year.",
-      "highlight": "2025 cumulative limit: $95,000"
+      "desc": "A plan that lets you set money aside sheltered from tax. Investment gains (interest, dividends, capital gains) earned in a TFSA are not taxable, even when withdrawn."
     },
     "celiapp": {
       "title": "FHSA — First Home Savings Account",
-      "desc": "A plan designed to help individuals save for the purchase of their first home. It combines the benefits of an RRSP (tax-deductible contributions) and a TFSA (tax-free withdrawals for a home purchase).",
-      "highlight": "Maximum contribution: $8,000/year ($40,000 lifetime)"
+      "desc": "A plan designed to help individuals save for the purchase of their first home. It combines the benefits of an RRSP (tax-deductible contributions) and a TFSA (tax-free withdrawals for a home purchase)."
     },
     "reer": {
       "title": "RRSP — Registered Retirement Savings Plan",
-      "desc": "A plan designed primarily for retirement savings. Contributions are deductible from your taxable income, which reduces your annual tax payable. Tax is deferred until funds are withdrawn.",
-      "highlight": "2025 contribution limit: 18% of earned income (max $31,560)"
+      "desc": "A plan designed primarily for retirement savings. Contributions are deductible from your taxable income, which reduces your annual tax payable. Tax is deferred until funds are withdrawn."
     },
     "reee": {
       "title": "RESP — Registered Education Savings Plan",
-      "desc": "A special investment account used by parents to save for a child's post-secondary education. This plan gives access to generous government grants added to your savings.",
-      "highlight": "Canada Education Savings Grant (CESG): up to $7,200"
+      "desc": "A special investment account used by parents to save for a child's post-secondary education. This plan gives access to generous government grants added to your savings."
     },
     "reei": {
       "title": "RDSP — Registered Disability Savings Plan",
-      "desc": "A savings plan that helps Canadians living with a disability and their families save to ensure their long-term financial security. It also allows access to government grants and bonds.",
-      "highlight": "Government grants and bonds available"
+      "desc": "A savings plan that helps Canadians living with a disability and their families save to ensure their long-term financial security. It also allows access to government grants and bonds."
     },
     "faqTitle": "Frequently asked questions about savings",
     "faq": [
       {
         "q": "What is the difference between an RRSP and a TFSA?",
-        "a": "The RRSP (Registered Retirement Savings Plan) lets you deduct contributions from your taxable income, reducing your tax bill immediately. Growth is tax-deferred, but withdrawals are added to your taxable income in retirement. It must be converted to a RRIF by age 71. The 2025 contribution limit is 18% of earned income, up to $31,560. The TFSA (Tax-Free Savings Account) offers no upfront deduction, but all withdrawals — including gains — are completely tax-free. The annual limit is $7,000 (2025 cumulative room: $95,000). Strategy: favour the RRSP if your current marginal tax rate is high and you expect a lower rate in retirement; favour the TFSA if your income is lower now or if you want complete flexibility without tax consequences on withdrawal."
+        "a": "The RRSP (Registered Retirement Savings Plan) lets you deduct contributions from your taxable income, reducing your tax bill immediately. Growth is tax-deferred, but withdrawals are added to your taxable income in retirement. The TFSA (Tax-Free Savings Account) offers no upfront tax deduction, but all withdrawals — including gains — are completely tax-free. Strategy: favour the RRSP if your current marginal tax rate is high, the TFSA if your income is lower or if you want complete flexibility without tax consequences on withdrawal."
       },
       {
         "q": "What is the FHSA and who can use it?",
-        "a": "The FHSA (First Home Savings Account), launched in 2023, is designed exclusively for first-time home buyers. It combines the best of both the RRSP (contributions are tax-deductible) and the TFSA (qualifying withdrawals for a home purchase are completely tax-free). The annual contribution limit is $8,000, with a lifetime maximum of $40,000. Unused contribution room carries forward to the following year, up to an additional $8,000. To be eligible, you must not have owned your principal residence at any point in the last four years. The account must be closed within 15 years of opening or upon purchase. It can be combined with the RRSP Home Buyers' Plan (HBP) to maximize your down payment — a powerful combination for first-time buyers."
+        "a": "The FHSA (First Home Savings Account), launched in 2023, is designed exclusively for first-time home buyers. It combines the benefits of an RRSP (tax-deductible contributions) and a TFSA (qualifying withdrawals for a home purchase are completely tax-free). Unused contribution room carries forward to the following year. To be eligible, you must not have owned your principal residence in recent years. It can be combined with the RRSP Home Buyers' Plan (HBP) to maximize your down payment."
       },
       {
         "q": "How does the Canada Education Savings Grant (CESG) work in an RESP?",
-        "a": "The federal government automatically contributes 20% of annual RESP contributions up to $2,500 per year, providing a grant of $500 per child per year. The lifetime maximum CESG per child is $7,200. Families with low or middle incomes may receive an Additional Canada Education Savings Grant (A-CESG) of up to $100 per year. Québec also offers the Quebec Education Savings Incentive (QESI), which adds 10% of the first $2,500 contributed annually. Unused CESG room from previous years can be carried forward and caught up in future years, up to age 17. When funds are withdrawn for education, they are taxed in the student's hands — typically at a very low rate given their modest income during studies."
+        "a": "The federal government automatically contributes a percentage-based grant on annual RESP contributions. Families with low or middle incomes may receive an additional grant. Québec also offers the Quebec Education Savings Incentive (QESI). Unused CESG room from previous years can be carried forward and caught up in future years. When funds are withdrawn for education, they are taxed in the student's hands — typically at a very low rate given their modest income during studies."
       },
       {
         "q": "Can I withdraw from my RRSP before retirement?",
-        "a": "Yes, but important tax consequences apply. Outside of specific programs, any RRSP withdrawal is added to your taxable income for the year and is subject to withholding tax of 10% (up to $5,000), 20% ($5,001–$15,000) or 30% (above $15,000). Two programs allow tax-deferred withdrawals: the Home Buyers' Plan (HBP), which allows up to $35,000 for a first home purchase (repayable over 15 years), and the Lifelong Learning Plan (LLP), up to $20,000 over 4 years for full-time education. Unlike the TFSA, regular RRSP withdrawals do not restore contribution room — that room is permanently lost. For this reason, early withdrawals should generally be a last resort after all other options have been explored."
+        "a": "Yes, but important tax consequences apply. Outside of specific programs, any RRSP withdrawal is added to your taxable income for the year and is subject to a progressive withholding tax. Two programs allow tax-deferred withdrawals: the Home Buyers' Plan (HBP), for a first home purchase, and the Lifelong Learning Plan (LLP), for full-time education. Unlike the TFSA, regular RRSP withdrawals do not restore contribution room — that room is permanently lost."
       },
       {
         "q": "At what age should I start investing?",
-        "a": "As early as possible. Compound growth is the most powerful force in personal finance: $200 invested monthly at age 25 at an average annual return of 6% grows to approximately $400,000 by age 65. Starting at 35 with the same amount and return yields roughly $200,000 — half the result for the same total outlay. Even small, regular contributions make a significant difference over time. The priority at any age: first capture any employer RRSP matching contributions (an immediate 50–100% return), then maximize the FHSA if you plan to buy a home, then split between RRSP and TFSA based on your tax situation. A free consultation with MAB Services establishes a realistic, personalized plan starting today."
+        "a": "As early as possible. Compound growth is the most powerful force in personal finance: even small, regular contributions invested early can make a significant difference over the long term. The priority at any age: first capture any employer matching contributions if available, then maximize the FHSA if you plan to buy a home, then split between RRSP and TFSA based on your tax situation. A free consultation with MAB Services helps establish a realistic, personalized plan starting today."
       },
       {
         "q": "Should I pay off my debt or invest in a TFSA or RRSP?",
-        "a": "The general rule: pay off debts with interest rates above 5 to 6% first — that is a guaranteed return that few investments consistently beat. Credit card debt (18 to 22%) and high-interest personal loans are always the priority. For a low-rate mortgage (below 4%), investing in parallel often makes more financial sense, especially in an RRSP if the tax refund is reinvested. Student loans fall somewhere in between — evaluate case by case. One key exception: if your employer offers RRSP matching, always contribute enough to capture the full match first — that is an immediate 50 to 100% return that no debt repayment strategy can beat. The optimal balance depends on your marginal tax rate, time horizon and risk tolerance."
+        "a": "The general rule: pay off high-interest debt first — that is a guaranteed return that few investments consistently beat. Credit card debt and high-interest personal loans are always the priority. For a low-rate mortgage, investing in parallel often makes more financial sense, especially in an RRSP if the tax refund is reinvested. If your employer offers RRSP matching, always contribute enough to capture the full match first. The optimal balance depends on your marginal tax rate, time horizon and risk tolerance."
       }
     ]
   },
   "Privacy": {
     "label": "Legal",
     "title": "Privacy Policy",
-    "intro": "<strong>MAB SERVICES</strong> is committed to protecting your personal information collected in Québec and Ontario.",
-    "section1": {
-      "title": "Collection of information",
-      "content": "Data transmitted via the contact form is used exclusively by <strong>Mohammed Amine BENZAKOUR</strong> to analyze your financial needs and propose insurance or investment contracts. We collect your name, email, phone number and information you voluntarily provide."
-    },
-    "section2": {
-      "title": "Your Rights",
-      "content": "In accordance with <strong>Law 25</strong> (Québec) and <strong>PIPEDA</strong> (Canada), you have the right to access, rectify and delete your data. No information is shared with third parties without your explicit consent. To exercise your rights, contact us at <strong>sales@mabservices-ca.com</strong>."
-    },
-    "section3": {
-      "title": "Security",
-      "content": "We implement appropriate security measures to protect your data from unauthorized access. This site uses HTTPS. Contact forms are transmitted securely."
-    }
+    "body": "Personal information collected through this site is processed in accordance with applicable privacy laws. The information provided is used solely for the purpose of delivering our services, analyzing insurance needs, communicating with clients and prospects, and managing requests. Reasonable security measures are in place to protect personal information against unauthorized access or disclosure, subject to applicable legal and contractual obligations."
   },
   "Contact": {
     "cardTitle": "MAB SERVICES",
@@ -392,7 +379,7 @@
       "Privacy Policy",
       "Regulatory Notice"
     ],
-    "disclaimer": "The information presented on this site is for informational purposes only and does not constitute personalized financial advice. Subject to eligibility. Mohammed Amine BENZAKOUR is authorized to practice as a financial security advisor in Québec (AMF No. [XXXXX]) and as a life insurance broker in Ontario (FSRA No. [XXXXX]).",
+    "disclaimer": "The information presented on this site is for informational purposes only and does not constitute personalized financial advice. Subject to eligibility.",
     "copyright": "© {year} MAB Services. All rights reserved."
   },
   "Forms": {

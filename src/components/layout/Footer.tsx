@@ -122,9 +122,22 @@ export default function Footer() {
           <p className="text-[11px] text-content-subtle leading-relaxed max-w-3xl">
             {t('disclaimer')}
           </p>
-          <p className="text-xs text-content-subtle whitespace-nowrap flex-shrink-0">
-            {t('copyright', { year })}
-          </p>
+          <div className="flex flex-col items-start md:items-end gap-1 flex-shrink-0">
+            <p className="text-xs text-content-subtle whitespace-nowrap">
+              {t('copyright', { year })}
+            </p>
+            <p className="text-[11px] text-content-subtle whitespace-nowrap">
+              Design & Dev ·{' '}
+              <a
+                href="https://www.mouhcine-soukaki.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-em transition-colors"
+              >
+                Mouhcine SOUKAKI
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
