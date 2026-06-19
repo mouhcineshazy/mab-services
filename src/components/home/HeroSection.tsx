@@ -126,10 +126,14 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 animate-bounce-slow pointer-events-none">
+      <button
+        onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+        aria-label={t('scroll')}
+        className="absolute bottom-8 inset-x-0 flex flex-col items-center gap-1.5 animate-bounce-slow cursor-pointer hover:opacity-70 transition-opacity"
+      >
         <IconScrollDown className="w-5 h-5 text-content-subtle" />
         <span className="text-[10px] tracking-[0.1em] uppercase text-content-subtle">{t('scroll')}</span>
-      </div>
+      </button>
     </section>
   );
 }

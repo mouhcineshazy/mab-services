@@ -32,37 +32,44 @@ export default function Footer() {
     <footer className="bg-[var(--bg-3)] border-t border-[var(--border)]">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-0">
 
-        {/* Main grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-[var(--border)]">
+        {/* Main grid
+            Phone  (<640): 2 cols — brand full-width, nav+services side-by-side, legal full-width
+            Tablet (640+): 3 cols — brand full-width row, then nav / services / legal in one row
+            Desktop(1024+): 4 cols — brand + 3 link sections in one row */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-10 pb-12 border-b border-[var(--border)]">
 
           {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5 font-heading font-extrabold text-[17px] tracking-wide mb-4">
-              <LogoMark size={32} />
-              <span>MAB <span className="font-medium text-content-muted">SERVICES</span></span>
-            </Link>
-            <p className="text-sm text-content-muted leading-relaxed max-w-[240px] mb-5">
-              {t('tagline')}
-            </p>
-            <div className="flex items-center gap-2">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="flex items-center justify-center w-9 h-9 rounded-lg bg-[var(--bg-2)] border border-[var(--border)] text-content-muted hover:bg-[var(--em-subtle)] hover:border-[var(--border-em)] hover:text-em transition-all duration-200"
-              >
-                <IconFacebook className="w-4 h-4" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="flex items-center justify-center w-9 h-9 rounded-lg bg-[var(--bg-2)] border border-[var(--border)] text-content-muted hover:bg-[var(--em-subtle)] hover:border-[var(--border-em)] hover:text-em transition-all duration-200"
-              >
-                <IconLinkedIn className="w-4 h-4" />
-              </a>
+          <div className="col-span-2 sm:col-span-3 lg:col-span-1">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between lg:flex-col gap-5 sm:gap-0 lg:gap-0">
+              <div>
+                <Link href="/" className="flex items-center gap-2.5 font-heading font-extrabold text-[17px] tracking-wide mb-4">
+                  <LogoMark size={32} />
+                  <span>MAB <span className="font-medium text-content-muted">SERVICES</span></span>
+                </Link>
+                <p className="text-sm text-content-muted leading-relaxed max-w-[240px] mb-5">
+                  {t('tagline')}
+                </p>
+              </div>
+              <div className="flex items-center gap-2 sm:mt-1 lg:mt-0">
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="flex items-center justify-center w-9 h-9 rounded-lg bg-[var(--bg-2)] border border-[var(--border)] text-content-muted hover:bg-[var(--em-subtle)] hover:border-[var(--border-em)] hover:text-em transition-all duration-200"
+                >
+                  <IconFacebook className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="flex items-center justify-center w-9 h-9 rounded-lg bg-[var(--bg-2)] border border-[var(--border)] text-content-muted hover:bg-[var(--em-subtle)] hover:border-[var(--border-em)] hover:text-em transition-all duration-200"
+                >
+                  <IconLinkedIn className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </div>
 
@@ -95,7 +102,7 @@ export default function Footer() {
           </div>
 
           {/* Legal + contact */}
-          <div>
+          <div className="col-span-2 sm:col-span-1">
             <p className="text-[12px] font-bold uppercase tracking-[0.12em] text-em mb-4">{t('legal')}</p>
             <ul className="flex flex-col gap-2.5 mb-6">
               {legalLinks.map(({ label, href }) => (
@@ -118,11 +125,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="py-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+        <div className="py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <p className="text-[11px] text-content-subtle leading-relaxed max-w-3xl">
             {t('disclaimer')}
           </p>
-          <div className="flex flex-col items-start md:items-end gap-1 flex-shrink-0">
+          <div className="flex flex-col items-start sm:items-end gap-1 flex-shrink-0">
             <p className="text-xs text-content-subtle whitespace-nowrap">
               {t('copyright', { year })}
             </p>

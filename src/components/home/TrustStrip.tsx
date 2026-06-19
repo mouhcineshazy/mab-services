@@ -22,11 +22,11 @@ export default function TrustStrip() {
   return (
     <div className="bg-[var(--bg-2)] border-y border-[var(--border)]">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap items-center justify-center divide-x divide-[var(--border)]">
+        <div className="grid grid-cols-2 sm:grid-cols-4 sm:divide-x sm:divide-[var(--border)]">
           {items.map(({ key, icon }) => (
             <div
               key={key}
-              className="flex items-center gap-2.5 px-5 sm:px-8 py-4 text-[13px] font-medium text-content-muted"
+              className="flex items-center justify-center gap-2.5 px-4 sm:px-6 lg:px-8 py-4 sm:py-5 text-[13px] font-medium text-content-muted"
             >
               {icon}
               <span dangerouslySetInnerHTML={{ __html: t.raw(key) as string }} />

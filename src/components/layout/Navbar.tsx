@@ -72,7 +72,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex flex-1 justify-center items-center gap-0.5">
+          <div className="hidden xl:flex flex-1 justify-center items-center gap-0.5">
             {ROUTES.map(({ key, href }) => (
               <Link
                 key={key}
@@ -91,7 +91,7 @@ export default function Navbar() {
           </div>
 
           {/* Right side: lang + CTA */}
-          <div className="hidden md:flex shrink-0 items-center gap-2">
+          <div className="hidden xl:flex shrink-0 items-center gap-2">
             <LangSwitcher />
             {CONSULTATION_CAL_CONFIGURED ? (
               <CalPopupButton calLink={CONSULTATION_CAL_LINK} namespace="consultation" layout="month_view" className="btn btn-primary text-sm px-5 py-2.5">
@@ -107,7 +107,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile: lang + hamburger */}
-          <div className="flex md:hidden items-center gap-2">
+          <div className="flex xl:hidden items-center gap-2">
             <LangSwitcher />
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -126,7 +126,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div
         className={cn(
-          'md:hidden border-t border-[var(--border)] bg-[var(--bg-2)] transition-all duration-300 overflow-hidden',
+          'xl:hidden border-t border-[var(--border)] bg-[var(--bg-2)] transition-all duration-300 overflow-hidden',
           mobileOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0',
         )}
       >
