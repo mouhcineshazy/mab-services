@@ -1,18 +1,18 @@
 # MAB Services — Deployment & Services Setup Guide
 
-> **Assumption**: Domain `mabservices-ca.com` is already purchased. Node.js ≥ 18 and Git are installed locally.
+> **Assumption**: Domain `mabservices-ca.com` is purchased via Google Domains (now Squarespace Domains). Node.js ≥ 18 and Git are installed locally.
 
 ---
 
 ## Table of Contents
 
 1. [GitHub — Push the code](#1-github--push-the-code)
-2. [Vercel — Create & deploy the project](#2-vercel--create--deploy-the-project)
+2. [Netlify — Create & deploy the project](#2-netlify--create--deploy-the-project)
 3. [Environment variables](#3-environment-variables)
-4. [Custom domain — DNS configuration](#4-custom-domain--dns-configuration)
+4. [Custom domain — Connect Google Domains to Netlify](#4-custom-domain--connect-google-domains-to-netlify)
 5. [Resend — Email service setup](#5-resend--email-service-setup)
 6. [Google Search Console](#6-google-search-console)
-7. [Vercel Analytics (optional)](#7-vercel-analytics-optional)
+7. [Analytics (optional)](#7-analytics-optional)
 8. [Post-launch checklist](#8-post-launch-checklist)
 
 ---
@@ -34,118 +34,174 @@
 git add .
 git commit -m "Initial commit — MAB Services website"
 git remote add origin https://github.com/YOUR_USERNAME/MAB-services.git
-git branch -M main
-git push -u origin main
+git branch -M master
+git push -u origin master
 ```
 
 > Replace `YOUR_USERNAME` with your GitHub username.
 
 ---
 
-## 2. Vercel — Create & deploy the project
+## 2. Netlify — Create & deploy the project
 
-### 2.1 Create a Vercel account
+### 2.1 Create a Netlify account
 
-1. Go to [vercel.com](https://vercel.com) and sign up with your GitHub account
-2. Choose the **Hobby** plan (free — sufficient for this project)
+1. Go to [netlify.com](https://netlify.com) and sign up with your GitHub account
+2. The **Free** plan is sufficient for this project (300 build minutes/month, 100GB bandwidth)
 
 ### 2.2 Import the GitHub repository
 
-1. From the Vercel dashboard, click **Add New → Project**
-2. Click **Import Git Repository**
-3. Select the `MAB-services` repository
-4. Vercel will auto-detect **Next.js** — no framework configuration needed
+1. From the Netlify dashboard, click **Add new site → Import an existing project**
+2. Choose **GitHub** as the Git provider
+3. Authorize Netlify to access your repositories
+4. Select the `MAB-services` repository
 
-### 2.3 Configure the project before first deploy
+### 2.3 Configure the build settings
 
-On the **Configure Project** screen:
+Netlify auto-detects Next.js. Confirm these settings:
 
 | Field | Value |
 |-------|-------|
-| Project Name | `mab-services` |
-| Framework Preset | Next.js (auto-detected) |
-| Root Directory | `.` (leave as is) |
-| Build Command | `npm run build` (auto-detected) |
-| Output Directory | `.next` (auto-detected) |
-| Install Command | `npm install` (auto-detected) |
+| Branch to deploy | `master` |
+| Build command | `npm run build` |
+| Publish directory | `.next` |
+| Node version | `24` (set under Site settings → Build & deploy → Environment) |
 
-**Add environment variables now** (see §3 before clicking Deploy).
+**Add environment variables before clicking Deploy** (see §3).
 
 ### 2.4 Deploy
 
-Click **Deploy**. The first build takes ~2 minutes. Vercel will give you a preview URL like `mab-services-abc123.vercel.app`.
+Click **Deploy site**. The first build takes ~3 minutes. Netlify gives you a temporary URL like `mab-services-abc123.netlify.app`.
 
 ### 2.5 Subsequent deployments
 
-Every `git push` to `main` triggers an automatic production deployment. Pull requests get their own preview URLs automatically.
+Every `git push` to `master` triggers an automatic production deployment. You can also trigger manually: **Deploys → Trigger deploy → Deploy site**.
 
 ---
 
 ## 3. Environment variables
 
-These must be set in Vercel **before** the first deploy (or in Settings → Environment Variables after).
+Set these in **Netlify → Site configuration → Environment variables** before the first deploy.
 
 ### 3.1 Required variables
 
-| Variable | Value | Environment |
-|----------|-------|-------------|
-| `RESEND_API_KEY` | Your Resend API key (see §5) | Production, Preview |
-| `NEXT_PUBLIC_BASE_URL` | `https://mabservices-ca.com` | Production |
-| `NEXT_PUBLIC_BASE_URL` | `https://mab-services-xxx.vercel.app` | Preview |
+| Variable | Value | Type |
+|----------|-------|------|
+| `RESEND_API_KEY` | Your Resend API key (see §5) | Secret |
+| `RESEND_FROM_EMAIL` | `MAB Services <consultations@mabservices-ca.com>` | Plain text |
+| `RESEND_TO_EMAIL` | `sales@mabservices-ca.com` | Plain text |
+| `NEXT_PUBLIC_BASE_URL` | `https://mabservices-ca.com` | Plain text |
+| `CAL_API_KEY` | Your Cal.com API key | Secret |
+| `NEXT_PUBLIC_CAL_USERNAME` | Your Cal.com username | Plain text |
+| `NEXT_PUBLIC_CAL_EVENT_SLUG` | Masterclass event slug (e.g. `masterclass-gratuite`) | Plain text |
+| `NEXT_PUBLIC_CAL_CONSULTATION_SLUG` | Consultation event slug (e.g. `consultation-gratuite`) | Plain text |
 
-### 3.2 How to add in Vercel
+> **Secret vs Plain text**: Use **Secret** only for `RESEND_API_KEY` and `CAL_API_KEY`. All `NEXT_PUBLIC_` variables must be **Plain text** — marking them Secret causes Netlify's secrets scanner to block the build.
 
-1. Go to your project → **Settings → Environment Variables**
-2. For each variable: enter the name, value, and select which environments it applies to
+### 3.2 How to add in Netlify
+
+1. Go to **Site configuration → Environment variables → Add a variable**
+2. Enter the key name, value, and select the type (Secret or Plain text)
 3. Click **Save**
-4. **Redeploy** for changes to take effect: Deployments → three-dot menu → **Redeploy**
+4. **Redeploy** for changes to take effect: Deploys → Trigger deploy → Deploy site
 
 ### 3.3 Local development (.env.local)
 
 Create this file at the project root (already in `.gitignore` — never commit it):
 
 ```bash
-# .env.local
+# .env.local — copy from .env.local.example and fill in real values
 RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxx
+RESEND_FROM_EMAIL=MAB Services <consultations@mabservices-ca.com>
+RESEND_TO_EMAIL=sales@mabservices-ca.com
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
+CAL_API_KEY=cal_live_xxxxxxxxxxxxxxxxxxxx
+NEXT_PUBLIC_CAL_USERNAME=your-cal-username
+NEXT_PUBLIC_CAL_EVENT_SLUG=your-masterclass-slug
+NEXT_PUBLIC_CAL_CONSULTATION_SLUG=your-consultation-slug
 ```
 
 ---
 
-## 4. Custom domain — DNS configuration
+## 4. Custom domain — Connect Google Domains to Netlify
 
-### 4.1 Add the domain in Vercel
+Your domain `mabservices-ca.com` was purchased through Google Domains, which has been migrated to **Squarespace Domains**. You log in at [domains.squarespace.com](https://domains.squarespace.com) using your Google account.
 
-1. Go to your project → **Settings → Domains**
-2. Enter `mabservices-ca.com` → click **Add**
-3. Also add `www.mabservices-ca.com` → Vercel will offer to redirect it to the apex domain ✓
+There are two approaches. **Option A (recommended)** delegates DNS fully to Netlify and is simpler long-term.
 
-### 4.2 DNS records to add at your registrar
+---
 
-Log in to wherever you purchased the domain (Namecheap, GoDaddy, Google Domains, etc.) and add these records:
+### Option A — Use Netlify DNS (recommended)
 
-#### Apex domain (`mabservices-ca.com`)
+This lets Netlify manage all your DNS records automatically, including SSL.
 
-| Type | Name | Value | TTL |
+#### Step 1 — Add the domain in Netlify
+
+1. Go to **Site configuration → Domain management → Add a domain**
+2. Enter `mabservices-ca.com` → click **Verify** → **Add domain**
+3. Also add `www.mabservices-ca.com` (Netlify will redirect it to the apex automatically)
+4. Netlify will display **4 nameservers** — copy them, e.g.:
+   ```
+   dns1.p0X.nsone.net
+   dns2.p0X.nsone.net
+   dns3.p0X.nsone.net
+   dns4.p0X.nsone.net
+   ```
+
+#### Step 2 — Change nameservers in Squarespace Domains
+
+1. Go to [domains.squarespace.com](https://domains.squarespace.com) and sign in with your Google account
+2. Click on `mabservices-ca.com`
+3. In the left sidebar click **DNS**
+4. Scroll to **Nameservers** → click **Edit**
+5. Switch from **Squarespace nameservers** to **Custom nameservers**
+6. Enter the 4 Netlify nameservers from Step 1
+7. Click **Save**
+
+#### Step 3 — Wait for propagation
+
+- Nameserver changes propagate in **15 minutes to 24 hours**
+- Once active, Netlify automatically provisions a free SSL certificate
+- In Netlify → Domain management, the domain shows a green checkmark when live
+
+---
+
+### Option B — Keep Squarespace DNS, point manually
+
+Use this if you don't want to change nameservers.
+
+#### Step 1 — Get Netlify's IP
+
+In Netlify → Domain management → add your domain. Netlify will show the required DNS values.
+
+#### Step 2 — Add records in Squarespace Domains
+
+1. Go to [domains.squarespace.com](https://domains.squarespace.com) → click your domain → **DNS**
+2. Scroll to **Custom records** → click **Add record**
+3. Add these records:
+
+**Apex domain (`mabservices-ca.com`)**
+
+| Type | Host | Value | TTL |
 |------|------|-------|-----|
-| `A` | `@` | `76.76.21.21` | 3600 |
+| `A` | `@` | `75.2.60.5` | 3600 |
+| `AAAA` | `@` | `2600:1f14:e22:d200::1` | 3600 |
 
-> Some registrars require an `ALIAS` or `ANAME` record instead of `A` for the apex. If your registrar supports it, use: `ALIAS @ cname.vercel-dns.com`
+**www subdomain**
 
-#### www subdomain
-
-| Type | Name | Value | TTL |
+| Type | Host | Value | TTL |
 |------|------|-------|-----|
-| `CNAME` | `www` | `cname.vercel-dns.com` | 3600 |
+| `CNAME` | `www` | `YOUR-SITE-NAME.netlify.app` | 3600 |
 
-### 4.3 Verification & SSL
+> Replace `YOUR-SITE-NAME` with your actual Netlify subdomain (shown in Netlify → Domain management).
 
-- DNS propagation takes **5–30 minutes** (up to 48h in rare cases)
-- Vercel automatically provisions a **free SSL certificate** (Let's Encrypt) once DNS is verified
-- You can check propagation at [dnschecker.org](https://dnschecker.org)
-- In Vercel → Settings → Domains, the domain will show a green checkmark when active
+#### Step 3 — Verify in Netlify
 
-### 4.4 Verify it works
+Once DNS propagates, Netlify provisions SSL automatically. Check propagation at [dnschecker.org](https://dnschecker.org).
+
+---
+
+### 4.3 Verify the domain is live
 
 ```bash
 curl -I https://mabservices-ca.com
@@ -156,7 +212,7 @@ curl -I https://mabservices-ca.com
 
 ## 5. Resend — Email service setup
 
-Resend handles the form submission emails (consultation requests and masterclass registrations sent to `sales@mabservices-ca.com`).
+Resend sends consultation form submissions to `sales@mabservices-ca.com`.
 
 ### 5.1 Create a Resend account
 
@@ -165,24 +221,23 @@ Resend handles the form submission emails (consultation requests and masterclass
 
 ### 5.2 Add and verify your sending domain
 
-The forms send from `noreply@mabservices-ca.com`. You must verify this domain with Resend.
+Emails send from `consultations@mabservices-ca.com`. You must verify this domain with Resend first.
 
-1. In Resend dashboard → **Domains → Add Domain**
+1. Resend dashboard → **Domains → Add Domain**
 2. Enter `mabservices-ca.com` → click **Add**
-3. Resend will show you DNS records to add. Add all of them at your registrar:
-
-#### DNS records for Resend (add these alongside the Vercel records)
+3. Resend shows DNS records to add — add all of them at your registrar:
 
 | Type | Name | Value |
 |------|------|-------|
-| `MX` | `send` | `feedback-smtp.us-east-1.amazonses.com` (Resend provides exact value) |
+| `MX` | `send` | Resend provides the exact value |
 | `TXT` | `resend._domainkey` | `p=...` (DKIM key — Resend provides exact value) |
 | `TXT` | `@` | `v=spf1 include:amazonses.com ~all` |
 
-> **Important**: Resend shows the exact values for your account in their dashboard. Use those, not the placeholders above.
+> Use the exact values from your Resend dashboard — the values above are placeholders.  
+> If using **Option A (Netlify DNS)**, add these records directly in Netlify → Domain management → DNS records.  
+> If using **Option B (Squarespace DNS)**, add them in Squarespace Domains → DNS → Custom records.
 
-4. Click **Verify DNS Records** in Resend after adding them
-5. Wait 5–15 minutes for DNS to propagate, then verify
+4. Click **Verify DNS Records** in Resend — wait 5–15 minutes
 
 ### 5.3 Get your API key
 
@@ -190,46 +245,38 @@ The forms send from `noreply@mabservices-ca.com`. You must verify this domain wi
 2. Name: `MAB Services Production`
 3. Permission: **Sending access**
 4. Click **Add** — copy the key immediately (shown only once)
-5. Paste it as `RESEND_API_KEY` in Vercel environment variables (§3.2)
+5. Paste it as `RESEND_API_KEY` in Netlify environment variables (§3.2)
 
 ### 5.4 Test email sending
 
-After deploy, submit the consultation form on the live site and confirm the email arrives at `sales@mabservices-ca.com`. Check spam folder if not received.
+After deploy, submit the consultation form on the live site and confirm the email arrives at `sales@mabservices-ca.com`.
 
-If testing locally:
+> **Before the domain is verified**: Resend restricts sending to your own Resend account email. Temporarily set `RESEND_TO_EMAIL` to your Resend account email to test, then revert once the domain is verified.
 
-```bash
-# .env.local must have RESEND_API_KEY set
-npm run dev
-# Submit the form on http://localhost:3000/fr/contact
-```
+### 5.5 Monitor Resend logs
 
-### 5.5 Optional: Monitor Resend logs
-
-Resend dashboard → **Logs** shows every email sent, delivered, bounced, or spam-marked. Check this weekly initially.
+Resend dashboard → **Logs** shows every email sent, delivered, bounced, or spam-flagged. Check this during initial launch.
 
 ---
 
 ## 6. Google Search Console
 
-Registers the site with Google, allows sitemap submission, and monitors indexing and search performance.
+Registers the site with Google for indexing monitoring and sitemap submission.
 
 ### 6.1 Add the property
 
 1. Go to [search.google.com/search-console](https://search.google.com/search-console)
-2. Click **Add property → Domain** (not URL prefix — Domain covers all subdomains and both http/https)
+2. Click **Add property → Domain**
 3. Enter `mabservices-ca.com`
-4. Google will ask you to add a DNS TXT record for verification
+4. Google asks for a DNS TXT record for verification
 
 ### 6.2 Verification DNS record
-
-Add this at your registrar:
 
 | Type | Name | Value |
 |------|------|-------|
 | `TXT` | `@` | `google-site-verification=XXXXXXXXXXXX` (Google provides the exact value) |
 
-> You may already have a TXT record for SPF (`v=spf1...`). Most registrars allow multiple TXT records on `@` — add the Google verification as a separate TXT record.
+Add this record alongside the others (multiple TXT records on `@` are allowed).
 
 Click **Verify** in Search Console after adding the record.
 
@@ -239,7 +286,7 @@ Once verified:
 
 1. Left sidebar → **Sitemaps**
 2. Submit: `https://mabservices-ca.com/sitemap.xml`
-3. Google will crawl it and discover all 12 locale-versioned URLs
+3. Google discovers all locale-versioned URLs automatically
 
 ### 6.4 Request indexing for key pages
 
@@ -254,97 +301,87 @@ Initial indexing takes 1–7 days.
 
 ### 6.5 Monitor ongoing
 
-Check Search Console weekly for:
-- **Coverage** — any pages with errors or excluded
-- **Performance** — clicks, impressions, average position
-- **Core Web Vitals** — page speed scores
+Check Search Console weekly for **Coverage** errors, **Performance** (clicks/impressions), and **Core Web Vitals**.
 
 ---
 
-## 7. Vercel Analytics (optional)
+## 7. Analytics (optional)
 
-Provides privacy-friendly page view and performance metrics without needing Google Analytics.
+Netlify includes basic free analytics (visits, bandwidth) visible in the Netlify dashboard — no setup needed.
 
-### 7.1 Enable in Vercel
-
-1. Project → **Analytics tab → Enable**
-2. It's free on the Hobby plan (limited to 2,500 data points/month)
-
-### 7.2 Add the package
-
-```bash
-npm install @vercel/analytics
-```
-
-### 7.3 Add to the locale layout
-
-In `src/app/[locale]/layout.tsx`, add the Analytics component:
+For richer privacy-friendly analytics, [Plausible.io](https://plausible.io) is recommended (paid, ~$9/month). Add the script to `src/app/[locale]/layout.tsx` via `next/script`:
 
 ```tsx
-import { Analytics } from '@vercel/analytics/react';
+import Script from 'next/script';
 
-// Inside the <body>:
-<Analytics />
+<Script
+  defer
+  data-domain="mabservices-ca.com"
+  src="https://plausible.io/js/script.js"
+  strategy="afterInteractive"
+/>
 ```
 
-This is the only change needed — Vercel handles the rest automatically.
+Also add `https://plausible.io` to `connect-src` in the CSP in `next.config.ts`.
 
 ---
 
 ## 8. Post-launch checklist
 
-Run through this after the domain is live and verified.
-
 ### Technical
 
-- [ ] `https://mabservices-ca.com` loads and redirects to `/fr`
+- [ ] `https://mabservices-ca.com` loads and redirects to `/fr` or `/en`
 - [ ] `https://www.mabservices-ca.com` redirects to `https://mabservices-ca.com`
 - [ ] SSL certificate is valid (green padlock in browser)
-- [ ] `https://mabservices-ca.com/sitemap.xml` returns XML with 12 URLs
+- [ ] `https://mabservices-ca.com/sitemap.xml` returns XML
 - [ ] `https://mabservices-ca.com/robots.txt` returns correct rules
 - [ ] `https://mabservices-ca.com/llms.txt` is accessible
 - [ ] Both EN and FR language switcher works correctly
 - [ ] Consultation form sends email to `sales@mabservices-ca.com`
-- [ ] Masterclass form sends email to `sales@mabservices-ca.com`
+- [ ] Cal.com booking buttons open the popup correctly
+- [ ] Masterclass countdown displays when a future slot is configured
 
 ### SEO / GEO
 
 - [ ] Sitemap submitted in Google Search Console
 - [ ] Key pages requested for indexing
-- [ ] JSON-LD validates at [schema.org/validator](https://validator.schema.org) — paste the page URL
-- [ ] Open Graph previews correctly — test at [opengraph.xyz](https://www.opengraph.xyz)
-- [ ] `hreflang` tags are correct — test at [technicalseo.com/tools/hreflang](https://technicalseo.com/tools/hreflang/)
+- [ ] JSON-LD validates at [validator.schema.org](https://validator.schema.org)
+- [ ] Open Graph previews correctly at [opengraph.xyz](https://www.opengraph.xyz)
+- [ ] `hreflang` tags correct at [technicalseo.com/tools/hreflang](https://technicalseo.com/tools/hreflang/)
 
 ### Regulatory (important for financial services)
 
 - [ ] AMF license number added to Footer disclaimer (replace `[XXXXX]`)
 - [ ] FSRA license number added to Footer disclaimer (replace `[XXXXX]`)
-- [ ] JSON-LD `localBusinessSchema` updated with real license numbers in `hasCredential`
+- [ ] JSON-LD `localBusinessSchema` updated with real license numbers
 
 ### Business
 
 - [ ] Phone number `613-261-4428` is clickable and calls correctly on mobile
-- [ ] Email `sales@mabservices-ca.com` inbox is monitored
-- [ ] Form submission notification tested end-to-end
+- [ ] `sales@mabservices-ca.com` inbox is monitored
+- [ ] Form submission tested end-to-end
 - [ ] Google Search Console verified and sitemap indexed
+- [ ] Google My Business profile created and linked to `mabservices-ca.com`
 
 ---
 
 ## DNS summary — all records in one place
 
-Here is every DNS record that needs to be added at your registrar:
+> Add all these at your DNS provider (Netlify DNS or Squarespace Domains depending on chosen option).
 
 | Type | Name | Value | Purpose |
 |------|------|-------|---------|
-| `A` | `@` | `76.76.21.21` | Vercel — apex domain |
-| `CNAME` | `www` | `cname.vercel-dns.com` | Vercel — www redirect |
+| `A` | `@` | `75.2.60.5` | Netlify — apex domain (Option B only) |
+| `AAAA` | `@` | `2600:1f14:e22:d200::1` | Netlify — apex IPv6 (Option B only) |
+| `CNAME` | `www` | `YOUR-SITE.netlify.app` | Netlify — www redirect (Option B only) |
 | `TXT` | `@` | `google-site-verification=XXXX` | Google Search Console |
 | `TXT` | `@` | `v=spf1 include:amazonses.com ~all` | Resend — SPF |
 | `TXT` | `resend._domainkey` | `p=XXXX` (from Resend) | Resend — DKIM |
 | `MX` | `send` | (from Resend dashboard) | Resend — bounce handling |
 
-> Replace all `XXXX` values with the exact strings provided by each service.  
-> Multiple TXT records on `@` are allowed — add each as a separate record.
+> Replace all `XXXX` values with exact strings provided by each service.  
+> Multiple TXT records on `@` are allowed — add each as a separate record.  
+> If using **Option A (Netlify DNS)**, skip the A/AAAA/CNAME rows — Netlify adds them automatically.
 
 ---
 
@@ -352,13 +389,15 @@ Here is every DNS record that needs to be added at your registrar:
 
 ```
 1. Push code to GitHub
-2. Import project in Vercel (without domain yet)
-3. Add RESEND_API_KEY env var, deploy, get preview URL
-4. Set up Resend domain + get API key, update env var
-5. Add custom domain in Vercel → note required DNS records
-6. Add ALL DNS records at registrar in one session (Vercel + Resend + Google)
-7. Wait 15–30 min for DNS propagation
-8. Verify domain in Vercel → SSL auto-provisioned
+2. Import project in Netlify — get preview URL (e.g. mab-services.netlify.app)
+3. Add all environment variables in Netlify
+4. Set up Resend: create API key, add domain, copy DNS records
+5. Choose DNS option (A or B) and add ALL DNS records in one session
+   (Netlify records + Resend records + Google verification)
+6. Change nameservers in Squarespace Domains (Option A)
+   OR add A/CNAME records in Squarespace Domains (Option B)
+7. Wait 15–60 min for DNS propagation
+8. Verify domain in Netlify → SSL auto-provisioned
 9. Verify domain in Resend → test form email
 10. Add Google Search Console → submit sitemap
 11. Run post-launch checklist

@@ -1,37 +1,31 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link, usePathname, useRouter } from '@/i18n/navigation';
 import LogoMark from '@/components/shared/LogoMark';
 import LangSwitcher from '@/components/shared/LangSwitcher';
-import { IconChevronDown, IconList, IconMenu, IconClose } from '@/components/shared/icons';
+import { IconList, IconMenu, IconClose } from '@/components/shared/icons';
 import CalPopupButton from '@/components/shared/CalPopupButton';
 import { cn } from '@/lib/utils';
 import { CONSULTATION_CAL_LINK, CONSULTATION_CAL_CONFIGURED } from '@/lib/calcom';
 import { setScrollTarget } from '@/lib/scroll-target';
 
 const ROUTES = [
-  { key: 'home',      href: '/' },
-  { key: 'about',     href: '/a-propos' },
-  { key: 'insurance', href: '/assurance-protection' },
-] as const;
-
-const MORE_ROUTES = [
+  { key: 'home',        href: '/' },
+  { key: 'about',       href: '/a-propos' },
+  { key: 'insurance',   href: '/assurance-protection' },
   { key: 'savings',     href: '/epargne-investissement' },
   { key: 'masterclass', href: '/#masterclass' },
   { key: 'contact',     href: '/contact' },
-  { key: 'privacy',     href: '/confidentialite' },
 ] as const;
 
 export default function Navbar() {
   const t        = useTranslations('Nav');
   const pathname = usePathname();
   const router   = useRouter();
-  const [scrolled,     setScrolled]     = useState(false);
-  const [mobileOpen,   setMobileOpen]   = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [scrolled,   setScrolled]   = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -41,20 +35,11 @@ export default function Navbar() {
 
   useEffect(() => { setMobileOpen(false); }, [pathname]);
 
-  function openDropdown()  {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    setDropdownOpen(true);
-  }
-  function closeDropdown() {
-    closeTimer.current = setTimeout(() => setDropdownOpen(false), 80);
-  }
-
   function handleHashClick(e: React.MouseEvent, href: string) {
     const hash = href.split('#')[1];
     if (!hash) return;
 
     e.preventDefault();
-    setDropdownOpen(false);
     setMobileOpen(false);
 
     if (pathname === '/') {
@@ -74,11 +59,11 @@ export default function Navbar() {
           : 'bg-[var(--bg)]/85 backdrop-blur-xl',
       )}
     >
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-[70px]">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
+        <div className="flex items-center justify-between gap-6 h-[70px]">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 font-heading font-extrabold text-lg tracking-wide">
+          <Link href="/" className="flex shrink-0 items-center gap-2.5 font-heading font-extrabold text-lg tracking-wide">
             <LogoMark size={38} />
             <span>
               MAB{' '}
@@ -87,13 +72,14 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex flex-1 justify-center items-center gap-0.5">
             {ROUTES.map(({ key, href }) => (
               <Link
                 key={key}
                 href={href}
+                onClick={href.includes('#') ? (e) => handleHashClick(e, href) : undefined}
                 className={cn(
-                  'px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200',
+                  'px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200',
                   pathname === href
                     ? 'text-em bg-[var(--em-subtle)]'
                     : 'text-content-muted hover:text-content hover:bg-white/5',
@@ -102,53 +88,10 @@ export default function Navbar() {
                 {t(key)}
               </Link>
             ))}
-
-            {/* More dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={openDropdown}
-              onMouseLeave={closeDropdown}
-            >
-              <button
-                className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium text-content-muted hover:text-content hover:bg-white/5 transition-all duration-200"
-                aria-expanded={dropdownOpen}
-                onFocus={openDropdown}
-                onBlur={closeDropdown}
-              >
-                {t('more')}
-                <IconChevronDown className={cn('w-3 h-3 transition-transform duration-200', dropdownOpen && 'rotate-180')} />
-              </button>
-
-              {/* Transparent bridge fills the gap so mouse doesn't leave the zone */}
-              <div
-                className="absolute top-full left-0 w-full h-2 bg-transparent"
-                onMouseEnter={openDropdown}
-              />
-
-              <div
-                className={cn(
-                  'absolute top-[calc(100%+8px)] left-0 min-w-[210px] bg-[var(--bg-2)] border border-[var(--border)] rounded-xl p-1.5 shadow-card transition-all duration-200',
-                  dropdownOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-1',
-                )}
-                onMouseEnter={openDropdown}
-                onMouseLeave={closeDropdown}
-              >
-                {MORE_ROUTES.map(({ key, href }) => (
-                  <Link
-                    key={key}
-                    href={href}
-                    onClick={href.includes('#') ? (e) => handleHashClick(e, href) : undefined}
-                    className="block px-3.5 py-2.5 rounded-lg text-sm text-content-muted hover:bg-[var(--em-subtle)] hover:text-em transition-all duration-150"
-                  >
-                    {t(key)}
-                  </Link>
-                ))}
-              </div>
-            </div>
           </div>
 
           {/* Right side: lang + CTA */}
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden md:flex shrink-0 items-center gap-2">
             <LangSwitcher />
             {CONSULTATION_CAL_CONFIGURED ? (
               <CalPopupButton calLink={CONSULTATION_CAL_LINK} namespace="consultation" layout="month_view" className="btn btn-primary text-sm px-5 py-2.5">
@@ -192,21 +135,11 @@ export default function Navbar() {
             <Link
               key={key}
               href={href}
+              onClick={href.includes('#') ? (e) => handleHashClick(e, href) : undefined}
               className={cn(
                 'px-4 py-3 rounded-xl text-sm font-medium transition-all',
                 pathname === href ? 'text-em bg-[var(--em-subtle)]' : 'text-content-muted hover:text-content hover:bg-white/5',
               )}
-            >
-              {t(key)}
-            </Link>
-          ))}
-          <div className="border-t border-[var(--border)] my-1" />
-          {MORE_ROUTES.map(({ key, href }) => (
-            <Link
-              key={key}
-              href={href}
-              onClick={href.includes('#') ? (e) => handleHashClick(e, href) : undefined}
-              className="px-4 py-3 rounded-xl text-sm text-content-muted hover:text-content hover:bg-white/5 transition-all"
             >
               {t(key)}
             </Link>
